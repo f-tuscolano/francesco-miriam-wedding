@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Francesco &amp; Miriam · 30 Agosto 2027</title>
+  <meta name="description" content="Francesco e Miriam si sposano il 30 agosto 2027 alla Commenda di San Calogero, Sicilia." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Intertwined F&M monogram, reused across the page -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="fm-monogram" viewBox="0 0 150 100">
+      <text x="30" y="78" font-family="'Cormorant Garamond', Georgia, serif" font-style="italic" font-weight="500" font-size="82" fill="currentColor">F</text>
+      <text x="62" y="78" font-family="'Cormorant Garamond', Georgia, serif" font-style="italic" font-weight="500" font-size="82" fill="#b08d57" opacity="0.88">M</text>
+    </symbol>
+  </svg>
+
+  <nav class="nav" id="nav">
+    <a class="nav-logo" href="#top" aria-label="Francesco e Miriam">
+      <svg class="logo logo-nav" viewBox="0 0 150 100"><use href="#fm-monogram" /></svg>
+    </a>
+    <div class="nav-links">
+      <a href="#details" data-i18n="nav.details">Programma</a>
+      <a href="#location" data-i18n="nav.location">Come arrivare</a>
+      <a href="#stay" data-i18n="nav.stay">Dove alloggiare</a>
+    </div>
+    <div class="lang-toggle" role="group" aria-label="Lingua / Language">
+      <button class="lang-btn active" data-lang="it">IT</button>
+      <span class="lang-sep">/</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <header class="hero" id="top">
+    <div class="hero-media">
+      <img src="img/SanCologero19.webp" alt="Commenda di San Calogero" />
+    </div>
+    <div class="hero-content reveal">
+      <svg class="logo logo-hero" viewBox="0 0 150 100"><use href="#fm-monogram" /></svg>
+      <p class="eyebrow" data-i18n="hero.eyebrow">Ci sposiamo</p>
+      <h1 class="hero-names">Francesco <span class="amp">&amp;</span> Miriam</h1>
+      <p class="hero-date">30 · 08 · 2027</p>
+      <p class="hero-venue" data-i18n="hero.venue">Commenda di San Calogero — Sicilia</p>
+      <div class="countdown" id="countdown">
+        <div class="count-item"><span id="cd-days">–</span><small data-i18n="count.days">giorni</small></div>
+        <div class="count-item"><span id="cd-hours">–</span><small data-i18n="count.hours">ore</small></div>
+        <div class="count-item"><span id="cd-mins">–</span><small data-i18n="count.mins">minuti</small></div>
+      </div>
+    </div>
+    <a class="scroll-hint" href="#details" aria-label="Scorri">↓</a>
+  </header>
+
+  <!-- ===== Schedule ===== -->
+  <section class="section alt" id="details">
+    <div class="section-inner reveal">
+      <p class="eyebrow center" data-i18n="details.eyebrow">Programma</p>
+      <h2 class="center" data-i18n="details.title">Lunedì 30 Agosto 2027</h2>
+      <div class="rule"></div>
+      <div class="cards">
+        <div class="card">
+          <h3 data-i18n="details.ceremony">Cerimonia</h3>
+          <p class="card-time">[ORARIO]</p>
+          <p data-i18n="details.ceremonyText">Commenda di San Calogero<br />Contrada San Calogero, Augusta (SR)</p>
+        </div>
+        <div class="card">
+          <h3 data-i18n="details.reception">Ricevimento</h3>
+          <p class="card-time">[ORARIO]</p>
+          <p data-i18n="details.receptionText">A seguire, nei giardini della Commenda — cena, brindisi e musica sotto le stelle.</p>
+        </div>
+        <div class="card">
+          <h3 data-i18n="details.info">Da sapere</h3>
+          <p><span data-i18n="details.dress">Dress code</span>: [elegante]</p>
+          <p><span data-i18n="details.parking">Parcheggio</span>: <span data-i18n="details.parkingText">disponibile in loco</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How to get there ===== -->
+  <section class="section" id="location">
+    <div class="section-inner reveal">
+      <p class="eyebrow center" data-i18n="location.eyebrow">Come arrivare</p>
+      <h2 class="center" data-i18n="location.title">La Commenda di San Calogero</h2>
+      <p class="lead center narrow" data-i18n="location.lead">
+        Un'antica dimora storica immersa nel verde della Sicilia orientale,
+        tra Catania e Siracusa, a pochi minuti dal mare di Brucoli.
+      </p>
+      <div class="rule"></div>
+      <div class="travel-grid">
+        <div class="travel-item">
+          <h3 data-i18n="location.plane">✈ In aereo</h3>
+          <p data-i18n="location.planeText">
+            L'aeroporto più vicino è Catania–Fontanarossa (CTA), a circa 40 minuti d'auto.
+            Voli diretti dalle principali città italiane ed europee.
+          </p>
+        </div>
+        <div class="travel-item">
+          <h3 data-i18n="location.car">⛍ In auto</h3>
+          <p data-i18n="location.carText">
+            Autostrada A18 Catania–Siracusa, uscita Villasmundo, poi seguire le indicazioni
+            per Brucoli / Contrada San Calogero. Parcheggio disponibile alla tenuta.
+          </p>
+        </div>
+        <div class="travel-item">
+          <h3 data-i18n="location.train">🚆 In treno</h3>
+          <p data-i18n="location.trainText">
+            Stazione di Catania Centrale o Augusta, poi taxi o transfer (20–40 minuti).
+          </p>
+        </div>
+        <div class="travel-item">
+          <h3 data-i18n="location.tip">☀ Il nostro consiglio</h3>
+          <p data-i18n="location.tipText">
+            Noleggiate un'auto: la zona è ricca di posti meravigliosi — Ortigia, Noto e le
+            spiagge della costa — e sarete liberi di esplorarla.
+          </p>
+        </div>
+      </div>
+      <div class="map-chips" id="map-chips" role="group" aria-label="Punto di partenza">
+        <button class="chip active" data-origin="airport" data-i18n="map.fromAirport">Dall'aeroporto di Catania</button>
+        <button class="chip" data-origin="station" data-i18n="map.fromStation">Da Catania Centrale</button>
+        <button class="chip" data-origin="siracusa" data-i18n="map.fromSiracusa">Da Siracusa</button>
+        <button class="chip" data-origin="venue" data-i18n="map.venueOnly">Solo la tenuta</button>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          id="map-frame"
+          title="Mappa — Commenda di San Calogero"
+          src="https://www.google.com/maps?saddr=Aeroporto+di+Catania+Fontanarossa&daddr=Commenda+di+San+Calogero,+Augusta,+Sicilia&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
+      <p class="center">
+        <a class="btn" id="map-open"
+           href="https://www.google.com/maps/dir/?api=1&origin=Aeroporto+di+Catania+Fontanarossa&destination=Commenda+di+San+Calogero,+Augusta,+Sicilia"
+           target="_blank" rel="noopener" data-i18n="location.open">Apri in Google Maps</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Where to stay ===== -->
+  <section class="section alt" id="stay">
+    <div class="section-inner split reverse reveal">
+      <figure class="split-media">
+        <img src="img/images.jpeg" alt="" loading="lazy" />
+      </figure>
+      <div class="split-text">
+        <p class="eyebrow" data-i18n="stay.eyebrow">Dove alloggiare</p>
+        <h2 data-i18n="stay.title">Per chi viene da lontano</h2>
+        <p data-i18n="stay.p1">
+          Nei dintorni ci sono ottime soluzioni: i borghi di mare di Brucoli e Augusta
+          sono i più vicini, mentre Siracusa e l'isola di Ortigia (circa 30 minuti)
+          offrono hotel, B&amp;B e un centro storico indimenticabile.
+        </p>
+        <p class="muted" data-i18n="stay.todo">[Aggiungeremo qui gli hotel consigliati e le eventuali convenzioni.]</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <svg class="logo logo-footer" viewBox="0 0 150 100"><use href="#fm-monogram" /></svg>
+    <p class="footer-names">Francesco &amp; Miriam</p>
+    <p class="muted">30 · 08 · 2027 — <span data-i18n="footer.made">fatto con amore</span></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
