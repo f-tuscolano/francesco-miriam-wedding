@@ -21,6 +21,24 @@
     </symbol>
   </svg>
 
+  <!-- ===== Envelope intro ===== -->
+  <div class="intro" id="intro">
+    <button class="intro-skip" id="intro-skip" data-i18n="intro.skip">Salta</button>
+    <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri l'invito">
+      <div class="env-back"></div>
+      <div class="env-letter">
+        <svg class="logo logo-letter" viewBox="0 0 150 100"><use href="#fm-monogram" /></svg>
+        <p class="env-names">Francesco &amp; Miriam</p>
+        <p class="env-date">30 · 08 · 2027</p>
+        <button class="btn env-enter" id="env-enter" data-i18n="intro.enter">Entra</button>
+      </div>
+      <div class="env-pocket"></div>
+      <div class="env-flap"></div>
+      <div class="env-seal"><span>F·M</span></div>
+    </div>
+    <p class="intro-hint" data-i18n="intro.hint">Tocca la busta per aprire l'invito</p>
+  </div>
+
   <nav class="nav" id="nav">
     <a class="nav-logo" href="#top" aria-label="Francesco e Miriam">
       <svg class="logo logo-nav" viewBox="0 0 150 100"><use href="#fm-monogram" /></svg>
@@ -29,6 +47,7 @@
       <a href="#details" data-i18n="nav.details">Programma</a>
       <a href="#location" data-i18n="nav.location">Come arrivare</a>
       <a href="#stay" data-i18n="nav.stay">Dove alloggiare</a>
+      <a href="#rsvp">RSVP</a>
     </div>
     <div class="lang-toggle" role="group" aria-label="Lingua / Language">
       <button class="lang-btn active" data-lang="it">IT</button>
@@ -160,6 +179,47 @@
           offrono hotel, B&amp;B e un centro storico indimenticabile.
         </p>
         <p class="muted" data-i18n="stay.todo">[Aggiungeremo qui gli hotel consigliati e le eventuali convenzioni.]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RSVP / Guest area ===== -->
+  <section class="section" id="rsvp">
+    <div class="section-inner rsvp-inner reveal">
+      <p class="eyebrow center" data-i18n="rsvp.eyebrow">Area ospiti</p>
+      <h2 class="center" data-i18n="rsvp.title">Confermate la vostra presenza</h2>
+      <div class="rule"></div>
+
+      <div class="rsvp-card" id="rsvp-login">
+        <p data-i18n="rsvp.loginLead">Inserite il codice che trovate sul vostro invito.</p>
+        <form id="login-form" class="rsvp-login-form">
+          <input id="code-input" placeholder="Codice invito" data-i18n-ph="rsvp.codePlaceholder"
+                 autocomplete="off" autocapitalize="characters" required />
+          <button class="btn" type="submit" data-i18n="rsvp.login">Accedi</button>
+        </form>
+        <p class="rsvp-error" id="login-error" hidden data-i18n="rsvp.error">Codice non valido — riprovate.</p>
+      </div>
+
+      <div class="rsvp-card" id="rsvp-panel" hidden>
+        <p class="rsvp-welcome"><span data-i18n="rsvp.welcome">Benvenuti</span>, <strong id="guest-name"></strong>!</p>
+        <form id="rsvp-form" class="rsvp-form-grid">
+          <fieldset>
+            <legend data-i18n="rsvp.attending">Ci sarete?</legend>
+            <label class="radio"><input type="radio" name="attending" value="yes" checked />
+              <span data-i18n="rsvp.yes">Ci saremo!</span></label>
+            <label class="radio"><input type="radio" name="attending" value="no" />
+              <span data-i18n="rsvp.no">Purtroppo no</span></label>
+          </fieldset>
+          <label class="rsvp-field"><span data-i18n="rsvp.guests">In quanti sarete?</span>
+            <select id="guest-count"></select>
+          </label>
+          <label class="rsvp-field"><span data-i18n="rsvp.notes">Allergie, intolleranze o note</span>
+            <textarea id="rsvp-notes" rows="3"></textarea>
+          </label>
+          <button class="btn" type="submit" data-i18n="rsvp.send">Invia conferma</button>
+        </form>
+        <p class="rsvp-thanks" id="rsvp-thanks" hidden data-i18n="rsvp.thanks">Grazie! La vostra risposta è stata registrata.</p>
+        <p class="center"><a href="#rsvp" id="rsvp-logout" class="rsvp-logout" data-i18n="rsvp.logout">Esci</a></p>
       </div>
     </div>
   </section>

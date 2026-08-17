@@ -17,6 +17,24 @@ setInterval(updateCountdown, 30000);
 // ---------- i18n (italiano prima, poi inglese) ----------
 const I18N = {
   it: {
+    "intro.hint": "Tocca la busta per aprire l'invito",
+    "intro.enter": "Entra",
+    "intro.skip": "Salta",
+    "rsvp.eyebrow": "Area ospiti",
+    "rsvp.title": "Confermate la vostra presenza",
+    "rsvp.loginLead": "Inserite il codice che trovate sul vostro invito.",
+    "rsvp.codePlaceholder": "Codice invito",
+    "rsvp.login": "Accedi",
+    "rsvp.error": "Codice non valido — riprovate.",
+    "rsvp.welcome": "Benvenuti",
+    "rsvp.attending": "Ci sarete?",
+    "rsvp.yes": "Ci saremo!",
+    "rsvp.no": "Purtroppo no",
+    "rsvp.guests": "In quanti sarete?",
+    "rsvp.notes": "Allergie, intolleranze o note",
+    "rsvp.send": "Invia conferma",
+    "rsvp.thanks": "Grazie! La vostra risposta è stata registrata.",
+    "rsvp.logout": "Esci",
     "nav.details": "Programma",
     "nav.location": "Come arrivare",
     "nav.stay": "Dove alloggiare",
@@ -70,6 +88,24 @@ const I18N = {
     "footer.made": "fatto con amore",
   },
   en: {
+    "intro.hint": "Tap the envelope to open the invitation",
+    "intro.enter": "Enter",
+    "intro.skip": "Skip",
+    "rsvp.eyebrow": "Guest area",
+    "rsvp.title": "Please confirm your attendance",
+    "rsvp.loginLead": "Enter the code printed on your invitation.",
+    "rsvp.codePlaceholder": "Invitation code",
+    "rsvp.login": "Log in",
+    "rsvp.error": "Invalid code — please try again.",
+    "rsvp.welcome": "Welcome",
+    "rsvp.attending": "Will you be there?",
+    "rsvp.yes": "We'll be there!",
+    "rsvp.no": "Sadly not",
+    "rsvp.guests": "How many of you?",
+    "rsvp.notes": "Allergies, dietary needs or notes",
+    "rsvp.send": "Send RSVP",
+    "rsvp.thanks": "Thank you! Your response has been recorded.",
+    "rsvp.logout": "Log out",
     "nav.details": "Schedule",
     "nav.location": "Getting there",
     "nav.stay": "Where to stay",
@@ -131,6 +167,10 @@ function setLang(lang) {
     const text = dict[el.dataset.i18n];
     if (text !== undefined) el.innerHTML = text;
   });
+  document.querySelectorAll("[data-i18n-ph]").forEach((el) => {
+    const text = dict[el.dataset.i18nPh];
+    if (text !== undefined) el.placeholder = text;
+  });
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.lang === lang);
   });
@@ -179,6 +219,160 @@ function setMapOrigin(key) {
 document.querySelectorAll("#map-chips .chip").forEach((chip) => {
   chip.addEventListener("click", () => setMapOrigin(chip.dataset.origin));
 });
+
+// ---------- Envelope intro ----------
+const intro = document.getElementById("intro");
+const envelope = document.getElementById("envelope");
+
+let alreadyEntered = false;
+try {
+  alreadyEntered = sessionStorage.getItem("fm-entered") === "1";
+} catch (_) {}
+
+if (alreadyEntered) {
+  intro.classList.add("hidden");
+} else {
+  document.body.classList.add("locked");
+}
+
+function openEnvelope() {
+  envelope.classList.add("open");
+  intro.classList.add("opened");
+}
+
+function enterSite() {
+  intro.classList.add("hidden");
+  document.body.classList.remove("locked");
+  try {
+    sessionStorage.setItem("fm-entered", "1");
+  } catch (_) {}
+}
+
+envelope.addEventListener("click", openEnvelope);
+envelope.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    openEnvelope();
+  }
+});
+document.getElementById("env-enter").addEventListener("click", (e) => {
+  e.stopPropagation();
+  enterSite();
+});
+document.getElementById("intro-skip").addEventListener("click", enterSite);
+
+// ---------- Guest registry & RSVP ----------
+// Guests live in guests.json (code, name, seats). Add/remove families there.
+// Optional: set RSVP_ENDPOINT to a form service URL (e.g. Formspree) to
+// receive responses; until then they are only stored on the guest's device.
+const RSVP_ENDPOINT = "";
+
+let guestList = null;
+let currentGuest = null;
+
+async function loadGuests() {
+  if (!guestList) {
+    const res = await fetch("guests.json");
+    guestList = await res.json();
+  }
+  return guestList;
+}
+
+function showGuestPanel(guest) {
+  currentGuest = guest;
+  document.getElementById("rsvp-login").hidden = true;
+  document.getElementById("rsvp-panel").hidden = false;
+  document.getElementById("guest-name").textContent = guest.name;
+
+  const select = document.getElementById("guest-count");
+  select.innerHTML = "";
+  for (let i = 1; i <= guest.seats; i++) {
+    const opt = document.createElement("option");
+    opt.value = i;
+    opt.textContent = i;
+    select.appendChild(opt);
+  }
+  select.value = guest.seats;
+
+  // Prefill a previously saved answer, if any
+  try {
+    const saved = JSON.parse(localStorage.getItem("fm-rsvp-" + guest.code));
+    if (saved) {
+      document.querySelector(`input[name="attending"][value="${saved.attending}"]`).checked = true;
+      select.value = saved.count;
+      document.getElementById("rsvp-notes").value = saved.notes || "";
+      document.getElementById("rsvp-thanks").hidden = false;
+    }
+  } catch (_) {}
+}
+
+document.getElementById("login-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const code = document.getElementById("code-input").value.trim().toUpperCase();
+  const errorEl = document.getElementById("login-error");
+  try {
+    const guests = await loadGuests();
+    const guest = guests.find((g) => g.code.toUpperCase() === code);
+    if (!guest) {
+      errorEl.hidden = false;
+      return;
+    }
+    errorEl.hidden = true;
+    try {
+      sessionStorage.setItem("fm-guest", guest.code);
+    } catch (_) {}
+    showGuestPanel(guest);
+  } catch (_) {
+    errorEl.hidden = false;
+  }
+});
+
+document.getElementById("rsvp-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (!currentGuest) return;
+  const data = {
+    code: currentGuest.code,
+    name: currentGuest.name,
+    attending: document.querySelector('input[name="attending"]:checked').value,
+    count: document.getElementById("guest-count").value,
+    notes: document.getElementById("rsvp-notes").value.trim(),
+    lang: document.documentElement.lang,
+    at: new Date().toISOString(),
+  };
+  try {
+    localStorage.setItem("fm-rsvp-" + currentGuest.code, JSON.stringify(data));
+  } catch (_) {}
+  if (RSVP_ENDPOINT) {
+    fetch(RSVP_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(data),
+    }).catch(() => {});
+  }
+  document.getElementById("rsvp-thanks").hidden = false;
+});
+
+document.getElementById("rsvp-logout").addEventListener("click", () => {
+  currentGuest = null;
+  try {
+    sessionStorage.removeItem("fm-guest");
+  } catch (_) {}
+  document.getElementById("rsvp-panel").hidden = true;
+  document.getElementById("rsvp-thanks").hidden = true;
+  document.getElementById("rsvp-login").hidden = false;
+  document.getElementById("code-input").value = "";
+});
+
+// Restore guest session on reload
+try {
+  const savedCode = sessionStorage.getItem("fm-guest");
+  if (savedCode) {
+    loadGuests().then((guests) => {
+      const guest = guests.find((g) => g.code === savedCode);
+      if (guest) showGuestPanel(guest);
+    });
+  }
+} catch (_) {}
 
 // ---------- Reveal on scroll ----------
 const observer = new IntersectionObserver(

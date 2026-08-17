@@ -20,6 +20,20 @@ Simple static site: HTML + CSS + a little JavaScript. No build step.
 - `img/` — venue photos
 - `favicon.svg` — monogram favicon
 
+## Guest registry (RSVP)
+
+Guests log into the "Area ospiti" section with the invitation code printed on
+their invite. The registry lives in `guests.json`:
+
+```json
+{ "code": "ROSSI27", "name": "Famiglia Rossi", "seats": 4 }
+```
+
+Add one entry per family/invite (code = what you print on the invitation,
+seats = max people). To actually receive the responses, set `RSVP_ENDPOINT`
+in `script.js` to a form service URL (e.g. Formspree); until then answers are
+only saved on the guest's device.
+
 ## Editing
 
 Remaining placeholders are marked with `[brackets]` in `index.html` **and** in both
