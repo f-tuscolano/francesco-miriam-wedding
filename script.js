@@ -17,6 +17,8 @@ setInterval(updateCountdown, 30000);
 // ---------- i18n (italiano prima, poi inglese) ----------
 const I18N = {
   it: {
+    "intro.invite": "Siamo lieti di invitarvi<br />al nostro matrimonio",
+    "intro.letter": "Vi aspettiamo!",
     "intro.hint": "Tocca la busta per aprire l'invito",
     "intro.enter": "Entra",
     "intro.skip": "Salta",
@@ -88,6 +90,8 @@ const I18N = {
     "footer.made": "fatto con amore",
   },
   en: {
+    "intro.invite": "We are delighted to invite you<br />to our wedding",
+    "intro.letter": "See you there!",
     "intro.hint": "Tap the envelope to open the invitation",
     "intro.enter": "Enter",
     "intro.skip": "Skip",
@@ -260,6 +264,50 @@ document.getElementById("env-enter").addEventListener("click", (e) => {
   enterSite();
 });
 document.getElementById("intro-skip").addEventListener("click", enterSite);
+
+// Dock icons: enter the site, then let the anchor scroll to its section
+document.querySelectorAll(".dock-link").forEach((link) => {
+  link.addEventListener("click", enterSite);
+});
+
+// ---------- Scalloped frame around the invitation card ----------
+function drawScallop() {
+  const card = document.getElementById("invite-card");
+  const svg = card.querySelector(".scallop-svg");
+  const path = document.getElementById("scallop-path");
+  const r = 15; // scallop radius
+  const pad = r + 3;
+  const w = card.offsetWidth;
+  const h = card.offsetHeight;
+  if (!w || !h) return;
+
+  svg.setAttribute("viewBox", `0 0 ${w + 2 * pad} ${h + 2 * pad}`);
+  svg.style.width = w + 2 * pad + "px";
+  svg.style.height = h + 2 * pad + "px";
+  svg.style.left = -pad + "px";
+  svg.style.top = -pad + "px";
+
+  const nx = Math.max(4, Math.round(w / (2.1 * r)));
+  const ny = Math.max(4, Math.round(h / (2.1 * r)));
+  const sx = w / nx;
+  const sy = h / ny;
+
+  let d = `M ${pad} ${pad} `;
+  for (let i = 0; i < nx; i++) d += `a ${sx / 2} ${r} 0 0 1 ${sx} 0 `;
+  for (let i = 0; i < ny; i++) d += `a ${r} ${sy / 2} 0 0 1 0 ${sy} `;
+  for (let i = 0; i < nx; i++) d += `a ${sx / 2} ${r} 0 0 1 ${-sx} 0 `;
+  for (let i = 0; i < ny; i++) d += `a ${r} ${sy / 2} 0 0 1 0 ${-sy} `;
+  d += "Z";
+  path.setAttribute("d", d);
+}
+
+drawScallop();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawScallop);
+if (typeof ResizeObserver !== "undefined") {
+  new ResizeObserver(drawScallop).observe(document.getElementById("invite-card"));
+} else {
+  window.addEventListener("resize", drawScallop);
+}
 
 // ---------- Guest registry & RSVP ----------
 // Guests live in guests.json (code, name, seats). Add/remove families there.
