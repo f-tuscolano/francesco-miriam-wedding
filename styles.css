@@ -522,6 +522,7 @@ button.btn:hover { background: var(--gold); }
   background-color: #f5f6ed;
   background-image: url("img/maiolica-tile.jpg");
   background-size: 230px 230px;
+  background-position: top center; /* symmetric tiling around the centered card */
   transition: opacity 0.8s ease, visibility 0.8s;
 }
 
@@ -567,6 +568,14 @@ body.locked { overflow: hidden; }
     #fffdf8;
 }
 
+/* V1 mobile: maiolica tiles inside the screen instead of stripes */
+@media (max-width: 499px), (max-height: 699px) {
+  .phone-screen {
+    background: url("img/maiolica-tile.jpg") top center #fffdf8;
+    background-size: 150px 150px;
+  }
+}
+
 .intro-skip {
   position: absolute;
   top: 1rem;
@@ -588,9 +597,9 @@ body.locked { overflow: hidden; }
 .invite-card {
   position: relative;
   width: 100%;
-  max-width: 330px;
-  margin-top: 0.4rem;
-  padding: 2.4rem 1.6rem 2.2rem;
+  max-width: 284px;
+  margin-top: 0.6rem;
+  padding: 1.7rem 1.3rem 2.1rem;
   text-align: center;
 }
 
@@ -620,18 +629,18 @@ body.locked { overflow: hidden; }
 }
 
 .deco-umbrella {
-  width: 74px;
-  height: 74px;
-  right: -28px;
-  bottom: -16px;
+  width: 62px;
+  height: 62px;
+  right: -8px;
+  bottom: -6px;
   transform: rotate(8deg);
 }
 
 .deco-cactus {
-  width: 76px;
-  height: 76px;
-  left: -28px;
-  top: 34%;
+  width: 64px;
+  height: 64px;
+  left: -9px;
+  top: 30%;
 }
 
 .invite-logo {
@@ -646,7 +655,7 @@ body.locked { overflow: hidden; }
   font-family: "Great Vibes", cursive;
   font-size: 2.1rem;
   color: #b34b31;
-  margin-top: 0.4rem;
+  margin-top: 0.2rem;
   line-height: 1.15;
 }
 
@@ -655,9 +664,9 @@ body.locked { overflow: hidden; }
 .invite-text {
   font-family: "Great Vibes", cursive;
   font-size: 1.45rem;
-  line-height: 1.35;
+  line-height: 1.3;
   color: #b34b31;
-  margin-top: 0.7rem;
+  margin-top: 0.5rem;
 }
 
 .invite-date {
@@ -665,15 +674,15 @@ body.locked { overflow: hidden; }
   font-size: 1.35rem;
   letter-spacing: 0.22em;
   color: var(--coral);
-  margin-top: 0.9rem;
+  margin-top: 0.55rem;
 }
 
 /* --- Terracotta envelope --- */
 .envelope {
   position: relative;
-  width: min(64vw, 280px);
+  width: min(55vw, 238px);
   aspect-ratio: 3 / 2;
-  margin-top: 2.1rem;
+  margin-top: 3.4rem;
   cursor: pointer;
   perspective: 1200px;
   -webkit-tap-highlight-color: transparent;
@@ -706,7 +715,7 @@ body.locked { overflow: hidden; }
 }
 
 .envelope.open .env-letter {
-  transform: translateY(-46%);
+  transform: translateY(-30%);
   z-index: 4;
   box-shadow: 0 18px 50px -18px rgba(0, 0, 0, 0.45);
 }
@@ -782,11 +791,14 @@ body.locked { overflow: hidden; }
 .envelope.open .env-seal { opacity: 0; transform: translateX(-50%) scale(0.55); }
 
 .intro-hint {
-  color: var(--sage);
+  color: var(--sage-deep);
   letter-spacing: 0.24em;
   text-transform: uppercase;
   font-size: 0.64rem;
   margin: 1.4rem 0 1.2rem;
+  padding: 0.35rem 1rem;
+  background: rgba(255, 253, 248, 0.82);
+  border-radius: 999px;
   transition: opacity 0.5s;
 }
 
@@ -821,6 +833,8 @@ body.locked { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .env-letter, .env-flap, .env-seal, .env-enter, .intro { transition: none; }
 }
+
+
 
 
 
