@@ -28,7 +28,7 @@
       <div class="phone-screen">
 
         <div class="invite-card" id="invite-card">
-          <svg class="scallop-svg" aria-hidden="true"><path id="scallop-path" /></svg>
+          <svg class="frame-svg" aria-hidden="true"><path id="frame-outer" class="frame-outer" /><path id="frame-inner" class="frame-inner" /></svg>
           <div class="invite-content">
             <svg class="deco deco-oranges" viewBox="0 0 150 84" aria-hidden="true">
               <!-- whole orange with leaves -->
@@ -58,71 +58,28 @@
                 <circle r="2.2" fill="#FDF4E3"/>
               </g>
             </svg>
-            <svg class="invite-logo" viewBox="0 0 150 100"><use href="#fm-monogram" /></svg>
-            <p class="invite-names">Francesco <span class="script-e">e</span> Miriam</p>
+            <img class="invite-lettering" src="img/logo-names.png" alt="Francesco &amp; Miriam" />
             <p class="invite-text" data-i18n="intro.invite">Siamo lieti di invitarvi<br />al nostro matrimonio</p>
             <p class="invite-date">30 . 08 . 2027</p>
           </div>
-          <svg class="deco deco-umbrella" viewBox="0 0 100 100" aria-hidden="true">
-            <line x1="50" y1="14" x2="60" y2="90" stroke="#9C5B28" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M14 50 A38 38 0 0 1 86 50 a12 6 0 0 1 -24 0 a12 6 0 0 1 -24 0 a12 6 0 0 1 -24 0 Z"
-                  fill="#F2A253" stroke="#D9853B" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M50 13 L36 50 a7 4 0 0 1 14 0 Z" fill="#F5F6ED" opacity="0.9"/>
-            <path d="M50 13 L64 50 a7 4 0 0 1 -14 0 Z" fill="#F08064" opacity="0.5"/>
-            <circle cx="50" cy="11" r="2.6" fill="#D9853B"/>
-          </svg>
-          <svg class="deco deco-cactus" viewBox="0 0 100 100" aria-hidden="true">
-            <!-- fico d'india: sage pads, coral fruits -->
-            <ellipse cx="34" cy="40" rx="13" ry="19" transform="rotate(-24 34 40)" fill="#7E9780"/>
-            <ellipse cx="60" cy="44" rx="14" ry="20" transform="rotate(20 60 44)" fill="#8CA48D"/>
-            <ellipse cx="45" cy="66" rx="17" ry="24" transform="rotate(-6 45 66)" fill="#7E9780"/>
-            <g fill="#F08064">
-              <ellipse cx="26" cy="22" rx="4" ry="5.6" transform="rotate(-24 26 22)"/>
-              <ellipse cx="36" cy="18" rx="4" ry="5.6" transform="rotate(-8 36 18)"/>
-              <ellipse cx="58" cy="22" rx="4" ry="5.6" transform="rotate(12 58 22)"/>
-              <ellipse cx="67" cy="27" rx="4" ry="5.6" transform="rotate(26 67 27)"/>
-            </g>
-            <g fill="#FFD2BF">
-              <ellipse cx="25" cy="20" rx="1.7" ry="2.2"/><ellipse cx="35" cy="16" rx="1.7" ry="2.2"/>
-              <ellipse cx="59" cy="20" rx="1.7" ry="2.2"/><ellipse cx="68" cy="25" rx="1.7" ry="2.2"/>
-            </g>
-            <g fill="#5C7258">
-              <circle cx="30" cy="36" r="1"/><circle cx="38" cy="46" r="1"/><circle cx="27" cy="47" r="1"/>
-              <circle cx="57" cy="38" r="1"/><circle cx="64" cy="48" r="1"/><circle cx="55" cy="52" r="1"/>
-              <circle cx="40" cy="60" r="1"/><circle cx="50" cy="70" r="1"/><circle cx="38" cy="76" r="1"/>
-              <circle cx="52" cy="82" r="1"/><circle cx="45" cy="52" r="1"/>
-            </g>
-          </svg>
         </div>
 
         <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri l'invito">
-          <div class="env-back"></div>
+          <div class="env-inner"></div>
           <div class="env-letter">
+            <svg class="env-sprig" viewBox="0 0 60 26" aria-hidden="true">
+              <path d="M6 20 q24 -14 48 -8" fill="none" stroke="#7a5a33" stroke-width="1.6" stroke-linecap="round"/>
+              <ellipse cx="20" cy="11" rx="7" ry="3" transform="rotate(-24 20 11)" fill="#7E9780"/>
+              <ellipse cx="38" cy="8" rx="6.5" ry="2.8" transform="rotate(-6 38 8)" fill="#8CA48D"/>
+              <circle cx="50" cy="14" r="6.5" fill="#E8913C"/>
+              <path d="M45.5 10.5 a6.5 6.5 0 0 1 4.5 -2" fill="none" stroke="#F5B36A" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
             <p class="env-msg" data-i18n="intro.letter">Vi aspettiamo!</p>
+            <p class="env-orn">─── ✦ ───</p>
             <button class="btn env-enter" id="env-enter" data-i18n="intro.enter">Entra</button>
           </div>
-          <div class="env-pocket"></div>
-          <div class="env-flap"></div>
-          <div class="env-seal">
-            <svg viewBox="0 0 56 86" aria-hidden="true">
-              <rect x="5" y="3" width="46" height="46" fill="#F5F6ED" stroke="#70ABB6" stroke-width="2"/>
-              <clipPath id="seal-clip"><rect x="5" y="3" width="46" height="46"/></clipPath>
-              <g clip-path="url(#seal-clip)">
-                <circle cx="5" cy="3" r="13" fill="#70ABB6"/><circle cx="51" cy="3" r="13" fill="#70ABB6"/>
-                <circle cx="5" cy="49" r="13" fill="#70ABB6"/><circle cx="51" cy="49" r="13" fill="#70ABB6"/>
-              </g>
-              <rect x="21" y="19" width="14" height="14" transform="rotate(45 28 26)" fill="#F2A253"/>
-              <circle cx="17" cy="14" r="2.4" fill="#F08064"/><circle cx="39" cy="14" r="2.4" fill="#F08064"/>
-              <circle cx="17" cy="38" r="2.4" fill="#F08064"/><circle cx="39" cy="38" r="2.4" fill="#F08064"/>
-              <line x1="28" y1="49" x2="28" y2="58" stroke="#70ABB6" stroke-width="2"/>
-              <circle cx="28" cy="60" r="3.2" fill="#70ABB6"/>
-              <g stroke="#8FC0CA" stroke-width="2" stroke-linecap="round">
-                <line x1="28" y1="63" x2="19" y2="82"/><line x1="28" y1="63" x2="24" y2="83"/>
-                <line x1="28" y1="63" x2="28" y2="84"/><line x1="28" y1="63" x2="32" y2="83"/>
-                <line x1="28" y1="63" x2="37" y2="82"/>
-              </g>
-            </svg>
-          </div>
+          <img class="env-pocket-img" src="img/envelope.png" alt="" />
+          <img class="env-flap-img" src="img/envelope.png" alt="" />
         </div>
         <p class="intro-hint" data-i18n="intro.hint">Tocca la busta per aprire l'invito</p>
 

@@ -603,17 +603,25 @@ body.locked { overflow: hidden; }
   text-align: center;
 }
 
-.scallop-svg {
+/* mixtilinear cartouche frame (drawn by JS to fit the card) */
+.frame-svg {
   position: absolute;
   z-index: 0;
-  filter: drop-shadow(0 8px 22px rgba(120, 90, 20, 0.18));
+  filter: drop-shadow(0 10px 26px rgba(120, 90, 20, 0.24));
   pointer-events: none;
 }
 
-.scallop-svg path {
+.frame-outer {
   fill: #fffefb;
-  stroke: var(--teal);
+  stroke: var(--gold);
   stroke-width: 2;
+}
+
+.frame-inner {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1;
+  opacity: 0.75;
 }
 
 .invite-content { position: relative; z-index: 1; }
@@ -628,35 +636,11 @@ body.locked { overflow: hidden; }
   display: block;
 }
 
-.deco-umbrella {
-  width: 62px;
-  height: 62px;
-  right: -8px;
-  bottom: -6px;
-  transform: rotate(8deg);
-}
 
-.deco-cactus {
-  width: 64px;
-  height: 64px;
-  left: -9px;
-  top: 30%;
-}
-
-.invite-logo {
+.invite-lettering {
   display: block;
-  width: 168px;
-  height: 112px;
-  margin: -8px auto -6px;
-  color: #b34b31; /* deep coral for the F; the M is palette coral */
-}
-
-.invite-names {
-  font-family: "Great Vibes", cursive;
-  font-size: 2.1rem;
-  color: #b34b31;
-  margin-top: 0.2rem;
-  line-height: 1.15;
+  width: min(100%, 236px);
+  margin: 0.5rem auto 0;
 }
 
 .invite-names .script-e { font-size: 1.4rem; }
@@ -677,118 +661,127 @@ body.locked { overflow: hidden; }
   margin-top: 0.55rem;
 }
 
-/* --- Terracotta envelope --- */
+/* --- Layered photo envelope: pocket + opening flap + glued seal --- */
 .envelope {
   position: relative;
-  width: min(55vw, 238px);
-  aspect-ratio: 3 / 2;
-  margin-top: 3.4rem;
+  width: min(64vw, 272px);
+  aspect-ratio: 464 / 319;
+  margin-top: 4.6rem;
   cursor: pointer;
   perspective: 1200px;
   -webkit-tap-highlight-color: transparent;
   flex-shrink: 0;
 }
 
-.env-back {
+.env-inner {
   position: absolute;
-  inset: 0;
-  background: #e06a4d;
-  border-radius: 6px;
-  box-shadow: 0 22px 55px -18px rgba(150, 60, 30, 0.5);
+  inset: 1.5% 3% 30% 3%;
+  z-index: 1;
+  background: linear-gradient(180deg, #a84c30, #c05a3a);
+  border-radius: 10px 10px 0 0;
 }
 
 .env-letter {
   position: absolute;
-  left: 5%;
-  right: 5%;
-  top: 8%;
-  bottom: 4%;
+  left: 7%;
+  right: 7%;
+  top: 6%;
+  bottom: 10%;
   z-index: 2;
-  background: #f1ebe5;
-  border-radius: 3px;
+  background:
+    radial-gradient(ellipse at 30% 15%, rgba(255, 253, 246, 0.9) 0%, rgba(255, 253, 246, 0) 55%),
+    linear-gradient(165deg, #f6efdf 0%, #f0e7d1 60%, #eadfc4 100%);
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   text-align: center;
-  padding: 0.8rem 0.8rem;
-  transition: transform 0.9s cubic-bezier(0.22, 0.9, 0.3, 1) 0.55s, box-shadow 0.9s 0.55s;
+  padding: 0.85rem 0.8rem;
+  transition: transform 0.9s cubic-bezier(0.22, 0.9, 0.3, 1) 0.45s;
+}
+
+/* thin antique-gold inner frame on the letter */
+.env-letter::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(150, 119, 42, 0.5);
+  border-radius: 4px;
+  pointer-events: none;
 }
 
 .envelope.open .env-letter {
-  transform: translateY(-30%);
-  z-index: 4;
-  box-shadow: 0 18px 50px -18px rgba(0, 0, 0, 0.45);
+  transform: translateY(-76%);
+  box-shadow: 0 14px 34px -14px rgba(80, 40, 10, 0.45);
 }
+
+.env-sprig {
+  width: 52px;
+  height: 22px;
+  margin-top: 0.1rem;
+}
+
+.env-orn {
+  color: var(--teal);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  line-height: 1;
+  margin: 0.15rem 0 0.5rem;
+}
+
+.env-pocket-img,
+.env-flap-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  display: block;
+}
+
+.env-pocket-img {
+  z-index: 3;
+  /* everything below the real creases; the seal + tassel live here and stay put */
+  clip-path: polygon(0 6.9%, 39.2% 34.4%, 60.8% 34.4%, 100% 6.9%, 100% 100%, 0 100%);
+  filter: drop-shadow(0 20px 38px rgba(120, 45, 15, 0.35));
+}
+
+.env-flap-img {
+  z-index: 4;
+  /* top edge + the two crease diagonals, meeting the seal's top corners */
+  clip-path: polygon(0 0, 100% 0, 100% 6.9%, 60.8% 34.4%, 39.2% 34.4%, 0 6.9%);
+  transform-origin: top center;
+  transition: transform 0.7s cubic-bezier(0.6, 0.05, 0.3, 1), opacity 0.3s 0.45s;
+}
+
+.envelope.open .env-flap-img { transform: rotateX(180deg); opacity: 0; }
 
 .env-msg {
   font-family: "Great Vibes", cursive;
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   color: #b34b31;
-  margin: 0.1rem 0 0.5rem;
+  margin: 0;
+  line-height: 1.2;
 }
 
 .env-enter {
-  padding: 0.45rem 1.5rem;
+  padding: 0.42rem 1.5rem;
   font-size: 0.66rem;
-  border-color: var(--coral);
-  color: #b34b31;
+  border-color: #96772a;
+  color: #7c621f;
+  background: none;
+  cursor: pointer;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s;
 }
 
-.env-enter:hover, button.env-enter:hover { background: var(--coral); color: #fff; }
+.env-enter:hover, button.env-enter:hover { background: #96772a; border-color: #96772a; color: #fff; }
 
 .envelope.open .env-enter {
   opacity: 1;
   pointer-events: auto;
-  transition-delay: 1.3s;
+  transition-delay: 1.1s;
 }
-
-.env-pocket {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  background:
-    linear-gradient(115deg, #f58e70 0%, #ee7a5c 50%, #dd6748 100%);
-  border-radius: 6px;
-  clip-path: polygon(0 0, 50% 48%, 100% 0, 100% 100%, 0 100%);
-  filter: drop-shadow(0 -1px 1px rgba(140, 55, 25, 0.3));
-}
-
-.env-flap {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 52%;
-  z-index: 4;
-  background: linear-gradient(180deg, #f9a186, #ec7355 88%, #d95f42);
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  filter: drop-shadow(0 2px 2px rgba(140, 55, 25, 0.28));
-  border-radius: 6px 6px 0 0;
-  transform-origin: top center;
-  transition: transform 0.7s cubic-bezier(0.6, 0.05, 0.3, 1), opacity 0.3s 0.45s, z-index 0s 0.4s;
-}
-
-.envelope.open .env-flap { transform: rotateX(180deg); opacity: 0; z-index: 1; }
-
-.env-seal {
-  position: absolute;
-  left: 50%;
-  top: 30%;
-  transform: translateX(-50%);
-  z-index: 5;
-  width: 54px;
-  height: 83px;
-  transition: opacity 0.45s, transform 0.45s;
-  pointer-events: none;
-  filter: drop-shadow(0 4px 8px rgba(80, 30, 0, 0.35));
-}
-
-.env-seal svg { width: 100%; height: 100%; }
-
-.envelope.open .env-seal { opacity: 0; transform: translateX(-50%) scale(0.55); }
 
 .intro-hint {
   color: var(--sage-deep);
@@ -833,6 +826,17 @@ body.locked { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .env-letter, .env-flap, .env-seal, .env-enter, .intro { transition: none; }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -270,16 +270,41 @@ document.querySelectorAll(".dock-link").forEach((link) => {
   link.addEventListener("click", enterSite);
 });
 
-// ---------- Scalloped frame around the invitation card ----------
-function drawScallop() {
+// ---------- Mixtilinear cartouche frame around the invitation card ----------
+function framePath(w, h, inset, c, bump, bh) {
+  // one closed outline: concave (scooped) corners + a shallow convex arc mid-side
+  const x0 = inset, y0 = inset, x1 = w - inset, y1 = h - inset;
+  const mx = w / 2, my = h / 2;
+  const mH = Math.min(bump, (x1 - x0) / 2 - c - 8); // half-width of top/bottom arc
+  const mV = Math.min(bump, (y1 - y0) / 2 - c - 8); // half-height of side arc
+  return [
+    `M ${x0} ${y0 + c}`,
+    `A ${c} ${c} 0 0 1 ${x0 + c} ${y0}`,
+    `L ${mx - mH} ${y0}`,
+    `A ${mH} ${bh} 0 0 1 ${mx + mH} ${y0}`,
+    `L ${x1 - c} ${y0}`,
+    `A ${c} ${c} 0 0 1 ${x1} ${y0 + c}`,
+    `L ${x1} ${my - mV}`,
+    `A ${bh} ${mV} 0 0 1 ${x1} ${my + mV}`,
+    `L ${x1} ${y1 - c}`,
+    `A ${c} ${c} 0 0 1 ${x1 - c} ${y1}`,
+    `L ${mx + mH} ${y1}`,
+    `A ${mH} ${bh} 0 0 1 ${mx - mH} ${y1}`,
+    `L ${x0 + c} ${y1}`,
+    `A ${c} ${c} 0 0 1 ${x0} ${y1 - c}`,
+    `L ${x0} ${my + mV}`,
+    `A ${bh} ${mV} 0 0 1 ${x0} ${my - mV}`,
+    "Z",
+  ].join(" ");
+}
+
+function drawFrame() {
   const card = document.getElementById("invite-card");
-  const svg = card.querySelector(".scallop-svg");
-  const path = document.getElementById("scallop-path");
-  const r = 15; // scallop radius
-  const pad = r + 3;
+  const svg = card.querySelector(".frame-svg");
   const w = card.offsetWidth;
   const h = card.offsetHeight;
   if (!w || !h) return;
+  const pad = 12;
 
   svg.setAttribute("viewBox", `0 0 ${w + 2 * pad} ${h + 2 * pad}`);
   svg.style.width = w + 2 * pad + "px";
@@ -287,26 +312,18 @@ function drawScallop() {
   svg.style.left = -pad + "px";
   svg.style.top = -pad + "px";
 
-  const nx = Math.max(4, Math.round(w / (2.1 * r)));
-  const ny = Math.max(4, Math.round(h / (2.1 * r)));
-  const sx = w / nx;
-  const sy = h / ny;
-
-  let d = `M ${pad} ${pad} `;
-  for (let i = 0; i < nx; i++) d += `a ${sx / 2} ${r} 0 0 1 ${sx} 0 `;
-  for (let i = 0; i < ny; i++) d += `a ${r} ${sy / 2} 0 0 1 0 ${sy} `;
-  for (let i = 0; i < nx; i++) d += `a ${sx / 2} ${r} 0 0 1 ${-sx} 0 `;
-  for (let i = 0; i < ny; i++) d += `a ${r} ${sy / 2} 0 0 1 0 ${-sy} `;
-  d += "Z";
-  path.setAttribute("d", d);
+  // paths live in the padded coordinate space
+  const shift = (d) => d; // inset below already accounts for pad via +pad
+  document.getElementById("frame-outer").setAttribute("d", framePath(w + 2 * pad, h + 2 * pad, pad, 22, 54, 9));
+  document.getElementById("frame-inner").setAttribute("d", framePath(w + 2 * pad, h + 2 * pad, pad + 7, 17, 47, 7));
 }
 
-drawScallop();
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawScallop);
+drawFrame();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawFrame);
 if (typeof ResizeObserver !== "undefined") {
-  new ResizeObserver(drawScallop).observe(document.getElementById("invite-card"));
+  new ResizeObserver(drawFrame).observe(document.getElementById("invite-card"));
 } else {
-  window.addEventListener("resize", drawScallop);
+  window.addEventListener("resize", drawFrame);
 }
 
 // ---------- Guest registry & RSVP ----------
