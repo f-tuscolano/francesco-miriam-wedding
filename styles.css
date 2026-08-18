@@ -531,10 +531,11 @@ body.locked { overflow: hidden; }
 
 .phone {
   position: relative;
-  width: min(100vw, 470px);
-  height: min(100dvh, 940px);
+  width: min(86vw, 470px);
+  height: min(88dvh, 940px);
   background: #fff;
-  border-radius: 0;
+  border-radius: 34px;
+  border: 6px solid #fff;
   overflow: hidden;
   box-shadow: 0 30px 90px -25px rgba(90, 60, 0, 0.55);
 }
@@ -546,6 +547,11 @@ body.locked { overflow: hidden; }
     border-radius: 42px;
     border: 10px solid #fff;
   }
+}
+
+/* smaller tiles on small screens so the motif reads in the border strip */
+@media (max-width: 500px) {
+  .intro { background-size: 130px 130px; }
 }
 
 .phone-screen {
