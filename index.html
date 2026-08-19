@@ -33,19 +33,19 @@
             <svg class="deco deco-oranges" viewBox="0 0 150 84" aria-hidden="true">
               <!-- whole orange with leaves -->
               <g>
-                <circle cx="48" cy="50" r="25" fill="#F2A253"/>
-                <path d="M33 34 a25 25 0 0 1 22 -8" fill="none" stroke="#F7BA78" stroke-width="5" stroke-linecap="round"/>
-                <circle cx="41" cy="55" r="1.3" fill="#D9853B"/><circle cx="52" cy="61" r="1.3" fill="#D9853B"/>
-                <circle cx="58" cy="48" r="1.3" fill="#D9853B"/><circle cx="45" cy="42" r="1.3" fill="#D9853B"/>
+                <circle cx="48" cy="50" r="25" fill="#F3BC88"/>
+                <path d="M33 34 a25 25 0 0 1 22 -8" fill="none" stroke="#F8D2AE" stroke-width="5" stroke-linecap="round"/>
+                <circle cx="41" cy="55" r="1.3" fill="#DFA679"/><circle cx="52" cy="61" r="1.3" fill="#DFA679"/>
+                <circle cx="58" cy="48" r="1.3" fill="#DFA679"/><circle cx="45" cy="42" r="1.3" fill="#DFA679"/>
                 <line x1="48" y1="25" x2="48" y2="17" stroke="#8a6a3a" stroke-width="2.2" stroke-linecap="round"/>
-                <ellipse cx="59" cy="15" rx="10" ry="4.5" transform="rotate(-18 59 15)" fill="#7E9780"/>
-                <ellipse cx="38" cy="14" rx="9" ry="4" transform="rotate(20 38 14)" fill="#8CA48D"/>
+                <ellipse cx="59" cy="15" rx="10" ry="4.5" transform="rotate(-18 59 15)" fill="#95A997"/>
+                <ellipse cx="38" cy="14" rx="9" ry="4" transform="rotate(20 38 14)" fill="#A6B7A7"/>
               </g>
               <!-- half orange with segments -->
               <g transform="translate(106,52) rotate(10)">
-                <circle r="24" fill="#F2A253"/>
+                <circle r="24" fill="#F3BC88"/>
                 <circle r="20.5" fill="#FDF4E3"/>
-                <g fill="#F49C56">
+                <g fill="#F3B98C">
                   <path d="M0 0 L-4.3 -17.5 A18 18 0 0 1 4.3 -17.5 Z"/>
                   <path d="M0 0 L-4.3 -17.5 A18 18 0 0 1 4.3 -17.5 Z" transform="rotate(45)"/>
                   <path d="M0 0 L-4.3 -17.5 A18 18 0 0 1 4.3 -17.5 Z" transform="rotate(90)"/>
@@ -69,8 +69,8 @@
           <div class="env-letter">
             <svg class="env-sprig" viewBox="0 0 60 26" aria-hidden="true">
               <path d="M6 20 q24 -14 48 -8" fill="none" stroke="#7a5a33" stroke-width="1.6" stroke-linecap="round"/>
-              <ellipse cx="20" cy="11" rx="7" ry="3" transform="rotate(-24 20 11)" fill="#7E9780"/>
-              <ellipse cx="38" cy="8" rx="6.5" ry="2.8" transform="rotate(-6 38 8)" fill="#8CA48D"/>
+              <ellipse cx="20" cy="11" rx="7" ry="3" transform="rotate(-24 20 11)" fill="#95A997"/>
+              <ellipse cx="38" cy="8" rx="6.5" ry="2.8" transform="rotate(-6 38 8)" fill="#A6B7A7"/>
               <circle cx="50" cy="14" r="6.5" fill="#E8913C"/>
               <path d="M45.5 10.5 a6.5 6.5 0 0 1 4.5 -2" fill="none" stroke="#F5B36A" stroke-width="1.8" stroke-linecap="round"/>
             </svg>
@@ -103,13 +103,14 @@
   </div>
 
   <nav class="nav" id="nav">
-    <a class="nav-logo" href="#top" aria-label="Francesco e Miriam">
-      <svg class="logo logo-nav" viewBox="0 0 150 100"><use href="#fm-monogram" /></svg>
+    <a class="nav-logo" href="#top" aria-label="Miriam e Francesco">
+      <img src="img/logo-names.png" alt="Miriam &amp; Francesco" />
     </a>
     <div class="nav-links">
-      <a href="#details" data-i18n="nav.details">Programma</a>
-      <a href="#location" data-i18n="nav.location">Come arrivare</a>
-      <a href="#stay" data-i18n="nav.stay">Dove alloggiare</a>
+      <a href="#details" data-i18n="nav.details">La giornata</a>
+      <a href="#location" data-i18n="nav.location">La location</a>
+      <a href="#stay" data-i18n="nav.stay">Alloggi</a>
+      <a href="#gift" data-i18n="nav.gift">Viaggio di nozze</a>
       <a href="#rsvp">RSVP</a>
     </div>
     <div class="lang-toggle" role="group" aria-label="Lingua / Language">
@@ -121,91 +122,90 @@
 
   <!-- ===== Hero ===== -->
   <header class="hero" id="top">
-    <div class="hero-media">
-      <img src="img/SanCologero19.webp" alt="Commenda di San Calogero" />
-    </div>
+    <img class="hero-cactus hero-cactus-l" src="img/cactus-left.png" alt="" aria-hidden="true" />
+    <img class="hero-cactus hero-cactus-r" src="img/cactus-right.png" alt="" aria-hidden="true" />
+
     <div class="hero-content reveal">
-      <svg class="logo logo-hero" viewBox="0 0 150 100"><use href="#fm-monogram" /></svg>
-      <p class="eyebrow" data-i18n="hero.eyebrow">Ci sposiamo</p>
-      <h1 class="hero-names">Francesco <span class="amp">&amp;</span> Miriam</h1>
-      <p class="hero-date">30 · 08 · 2027</p>
-      <p class="hero-venue" data-i18n="hero.venue">Commenda di San Calogero — Sicilia</p>
+      <p class="hero-eyebrow" data-i18n="hero.invite">Con gioia vi invitiamo<br />al nostro matrimonio</p>
+      <div class="orn">─── <span>♡</span> ───</div>
+      <img class="hero-lettering" src="img/logo-names.png" alt="Miriam &amp; Francesco" />
+      <p class="hero-date" data-i18n="hero.date">30 Agosto 2027</p>
+      <p class="hero-venue">Commenda di San Calogero · Sicilia</p>
       <div class="countdown" id="countdown">
         <div class="count-item"><span id="cd-days">–</span><small data-i18n="count.days">giorni</small></div>
         <div class="count-item"><span id="cd-hours">–</span><small data-i18n="count.hours">ore</small></div>
         <div class="count-item"><span id="cd-mins">–</span><small data-i18n="count.mins">minuti</small></div>
       </div>
+      <figure class="hero-illustration">
+        <img src="img/commenda-stilizzata.jpg" alt="La Commenda di San Calogero, acquerello" />
+      </figure>
     </div>
-    <a class="scroll-hint" href="#details" aria-label="Scorri">↓</a>
   </header>
 
-  <!-- ===== Schedule ===== -->
-  <section class="section alt" id="details">
-    <div class="section-inner reveal">
-      <p class="eyebrow center" data-i18n="details.eyebrow">Programma</p>
-      <h2 class="center" data-i18n="details.title">Lunedì 30 Agosto 2027</h2>
-      <div class="rule"></div>
-      <div class="cards">
-        <div class="card">
-          <h3 data-i18n="details.ceremony">Cerimonia</h3>
-          <p class="card-time">[ORARIO]</p>
-          <p data-i18n="details.ceremonyText">Commenda di San Calogero<br />Contrada San Calogero, Augusta (SR)</p>
-        </div>
-        <div class="card">
-          <h3 data-i18n="details.reception">Ricevimento</h3>
-          <p class="card-time">[ORARIO]</p>
-          <p data-i18n="details.receptionText">A seguire, nei giardini della Commenda — cena, brindisi e musica sotto le stelle.</p>
-        </div>
-        <div class="card">
-          <h3 data-i18n="details.info">Da sapere</h3>
-          <p><span data-i18n="details.dress">Dress code</span>: [elegante]</p>
-          <p><span data-i18n="details.parking">Parcheggio</span>: <span data-i18n="details.parkingText">disponibile in loco</span></p>
-        </div>
-      </div>
+  <!-- ===== La nostra giornata ===== -->
+  <section class="section" id="details">
+    <div class="wcard reveal">
+      <h2 class="wtitle" data-i18n="giornata.title">La nostra giornata</h2>
+      <div class="orn orn-gold">── <span>♡</span> ──</div>
+      <ul class="timeline">
+        <li><span class="tl-time">16:00</span><span class="tl-dot"></span>
+          <svg class="tl-ico" viewBox="0 0 24 24"><path d="M12 20 Q11 12 12 5"/><path d="M12 9 q-5 -2 -6 -6 q5 0 6 6Z"/><path d="M12 13 q5 -2 6 -6 q-5 0 -6 6Z"/></svg>
+          <span class="tl-label" data-i18n="giornata.arrivo">Arrivo ospiti e welcome</span></li>
+        <li><span class="tl-time">16:30</span><span class="tl-dot"></span>
+          <svg class="tl-ico" viewBox="0 0 24 24"><circle cx="9" cy="14" r="5"/><circle cx="15" cy="14" r="5"/><path d="M12 4l1.8 2.2-1.8 2.2-1.8-2.2Z"/></svg>
+          <span class="tl-label" data-i18n="giornata.cerimonia">Cerimonia</span></li>
+        <li><span class="tl-time">18:30</span><span class="tl-dot"></span>
+          <svg class="tl-ico" viewBox="0 0 24 24"><path d="M7 4 h5 l-1.5 6 a2.5 3 0 0 1 -2 0 Z"/><path d="M9.5 10.5 v6"/><path d="M7.5 19 h4"/><path d="M13 6 h5 l-1.5 6 a2.5 3 0 0 1 -2 0 Z" transform="rotate(14 15.5 12)"/></svg>
+          <span class="tl-label" data-i18n="giornata.aperitivo">Aperitivo</span></li>
+        <li><span class="tl-time">20:30</span><span class="tl-dot"></span>
+          <svg class="tl-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="3.4"/><path d="M2.5 8 v6 M4.5 8 v6 M3.5 8 v10"/><path d="M21.5 8 v10 M21.5 8 q-2.5 1 -2 5"/></svg>
+          <span class="tl-label" data-i18n="giornata.cena">Cena</span></li>
+        <li><span class="tl-time">23:30</span><span class="tl-dot"></span>
+          <svg class="tl-ico" viewBox="0 0 24 24"><path d="M5 19 h14 v-4 a2 2 0 0 0 -2 -2 h-10 a2 2 0 0 0 -2 2 Z"/><path d="M7 13 v-3 h10 v3"/><path d="M12 10 v-2.5"/><circle cx="12" cy="6" r="1.2"/></svg>
+          <span class="tl-label" data-i18n="giornata.torta">Taglio della torta</span></li>
+        <li><span class="tl-time">00:00</span><span class="tl-dot"></span>
+          <svg class="tl-ico" viewBox="0 0 24 24"><path d="M9 18 V6 l9 -2 v12"/><circle cx="6.8" cy="18" r="2.4"/><circle cx="15.8" cy="16" r="2.4"/></svg>
+          <span class="tl-label" data-i18n="giornata.party">Party time</span></li>
+      </ul>
     </div>
   </section>
 
-  <!-- ===== How to get there ===== -->
+  <!-- ===== Location & come raggiungerci ===== -->
   <section class="section" id="location">
-    <div class="section-inner reveal">
-      <p class="eyebrow center" data-i18n="location.eyebrow">Come arrivare</p>
-      <h2 class="center" data-i18n="location.title">La Commenda di San Calogero</h2>
-      <p class="lead center narrow" data-i18n="location.lead">
-        Un'antica dimora storica immersa nel verde della Sicilia orientale,
-        tra Catania e Siracusa, a pochi minuti dal mare di Brucoli.
+    <div class="wcard reveal">
+      <h2 class="wtitle" data-i18n="loc.title">La nostra location</h2>
+      <div class="orn orn-gold">── <span>♡</span> ──</div>
+      <figure class="loc-illustration">
+        <img src="img/commenda-stilizzata.jpg" alt="Commenda di San Calogero" loading="lazy" />
+      </figure>
+      <p class="loc-address"><span class="loc-pin">📍</span> Commenda di San Calogero<br />Contrada San Calogero · Sicilia</p>
+      <p class="center">
+        <a class="btn btn-navy" id="map-open"
+           href="https://www.google.com/maps/dir/?api=1&origin=Aeroporto+di+Catania+Fontanarossa&destination=Commenda+di+San+Calogero,+Augusta,+Sicilia"
+           target="_blank" rel="noopener" data-i18n="loc.maps">Vedi su Google Maps ↗</a>
       </p>
-      <div class="rule"></div>
-      <div class="travel-grid">
-        <div class="travel-item">
-          <h3 data-i18n="location.plane">✈ In aereo</h3>
-          <p data-i18n="location.planeText">
-            L'aeroporto più vicino è Catania–Fontanarossa (CTA), a circa 40 minuti d'auto.
-            Voli diretti dalle principali città italiane ed europee.
-          </p>
-        </div>
-        <div class="travel-item">
-          <h3 data-i18n="location.car">⛍ In auto</h3>
-          <p data-i18n="location.carText">
-            Autostrada A18 Catania–Siracusa, uscita Villasmundo, poi seguire le indicazioni
-            per Brucoli / Contrada San Calogero. Parcheggio disponibile alla tenuta.
-          </p>
-        </div>
-        <div class="travel-item">
-          <h3 data-i18n="location.train">🚆 In treno</h3>
-          <p data-i18n="location.trainText">
-            Stazione di Catania Centrale o Augusta, poi taxi o transfer (20–40 minuti).
-          </p>
-        </div>
-        <div class="travel-item">
-          <h3 data-i18n="location.tip">☀ Il nostro consiglio</h3>
-          <p data-i18n="location.tipText">
-            Noleggiate un'auto: la zona è ricca di posti meravigliosi — Ortigia, Noto e le
-            spiagge della costa — e sarete liberi di esplorarla.
-          </p>
-        </div>
-      </div>
+    </div>
+
+    <div class="wcard reveal">
+      <h2 class="wtitle" data-i18n="arr.title">Come raggiungerci</h2>
+      <div class="orn orn-gold">── <span>♡</span> ──</div>
+      <ul class="travel-list">
+        <li>
+          <svg class="tr-ico" viewBox="0 0 24 24"><path d="M10.5 20.5 l1.2 -6.4 -6.2 1.6 -0.9 -1.7 5.6 -3.4 -0.7 -5.4 a1.5 1.5 0 0 1 3 0 l1.6 4.5 5.3 -1.4 a1.4 1.4 0 0 1 0.8 2.7 l-11 4"/></svg>
+          <div><h3 data-i18n="arr.plane">In aereo</h3><p data-i18n="arr.planeText">Aeroporto di Catania Fontanarossa, poi proseguire in auto per circa 30 minuti.</p></div>
+        </li>
+        <li>
+          <svg class="tr-ico" viewBox="0 0 24 24"><path d="M5 13 l1.6 -4.5 a2 2 0 0 1 1.9 -1.3 h7 a2 2 0 0 1 1.9 1.3 L19 13"/><rect x="4" y="13" width="16" height="5" rx="1.4"/><circle cx="7.5" cy="18.6" r="1.6"/><circle cx="16.5" cy="18.6" r="1.6"/></svg>
+          <div><h3 data-i18n="arr.car">In auto</h3><p data-i18n="arr.carText">Dall'autostrada A18, uscita Augusta e seguire le indicazioni per Brucoli.</p></div>
+        </li>
+        <li>
+          <svg class="tr-ico" viewBox="0 0 24 24"><path d="M12 20 C6 15 3.6 11.6 3.6 8.6 A4.6 4.6 0 0 1 12 6 a4.6 4.6 0 0 1 8.4 2.6 c0 3 -2.4 6.4 -8.4 11.4Z"/></svg>
+          <div><h3 data-i18n="arr.tip">Cosa consigliamo</h3><p data-i18n="arr.tipText">Noleggiare un'auto per vivere al meglio la meravigliosa Sicilia.</p></div>
+        </li>
+      </ul>
+      <p class="choose-label" data-i18n="arr.choose">Scegli il tuo percorso</p>
       <div class="map-chips" id="map-chips" role="group" aria-label="Punto di partenza">
-        <button class="chip active" data-origin="airport" data-i18n="map.fromAirport">Dall'aeroporto di Catania</button>
+        <button class="chip active" data-origin="airport" data-i18n="map.fromAirport">Dall'aeroporto</button>
         <button class="chip" data-origin="station" data-i18n="map.fromStation">Da Catania Centrale</button>
         <button class="chip" data-origin="siracusa" data-i18n="map.fromSiracusa">Da Siracusa</button>
         <button class="chip" data-origin="venue" data-i18n="map.venueOnly">Solo la tenuta</button>
@@ -219,51 +219,42 @@
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen></iframe>
       </div>
-      <p class="center">
-        <a class="btn" id="map-open"
-           href="https://www.google.com/maps/dir/?api=1&origin=Aeroporto+di+Catania+Fontanarossa&destination=Commenda+di+San+Calogero,+Augusta,+Sicilia"
-           target="_blank" rel="noopener" data-i18n="location.open">Apri in Google Maps</a>
+    </div>
+  </section>
+
+  <!-- ===== Dove alloggiare ===== -->
+  <section class="section" id="stay">
+    <div class="wcard reveal">
+      <h2 class="wtitle" data-i18n="stay.title">Dove alloggiare</h2>
+      <div class="orn orn-gold">── <span>♡</span> ──</div>
+      <p class="wtext" data-i18n="stay.p1">
+        Nei dintorni ci sono ottime soluzioni: i borghi di mare di Brucoli e Augusta
+        sono i più vicini, mentre Siracusa e l'isola di Ortigia (circa 30 minuti)
+        offrono hotel, B&amp;B e un centro storico indimenticabile.
       </p>
+      <p class="muted" data-i18n="stay.todo">[Aggiungeremo qui gli hotel consigliati e le eventuali convenzioni.]</p>
     </div>
   </section>
 
-  <!-- ===== Where to stay ===== -->
-  <section class="section alt" id="stay">
-    <div class="section-inner split reverse reveal">
-      <figure class="split-media">
-        <img src="img/images.jpeg" alt="" loading="lazy" />
-      </figure>
-      <div class="split-text">
-        <p class="eyebrow" data-i18n="stay.eyebrow">Dove alloggiare</p>
-        <h2 data-i18n="stay.title">Per chi viene da lontano</h2>
-        <p data-i18n="stay.p1">
-          Nei dintorni ci sono ottime soluzioni: i borghi di mare di Brucoli e Augusta
-          sono i più vicini, mentre Siracusa e l'isola di Ortigia (circa 30 minuti)
-          offrono hotel, B&amp;B e un centro storico indimenticabile.
-        </p>
-        <p class="muted" data-i18n="stay.todo">[Aggiungeremo qui gli hotel consigliati e le eventuali convenzioni.]</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== RSVP / Guest area ===== -->
+  <!-- ===== RSVP ===== -->
   <section class="section" id="rsvp">
-    <div class="section-inner rsvp-inner reveal">
-      <p class="eyebrow center" data-i18n="rsvp.eyebrow">Area ospiti</p>
-      <h2 class="center" data-i18n="rsvp.title">Confermate la vostra presenza</h2>
-      <div class="rule"></div>
+    <div class="wcard reveal">
+      <h2 class="wtitle" data-i18n="rsvp.title">Conferma la tua presenza</h2>
+      <div class="orn orn-gold">── <span>♡</span> ──</div>
+      <p class="wtext" data-i18n="rsvp.lead1">La vostra presenza è il regalo più bello che possiamo ricevere.</p>
+      <p class="wtext" data-i18n="rsvp.lead2">Vi chiediamo gentilmente di confermare entro il <strong>30 giugno 2027</strong>.</p>
 
-      <div class="rsvp-card" id="rsvp-login">
-        <p data-i18n="rsvp.loginLead">Inserite il codice che trovate sul vostro invito.</p>
+      <div class="rsvp-box" id="rsvp-login">
+        <p class="muted" data-i18n="rsvp.loginLead">Inserite il codice che trovate sul vostro invito.</p>
         <form id="login-form" class="rsvp-login-form">
           <input id="code-input" placeholder="Codice invito" data-i18n-ph="rsvp.codePlaceholder"
                  autocomplete="off" autocapitalize="characters" required />
-          <button class="btn" type="submit" data-i18n="rsvp.login">Accedi</button>
+          <button class="btn btn-navy" type="submit" data-i18n="rsvp.login">Accedi</button>
         </form>
         <p class="rsvp-error" id="login-error" hidden data-i18n="rsvp.error">Codice non valido — riprovate.</p>
       </div>
 
-      <div class="rsvp-card" id="rsvp-panel" hidden>
+      <div class="rsvp-box" id="rsvp-panel" hidden>
         <p class="rsvp-welcome"><span data-i18n="rsvp.welcome">Benvenuti</span>, <strong id="guest-name"></strong>!</p>
         <form id="rsvp-form" class="rsvp-form-grid">
           <fieldset>
@@ -279,18 +270,60 @@
           <label class="rsvp-field"><span data-i18n="rsvp.notes">Allergie, intolleranze o note</span>
             <textarea id="rsvp-notes" rows="3"></textarea>
           </label>
-          <button class="btn" type="submit" data-i18n="rsvp.send">Invia conferma</button>
+          <button class="btn btn-navy" type="submit" data-i18n="rsvp.send">Conferma la tua presenza ♡</button>
         </form>
         <p class="rsvp-thanks" id="rsvp-thanks" hidden data-i18n="rsvp.thanks">Grazie! La vostra risposta è stata registrata.</p>
         <p class="center"><a href="#rsvp" id="rsvp-logout" class="rsvp-logout" data-i18n="rsvp.logout">Esci</a></p>
       </div>
+
+      <div class="contact-rows">
+        <p><svg class="ct-ico" viewBox="0 0 24 24"><path d="M12 3 a9 9 0 0 1 7.8 13.5 L21 21 l-4.6 -1.2 A9 9 0 1 1 12 3Z"/><path d="M8.6 9.5 c0 4 2.6 6.2 6 6.6 l1.4 -1.8 -2.4 -1.2 -1 1 c-1 -0.6 -2 -1.6 -2.4 -2.6 l1 -0.9 -1 -2.5Z"/></svg>
+          WhatsApp&ensp;<span class="muted">[inserisci numero]</span></p>
+        <p><svg class="ct-ico" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M4 7.5 l8 6 8 -6"/></svg>
+          Email&ensp;<span class="muted">[inserisci email]</span></p>
+      </div>
     </div>
   </section>
 
+  <!-- ===== Viaggio di nozze ===== -->
+  <section class="section" id="gift">
+    <div class="wcard reveal">
+      <h2 class="wtitle" data-i18n="gift.title">Viaggio di nozze</h2>
+      <div class="orn orn-gold">── <span>♡</span> ──</div>
+      <p class="wtext" data-i18n="gift.lead">
+        Se desiderate contribuire a rendere indimenticabile il nostro viaggio di nozze,
+        potete farlo qui.
+      </p>
+      <dl class="iban-box">
+        <dt data-i18n="gift.iban">IBAN</dt>
+        <dd class="iban-code">[IT00 X000 0000 0000 0000 0000 000]</dd>
+        <dt data-i18n="gift.holder">Intestatario</dt>
+        <dd>Miriam e Francesco</dd>
+        <dt data-i18n="gift.reason">Causale</dt>
+        <dd data-i18n="gift.reasonText">Viaggio di nozze</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ===== Action bar ===== -->
+  <div class="action-bar reveal">
+    <a href="fm-wedding.ics" download>
+      <svg class="ab-ico" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5 h17 M8 3 v4 M16 3 v4"/><path d="M12 12 v5 M9.5 14.5 h5"/></svg>
+      <span data-i18n="actions.calendar">Aggiungi al calendario</span>
+    </a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Commenda+di+San+Calogero,+Augusta,+Sicilia" target="_blank" rel="noopener">
+      <svg class="ab-ico" viewBox="0 0 24 24"><path d="M12 21c-4.4-4.6-6.6-8-6.6-11a6.6 6.6 0 1 1 13.2 0c0 3-2.2 6.4-6.6 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
+      <span data-i18n="actions.map">Vedi la location</span>
+    </a>
+    <a href="mailto:INSERISCI_EMAIL">
+      <svg class="ab-ico" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M4 7.5 l8 6 8 -6"/></svg>
+      <span data-i18n="actions.contact">Contattaci</span> <span class="ab-heart">♡</span>
+    </a>
+  </div>
+
   <footer class="footer">
-    <svg class="logo logo-footer" viewBox="0 0 150 100"><use href="#fm-monogram" /></svg>
-    <p class="footer-names">Francesco &amp; Miriam</p>
-    <p class="muted">30 · 08 · 2027 — <span data-i18n="footer.made">fatto con amore</span></p>
+    <p class="footer-mf">M <span>|</span> F</p>
+    <p class="footer-date" data-i18n="footer.date">30 Agosto 2027 · Sicilia</p>
   </footer>
 
   <script src="script.js"></script>
