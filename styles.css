@@ -324,15 +324,22 @@ img { max-width: 100%; display: block; }
 /* phones: keep the serpentine and the alternating sides, just tighter
    — the illustrations shrink instead of the layout collapsing */
 @media (max-width: 640px) {
-  #details .wcard { padding-left: 0.7rem; padding-right: 0.7rem; }
+  #details .wcard { padding-left: 0.6rem; padding-right: 0.6rem; }
   .tl-step {
-    grid-template-columns: 1fr 24px 1fr;
+    grid-template-columns: 1fr 34px 1fr;
     gap: 0.2rem;
     padding: 0.3rem 0;
   }
-  .tl-wave { width: 24px; top: 8px; height: calc(100% - 16px); }
-  .tl-wave path { stroke-width: 2; stroke-dasharray: 2 7; }
-  .tl-step::before { width: 7px; height: 7px; box-shadow: 0 0 0 4px var(--card); }
+  /* the swing is a share of this width, so a narrow gutter would flatten
+     the wave into a straight line: keep it wide and the dots chunky */
+  .tl-wave { width: 34px; top: 8px; height: calc(100% - 16px); }
+  .tl-wave path {
+    stroke: var(--gold-deep);
+    stroke-width: 2.6;
+    stroke-dasharray: 3.5 6;
+    opacity: 1;
+  }
+  .tl-step::before { width: 8px; height: 8px; box-shadow: 0 0 0 4px var(--card); }
   .tl-fig img { max-height: 92px; }
   .tl-time { font-size: 0.92rem; letter-spacing: 0.06em; }
   .tl-body h3 { font-size: 0.66rem; letter-spacing: 0.1em; }
@@ -741,32 +748,6 @@ body.locked { overflow: hidden; }
   border-radius: 2px;
 }
 
-.env-letter {
-  position: absolute;
-  left: 5%;
-  right: 5%;
-  top: 5%;
-  bottom: 4%;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 0.45rem;
-  padding: 0.6rem 0.7rem 38%;
-  background: linear-gradient(170deg, #f7f2e8, #efe7d9);
-  border: 1px solid rgba(201, 162, 60, 0.45);
-  border-radius: 3px;
-  transition: transform 0.7s cubic-bezier(0.22, 0.9, 0.3, 1) 0.26s,
-              box-shadow 0.7s 0.26s;
-}
-
-.envelope.open .env-letter {
-  transform: translateY(-58%);
-  box-shadow: 0 16px 36px -16px rgba(30, 45, 70, 0.45);
-}
-
 .env-pocket,
 .env-flap {
   position: absolute;
@@ -809,9 +790,11 @@ body.locked { overflow: hidden; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .intro, .inv, .env-letter, .env-flap { transition: none; }
+  .intro, .inv, .env-flap { transition: none; }
   .inv-chev { animation: none; }
 }
+
+
 
 
 

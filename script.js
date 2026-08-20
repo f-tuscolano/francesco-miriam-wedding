@@ -329,8 +329,8 @@ function openEnvelope() {
   intro.classList.add("opened");
   setTimeout(() => {
     intro.classList.add("leaving");
-    setTimeout(enterSite, 560);
-  }, 950);
+    setTimeout(enterSite, 520);
+  }, 560);
 }
 
 function enterSite() {
