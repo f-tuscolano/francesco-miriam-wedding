@@ -122,23 +122,6 @@ img { max-width: 100%; display: block; }
   padding: 6.5rem 1.5rem 4rem;
 }
 
-.hero-cactus {
-  position: absolute;
-  width: clamp(130px, 17vw, 250px);
-  height: auto;
-  opacity: 0.92;
-  pointer-events: none;
-}
-
-.hero-cactus-l { left: -1%; top: 14%; }
-.hero-cactus-r { right: -1%; top: 13%; }
-
-@media (max-width: 760px) {
-  .hero-cactus { width: 110px; opacity: 0.55; }
-  .hero-cactus-l { top: 4%; }
-  .hero-cactus-r { top: auto; bottom: 2%; }
-}
-
 .hero-content { max-width: 860px; }
 
 .hero-eyebrow {
@@ -158,6 +141,14 @@ img { max-width: 100%; display: block; }
 }
 
 .orn span { color: var(--gold); }
+
+.orn-fico {
+  width: 17px;
+  height: 17px;
+  display: inline-block;
+  vertical-align: -0.32em;
+  margin: 0 0.1em;
+}
 
 .orn-gold { color: #ddd3b8; margin: 0.5rem 0 1.8rem; }
 
@@ -322,7 +313,7 @@ img { max-width: 100%; display: block; }
 
 /* ---------- Location & travel ---------- */
 .loc-illustration {
-  max-width: 520px;
+  max-width: 380px;
   margin: 0 auto 1.4rem;
   border-radius: 14px;
   overflow: hidden;
@@ -921,6 +912,11 @@ body.locked { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .env-letter, .env-flap, .env-seal, .env-enter, .intro { transition: none; }
 }
+
+
+
+
+
 
 
 
