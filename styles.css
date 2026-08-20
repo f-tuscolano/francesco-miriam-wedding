@@ -321,18 +321,27 @@ img { max-width: 100%; display: block; }
   margin-top: 0.15rem;
 }
 
+/* phones: keep the serpentine and the alternating sides, just tighter
+   — the illustrations shrink instead of the layout collapsing */
 @media (max-width: 640px) {
-  .tl-wave, .tl-step::before { display: none; }
+  #details .wcard { padding-left: 0.7rem; padding-right: 0.7rem; }
   .tl-step {
-    grid-template-columns: 1fr;
-    text-align: center;
-    padding: 1rem 0;
-    border-bottom: 1px dotted var(--line);
+    grid-template-columns: 1fr 24px 1fr;
+    gap: 0.2rem;
+    padding: 0.3rem 0;
   }
-  .tl-step:last-child { border-bottom: none; }
-  .tl-fig, .tl-step:nth-of-type(even) .tl-fig { grid-column: 1; grid-row: 1; }
-  .tl-body, .tl-step:nth-of-type(even) .tl-body { grid-column: 1; grid-row: 2; text-align: center; }
-  .tl-fig img { max-height: 165px; }
+  .tl-wave { width: 24px; top: 8px; height: calc(100% - 16px); }
+  .tl-wave path { stroke-width: 2; stroke-dasharray: 2 7; }
+  .tl-step::before { width: 7px; height: 7px; box-shadow: 0 0 0 4px var(--card); }
+  .tl-fig img { max-height: 92px; }
+  .tl-time { font-size: 0.92rem; letter-spacing: 0.06em; }
+  .tl-body h3 { font-size: 0.66rem; letter-spacing: 0.1em; }
+  .tl-desc { font-size: 0.71rem; line-height: 1.35; margin-top: 0.08rem; }
+}
+
+@media (max-width: 420px) {
+  .tl-fig img { max-height: 82px; }
+  .tl-desc { font-size: 0.68rem; }
 }
 
 /* ---------- Location & travel ---------- */
@@ -652,8 +661,10 @@ body.locked { overflow: hidden; }
    can be positioned with the exact percentages measured on the image */
 .inv {
   position: relative;
-  width: min(94vw, 470px);
-  max-height: 96dvh;
+  /* 62dvh keeps the 2:3 sheet inside short viewports (phone in landscape):
+     the width must drive the height, otherwise max-height would break the
+     aspect ratio and the envelope overlay would drift off the photo */
+  width: min(94vw, 470px, 62dvh);
   aspect-ratio: 900 / 1350;
 }
 
@@ -785,10 +796,25 @@ body.locked { overflow: hidden; }
 
 .envelope.open .env-flap { transform: rotateX(180deg); opacity: 0; }
 
+/* phone held sideways: the sheet is small, so keep the hint compact */
+@media (max-height: 540px) {
+  .inv-hint {
+    top: 81%;
+    max-width: 96%;
+    font-size: 0.7rem;
+    letter-spacing: 0.09em;
+    line-height: 1.45;
+  }
+  .inv-chev { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .intro, .inv, .env-letter, .env-flap { transition: none; }
   .inv-chev { animation: none; }
 }
+
+
+
 
 
 
