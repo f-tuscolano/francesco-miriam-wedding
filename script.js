@@ -18,26 +18,30 @@ setInterval(updateCountdown, 30000);
 const I18N = {
   it: {
     "intro.invite": "Siamo lieti di invitarvi<br />al nostro matrimonio",
-    "intro.letter": "Vi aspettiamo!",
     "intro.hint": "Tocca la busta per aprire l'invito",
-    "intro.enter": "Entra",
     "intro.skip": "Salta",
     "count.days": "giorni",
     "count.hours": "ore",
     "count.mins": "minuti",
-    "nav.details": "La giornata",
+    "nav.details": "Programma",
     "nav.location": "La location",
     "nav.stay": "Alloggi",
     "nav.gift": "Viaggio di nozze",
     "hero.invite": "Con gioia vi invitiamo<br />al nostro matrimonio",
     "hero.date": "30 Agosto 2027",
-    "giornata.title": "La nostra giornata",
-    "giornata.arrivo": "Arrivo ospiti e welcome",
-    "giornata.cerimonia": "Cerimonia",
-    "giornata.aperitivo": "Aperitivo",
-    "giornata.cena": "Cena",
-    "giornata.torta": "Taglio della torta",
-    "giornata.party": "Party time",
+    "giornata.title": "Il programma",
+    "tl.accoglienza": "Accoglienza",
+    "tl.accoglienzaD": "Benvenuti alla Commenda",
+    "tl.cerimonia": "Cerimonia",
+    "tl.cerimoniaD": "Rito civile nel giardino della Commenda",
+    "tl.aperitivo": "Aperitivo",
+    "tl.aperitivoD": "Cocktail &amp; buffet in terrazza",
+    "tl.cena": "Cena",
+    "tl.cenaD": "Cena servita sotto le stelle",
+    "tl.torta": "Torta",
+    "tl.tortaD": "Taglio della torta e brindisi",
+    "tl.party": "Party",
+    "tl.partyD": "Musica e DJ Set",
     "loc.title": "La nostra location",
     "loc.maps": "Vedi su Google Maps ↗",
     "arr.title": "Come raggiungerci",
@@ -90,26 +94,30 @@ const I18N = {
   },
   en: {
     "intro.invite": "We are delighted to invite you<br />to our wedding",
-    "intro.letter": "See you there!",
     "intro.hint": "Tap the envelope to open the invitation",
-    "intro.enter": "Enter",
     "intro.skip": "Skip",
     "count.days": "days",
     "count.hours": "hours",
     "count.mins": "minutes",
-    "nav.details": "Our day",
+    "nav.details": "Programme",
     "nav.location": "The venue",
     "nav.stay": "Stay",
     "nav.gift": "Honeymoon",
     "hero.invite": "With joy we invite you<br />to our wedding",
     "hero.date": "30 August 2027",
-    "giornata.title": "Our day",
-    "giornata.arrivo": "Guests arrival & welcome",
-    "giornata.cerimonia": "Ceremony",
-    "giornata.aperitivo": "Aperitivo",
-    "giornata.cena": "Dinner",
-    "giornata.torta": "Cake cutting",
-    "giornata.party": "Party time",
+    "giornata.title": "The programme",
+    "tl.accoglienza": "Welcome",
+    "tl.accoglienzaD": "Welcome to the Commenda",
+    "tl.cerimonia": "Ceremony",
+    "tl.cerimoniaD": "Civil ceremony in the Commenda gardens",
+    "tl.aperitivo": "Aperitivo",
+    "tl.aperitivoD": "Cocktails &amp; buffet on the terrace",
+    "tl.cena": "Dinner",
+    "tl.cenaD": "Dinner served under the stars",
+    "tl.torta": "Cake",
+    "tl.tortaD": "Cake cutting and toasts",
+    "tl.party": "Party",
+    "tl.partyD": "Music &amp; DJ set",
     "loc.title": "Our venue",
     "loc.maps": "View on Google Maps ↗",
     "arr.title": "Getting here",
@@ -159,6 +167,82 @@ const I18N = {
     "actions.contact": "Contact us",
     "footer.date": "30 August 2027 · Sicily",
     "location.open": "View on Google Maps ↗",
+  },
+  ro: {
+    "intro.invite": "Cu bucurie vă invităm<br />la nunta noastră",
+    "intro.hint": "Atinge plicul pentru a deschide invitația",
+    "intro.skip": "Sari",
+    "count.days": "zile",
+    "count.hours": "ore",
+    "count.mins": "minute",
+    "nav.details": "Programul",
+    "nav.location": "Locația",
+    "nav.stay": "Cazare",
+    "nav.gift": "Luna de miere",
+    "hero.invite": "Cu bucurie vă invităm<br />la nunta noastră",
+    "hero.date": "30 August 2027",
+    "giornata.title": "Programul",
+    "tl.accoglienza": "Primire",
+    "tl.accoglienzaD": "Bine ați venit la Commenda",
+    "tl.cerimonia": "Ceremonia",
+    "tl.cerimoniaD": "Cununie civilă în grădina Commendei",
+    "tl.aperitivo": "Aperitiv",
+    "tl.aperitivoD": "Cocktail &amp; bufet pe terasă",
+    "tl.cena": "Cina",
+    "tl.cenaD": "Cină servită sub stele",
+    "tl.torta": "Tortul",
+    "tl.tortaD": "Tăierea tortului și toast",
+    "tl.party": "Petrecere",
+    "tl.partyD": "Muzică și DJ set",
+    "loc.title": "Locația noastră",
+    "loc.maps": "Vezi pe Google Maps ↗",
+    "arr.title": "Cum ajungeți",
+    "arr.plane": "Cu avionul",
+    "arr.planeText": "Aeroportul Catania Fontanarossa, apoi aproximativ 30 de minute cu mașina.",
+    "arr.car": "Cu mașina",
+    "arr.carText": "De pe autostrada A18, ieșirea Augusta, apoi urmați indicatoarele spre Brucoli.",
+    "arr.tip": "Ce vă recomandăm",
+    "arr.tipText": "Închiriați o mașină pentru a descoperi în tihnă minunata Sicilie.",
+    "arr.choose": "Alegeți traseul",
+    "map.fromAirport": "De la aeroport",
+    "map.fromStation": "De la Catania Centrale",
+    "map.fromSiracusa": "De la Siracusa",
+    "map.venueOnly": "Doar locația",
+    "stay.title": "Unde să stați",
+    "stay.p1":
+      "În apropiere există soluții foarte bune: satele de pe malul mării Brucoli și " +
+      "Augusta sunt cele mai apropiate, iar Siracusa și insula Ortigia (la circa 30 " +
+      "de minute) oferă hoteluri, pensiuni și un centru istoric de neuitat.",
+    "stay.todo": "[Vom adăuga aici hotelurile recomandate și eventualele tarife convenite.]",
+    "rsvp.title": "Confirmați prezența",
+    "rsvp.lead1": "Prezența voastră este cel mai frumos cadou pe care îl putem primi.",
+    "rsvp.lead2": "Vă rugăm să confirmați până la <strong>30 iunie 2027</strong>.",
+    "rsvp.loginLead": "Introduceți codul de pe invitația voastră.",
+    "rsvp.codePlaceholder": "Cod invitație",
+    "rsvp.login": "Intră",
+    "rsvp.error": "Cod invalid — încercați din nou.",
+    "rsvp.welcome": "Bine ați venit",
+    "rsvp.attending": "Veți fi prezenți?",
+    "rsvp.yes": "Vom fi acolo!",
+    "rsvp.no": "Din păcate, nu",
+    "rsvp.guests": "Câți veți fi?",
+    "rsvp.notes": "Alergii, restricții alimentare sau observații",
+    "rsvp.send": "Confirmați prezența ♡",
+    "rsvp.thanks": "Vă mulțumim! Răspunsul vostru a fost înregistrat.",
+    "rsvp.logout": "Ieșire",
+    "gift.title": "Luna de miere",
+    "gift.lead":
+      "Dacă doriți să contribuiți ca luna noastră de miere să fie de neuitat, " +
+      "puteți face acest lucru aici.",
+    "gift.iban": "IBAN",
+    "gift.holder": "Titular",
+    "gift.reason": "Detalii plată",
+    "gift.reasonText": "Luna de miere",
+    "actions.calendar": "Adaugă în calendar",
+    "actions.map": "Vezi locația",
+    "actions.contact": "Contactați-ne",
+    "footer.date": "30 August 2027 · Sicilia",
+    "location.open": "Vezi pe Google Maps ↗",
   },
 };
 
@@ -237,9 +321,16 @@ if (alreadyEntered) {
   document.body.classList.add("locked");
 }
 
+// one tap: the flap opens, the letter slides out, then the page dissolves
+// into the site on its own — no second click needed
 function openEnvelope() {
+  if (envelope.classList.contains("open")) return;
   envelope.classList.add("open");
   intro.classList.add("opened");
+  setTimeout(() => {
+    intro.classList.add("leaving");
+    setTimeout(enterSite, 560);
+  }, 950);
 }
 
 function enterSite() {
@@ -257,72 +348,14 @@ envelope.addEventListener("keydown", (e) => {
     openEnvelope();
   }
 });
-document.getElementById("env-enter").addEventListener("click", (e) => {
+// tapping anywhere on the invitation sheet works too (the hint, the paper…)
+document.querySelector(".inv").addEventListener("click", openEnvelope);
+
+document.getElementById("intro-skip").addEventListener("click", (e) => {
   e.stopPropagation();
-  enterSite();
+  intro.classList.add("leaving");
+  setTimeout(enterSite, 500);
 });
-document.getElementById("intro-skip").addEventListener("click", enterSite);
-
-// Dock icons: enter the site, then let the anchor scroll to its section
-document.querySelectorAll(".dock-link").forEach((link) => {
-  link.addEventListener("click", enterSite);
-});
-
-// ---------- Mixtilinear cartouche frame around the invitation card ----------
-function framePath(w, h, inset, c, bump, bh) {
-  // one closed outline: concave (scooped) corners + a shallow convex arc mid-side
-  const x0 = inset, y0 = inset, x1 = w - inset, y1 = h - inset;
-  const mx = w / 2, my = h / 2;
-  const mH = Math.min(bump, (x1 - x0) / 2 - c - 8); // half-width of top/bottom arc
-  const mV = Math.min(bump, (y1 - y0) / 2 - c - 8); // half-height of side arc
-  return [
-    `M ${x0} ${y0 + c}`,
-    `A ${c} ${c} 0 0 1 ${x0 + c} ${y0}`,
-    `L ${mx - mH} ${y0}`,
-    `A ${mH} ${bh} 0 0 1 ${mx + mH} ${y0}`,
-    `L ${x1 - c} ${y0}`,
-    `A ${c} ${c} 0 0 1 ${x1} ${y0 + c}`,
-    `L ${x1} ${my - mV}`,
-    `A ${bh} ${mV} 0 0 1 ${x1} ${my + mV}`,
-    `L ${x1} ${y1 - c}`,
-    `A ${c} ${c} 0 0 1 ${x1 - c} ${y1}`,
-    `L ${mx + mH} ${y1}`,
-    `A ${mH} ${bh} 0 0 1 ${mx - mH} ${y1}`,
-    `L ${x0 + c} ${y1}`,
-    `A ${c} ${c} 0 0 1 ${x0} ${y1 - c}`,
-    `L ${x0} ${my + mV}`,
-    `A ${bh} ${mV} 0 0 1 ${x0} ${my - mV}`,
-    "Z",
-  ].join(" ");
-}
-
-function drawFrame() {
-  const card = document.getElementById("invite-card");
-  const svg = card.querySelector(".frame-svg");
-  const w = card.offsetWidth;
-  const h = card.offsetHeight;
-  if (!w || !h) return;
-  const pad = 12;
-
-  svg.setAttribute("viewBox", `0 0 ${w + 2 * pad} ${h + 2 * pad}`);
-  svg.style.width = w + 2 * pad + "px";
-  svg.style.height = h + 2 * pad + "px";
-  svg.style.left = -pad + "px";
-  svg.style.top = -pad + "px";
-
-  // paths live in the padded coordinate space
-  const shift = (d) => d; // inset below already accounts for pad via +pad
-  document.getElementById("frame-outer").setAttribute("d", framePath(w + 2 * pad, h + 2 * pad, pad, 22, 54, 9));
-  document.getElementById("frame-inner").setAttribute("d", framePath(w + 2 * pad, h + 2 * pad, pad + 7, 17, 47, 7));
-}
-
-drawFrame();
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawFrame);
-if (typeof ResizeObserver !== "undefined") {
-  new ResizeObserver(drawFrame).observe(document.getElementById("invite-card"));
-} else {
-  window.addEventListener("resize", drawFrame);
-}
 
 // ---------- Guest registry & RSVP ----------
 // Guests live in guests.json (code, name, seats). Add/remove families there.

@@ -1,0 +1,1 @@
+11 PNG RGBA con trasparenza reale. Nessuno sfondo bianco o a scacchiera. Verificati su sfondo blu.

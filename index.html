@@ -6,6 +6,8 @@
   <title>Francesco &amp; Miriam · 30 Agosto 2027</title>
   <meta name="description" content="Francesco e Miriam si sposano il 30 agosto 2027 alla Commenda di San Calogero, Sicilia." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Great+Vibes&family=Monsieur+La+Doulaise&display=swap" rel="stylesheet" />
@@ -22,92 +24,30 @@
   </svg>
 
   <!-- ===== Invitation intro (watercolor style) ===== -->
+  <!-- ===== Invitation intro: tap the envelope, it opens, then you enter ===== -->
   <div class="intro" id="intro">
-    <div class="phone">
+    <div class="inv">
       <button class="intro-skip" id="intro-skip" data-i18n="intro.skip">Salta</button>
-      <div class="phone-screen">
+      <img class="inv-scene" src="img/intro-scene.webp" alt="Francesco e Miriam" />
 
-        <div class="invite-card" id="invite-card">
-          <svg class="frame-svg" aria-hidden="true"><path id="frame-outer" class="frame-outer" /><path id="frame-inner" class="frame-inner" /></svg>
-          <div class="invite-content">
-            <svg class="deco deco-oranges" viewBox="0 0 150 84" aria-hidden="true">
-              <!-- whole orange with leaves -->
-              <g>
-                <circle cx="48" cy="50" r="25" fill="#F3BC88"/>
-                <path d="M33 34 a25 25 0 0 1 22 -8" fill="none" stroke="#F8D2AE" stroke-width="5" stroke-linecap="round"/>
-                <circle cx="41" cy="55" r="1.3" fill="#DFA679"/><circle cx="52" cy="61" r="1.3" fill="#DFA679"/>
-                <circle cx="58" cy="48" r="1.3" fill="#DFA679"/><circle cx="45" cy="42" r="1.3" fill="#DFA679"/>
-                <line x1="48" y1="25" x2="48" y2="17" stroke="#8a6a3a" stroke-width="2.2" stroke-linecap="round"/>
-                <ellipse cx="59" cy="15" rx="10" ry="4.5" transform="rotate(-18 59 15)" fill="#95A997"/>
-                <ellipse cx="38" cy="14" rx="9" ry="4" transform="rotate(20 38 14)" fill="#A6B7A7"/>
-              </g>
-              <!-- half orange with segments -->
-              <g transform="translate(106,52) rotate(10)">
-                <circle r="24" fill="#F3BC88"/>
-                <circle r="20.5" fill="#FDF4E3"/>
-                <g fill="#F3B98C">
-                  <path d="M0 0 L-4.3 -17.5 A18 18 0 0 1 4.3 -17.5 Z"/>
-                  <path d="M0 0 L-4.3 -17.5 A18 18 0 0 1 4.3 -17.5 Z" transform="rotate(45)"/>
-                  <path d="M0 0 L-4.3 -17.5 A18 18 0 0 1 4.3 -17.5 Z" transform="rotate(90)"/>
-                  <path d="M0 0 L-4.3 -17.5 A18 18 0 0 1 4.3 -17.5 Z" transform="rotate(135)"/>
-                  <path d="M0 0 L-4.3 -17.5 A18 18 0 0 1 4.3 -17.5 Z" transform="rotate(180)"/>
-                  <path d="M0 0 L-4.3 -17.5 A18 18 0 0 1 4.3 -17.5 Z" transform="rotate(225)"/>
-                  <path d="M0 0 L-4.3 -17.5 A18 18 0 0 1 4.3 -17.5 Z" transform="rotate(270)"/>
-                  <path d="M0 0 L-4.3 -17.5 A18 18 0 0 1 4.3 -17.5 Z" transform="rotate(315)"/>
-                </g>
-                <circle r="2.2" fill="#FDF4E3"/>
-              </g>
-            </svg>
-            <img class="invite-lettering" src="img/logo-names.png" alt="Francesco &amp; Miriam" />
-            <p class="invite-text" data-i18n="intro.invite">Siamo lieti di invitarvi<br />al nostro matrimonio</p>
-            <p class="invite-date">30 . 08 . 2027</p>
-          </div>
-        </div>
-
-        <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri l'invito">
-          <div class="env-inner"></div>
-          <div class="env-letter">
-            <svg class="env-sprig" viewBox="0 0 60 26" aria-hidden="true">
-              <path d="M6 20 q24 -14 48 -8" fill="none" stroke="#7a5a33" stroke-width="1.6" stroke-linecap="round"/>
-              <ellipse cx="20" cy="11" rx="7" ry="3" transform="rotate(-24 20 11)" fill="#95A997"/>
-              <ellipse cx="38" cy="8" rx="6.5" ry="2.8" transform="rotate(-6 38 8)" fill="#A6B7A7"/>
-              <circle cx="50" cy="14" r="6.5" fill="#E8913C"/>
-              <path d="M45.5 10.5 a6.5 6.5 0 0 1 4.5 -2" fill="none" stroke="#F5B36A" stroke-width="1.8" stroke-linecap="round"/>
-            </svg>
-            <p class="env-msg" data-i18n="intro.letter">Vi aspettiamo!</p>
-            <p class="env-orn">─── ✦ ───</p>
-            <button class="btn env-enter" id="env-enter" data-i18n="intro.enter">Entra</button>
-          </div>
-          <img class="env-pocket-img" src="img/envelope.png" alt="" />
-          <img class="env-flap-img" src="img/envelope.png" alt="" />
-        </div>
-        <p class="intro-hint" data-i18n="intro.hint">Tocca la busta per aprire l'invito</p>
-
-        <nav class="dock" aria-label="Sezioni">
-          <a href="#details" class="dock-link" aria-label="Programma">
-            <svg viewBox="0 0 24 24"><path d="M12 3.4l1.9 2.3-1.9 2.3-1.9-2.3Z"/><circle cx="9" cy="14.5" r="5"/><circle cx="15" cy="14.5" r="5"/></svg>
-          </a>
-          <a href="#location" class="dock-link" aria-label="Come arrivare">
-            <svg viewBox="0 0 24 24"><path d="M12 21c-4.4-4.6-6.6-8-6.6-11a6.6 6.6 0 1 1 13.2 0c0 3-2.2 6.4-6.6 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
-          </a>
-          <a href="#stay" class="dock-link" aria-label="Dove alloggiare">
-            <svg viewBox="0 0 24 24"><path d="M3 5v14"/><path d="M3 12h15a3 3 0 0 1 3 3v4"/><path d="M3 16.5h18"/><circle cx="7.5" cy="9.5" r="2"/></svg>
-          </a>
-          <a href="#rsvp" class="dock-link" aria-label="RSVP">
-            <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M4 8l8 6 8-6"/></svg>
-          </a>
-        </nav>
-
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri l'invito">
+        <div class="env-inside"></div>
+        <div class="env-letter"></div>
+        <img class="env-pocket" src="img/intro-env.webp" alt="" />
+        <img class="env-flap" src="img/intro-env.webp" alt="" />
       </div>
+
+      <p class="inv-hint" data-i18n="intro.hint">Tocca la busta per aprire l'invito</p>
+      <svg class="inv-chev" viewBox="0 0 26 12" aria-hidden="true"><path d="M2 2 L13 10 L24 2" /></svg>
     </div>
   </div>
 
   <nav class="nav" id="nav">
     <a class="nav-logo" href="#top" aria-label="Miriam e Francesco">
-      <img src="img/logo-names.png" alt="Miriam &amp; Francesco" />
+      <img src="img/logo-oro.png" alt="Miriam &amp; Francesco" />
     </a>
     <div class="nav-links">
-      <a href="#details" data-i18n="nav.details">La giornata</a>
+      <a href="#details" data-i18n="nav.details">Programma</a>
       <a href="#location" data-i18n="nav.location">La location</a>
       <a href="#stay" data-i18n="nav.stay">Alloggi</a>
       <a href="#gift" data-i18n="nav.gift">Viaggio di nozze</a>
@@ -117,6 +57,8 @@
       <button class="lang-btn active" data-lang="it">IT</button>
       <span class="lang-sep">/</span>
       <button class="lang-btn" data-lang="en">EN</button>
+      <span class="lang-sep">/</span>
+      <button class="lang-btn" data-lang="ro">RO</button>
     </div>
   </nav>
 
@@ -126,45 +68,76 @@
     <div class="hero-content reveal">
       <p class="hero-eyebrow" data-i18n="hero.invite">Con gioia vi invitiamo<br />al nostro matrimonio</p>
       <div class="orn">─── <span><svg class="orn-fico" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="15.4" rx="4.6" ry="6.1" fill="#9fb397"/><ellipse cx="6.6" cy="11.2" rx="3.1" ry="4.3" transform="rotate(-26 6.6 11.2)" fill="#93a88b"/><ellipse cx="17.5" cy="11.8" rx="2.9" ry="4.1" transform="rotate(24 17.5 11.8)" fill="#adbfa4"/><ellipse cx="9.5" cy="6.3" rx="1.5" ry="2.1" transform="rotate(-12 9.5 6.3)" fill="#c98f7a"/><ellipse cx="14.3" cy="6.1" rx="1.5" ry="2.1" transform="rotate(12 14.3 6.1)" fill="#c98f7a"/><ellipse cx="12" cy="8.1" rx="1.4" ry="2" fill="#d8a58f"/></svg></span> ───</div>
-      <img class="hero-lettering" src="img/logo-names.png" alt="Miriam &amp; Francesco" />
+      <img class="hero-lettering" src="img/logo-oro.png" alt="Miriam &amp; Francesco" />
       <p class="hero-date" data-i18n="hero.date">30 Agosto 2027</p>
-      <p class="hero-venue">Commenda di San Calogero · Sicilia</p>
+      <p class="hero-venue">Siracusa · Sicilia</p>
       <div class="countdown" id="countdown">
         <div class="count-item"><span id="cd-days">–</span><small data-i18n="count.days">giorni</small></div>
         <div class="count-item"><span id="cd-hours">–</span><small data-i18n="count.hours">ore</small></div>
         <div class="count-item"><span id="cd-mins">–</span><small data-i18n="count.mins">minuti</small></div>
       </div>
       <figure class="hero-illustration">
-        <img src="img/commenda-stilizzata.jpg" alt="La Commenda di San Calogero, acquerello" />
+        <img src="img/commenda-hero.webp" alt="La Commenda di San Calogero" />
       </figure>
     </div>
   </header>
 
-  <!-- ===== La nostra giornata ===== -->
+  <!-- ===== Il programma ===== -->
   <section class="section" id="details">
     <div class="wcard reveal">
-      <h2 class="wtitle" data-i18n="giornata.title">La nostra giornata</h2>
+      <h2 class="wtitle" data-i18n="giornata.title">Il programma</h2>
       <div class="orn orn-gold">── <span><svg class="orn-fico" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="15.4" rx="4.6" ry="6.1" fill="#9fb397"/><ellipse cx="6.6" cy="11.2" rx="3.1" ry="4.3" transform="rotate(-26 6.6 11.2)" fill="#93a88b"/><ellipse cx="17.5" cy="11.8" rx="2.9" ry="4.1" transform="rotate(24 17.5 11.8)" fill="#adbfa4"/><ellipse cx="9.5" cy="6.3" rx="1.5" ry="2.1" transform="rotate(-12 9.5 6.3)" fill="#c98f7a"/><ellipse cx="14.3" cy="6.1" rx="1.5" ry="2.1" transform="rotate(12 14.3 6.1)" fill="#c98f7a"/><ellipse cx="12" cy="8.1" rx="1.4" ry="2" fill="#d8a58f"/></svg></span> ──</div>
-      <ul class="timeline">
-        <li><span class="tl-time">16:00</span><span class="tl-dot"></span>
-          <svg class="tl-ico" viewBox="0 0 24 24"><path d="M12 20 Q11 12 12 5"/><path d="M12 9 q-5 -2 -6 -6 q5 0 6 6Z"/><path d="M12 13 q5 -2 6 -6 q-5 0 -6 6Z"/></svg>
-          <span class="tl-label" data-i18n="giornata.arrivo">Arrivo ospiti e welcome</span></li>
-        <li><span class="tl-time">16:30</span><span class="tl-dot"></span>
-          <svg class="tl-ico" viewBox="0 0 24 24"><circle cx="9" cy="14" r="5"/><circle cx="15" cy="14" r="5"/><path d="M12 4l1.8 2.2-1.8 2.2-1.8-2.2Z"/></svg>
-          <span class="tl-label" data-i18n="giornata.cerimonia">Cerimonia</span></li>
-        <li><span class="tl-time">18:30</span><span class="tl-dot"></span>
-          <svg class="tl-ico" viewBox="0 0 24 24"><path d="M7 4 h5 l-1.5 6 a2.5 3 0 0 1 -2 0 Z"/><path d="M9.5 10.5 v6"/><path d="M7.5 19 h4"/><path d="M13 6 h5 l-1.5 6 a2.5 3 0 0 1 -2 0 Z" transform="rotate(14 15.5 12)"/></svg>
-          <span class="tl-label" data-i18n="giornata.aperitivo">Aperitivo</span></li>
-        <li><span class="tl-time">20:30</span><span class="tl-dot"></span>
-          <svg class="tl-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="3.4"/><path d="M2.5 8 v6 M4.5 8 v6 M3.5 8 v10"/><path d="M21.5 8 v10 M21.5 8 q-2.5 1 -2 5"/></svg>
-          <span class="tl-label" data-i18n="giornata.cena">Cena</span></li>
-        <li><span class="tl-time">23:30</span><span class="tl-dot"></span>
-          <svg class="tl-ico" viewBox="0 0 24 24"><path d="M5 19 h14 v-4 a2 2 0 0 0 -2 -2 h-10 a2 2 0 0 0 -2 2 Z"/><path d="M7 13 v-3 h10 v3"/><path d="M12 10 v-2.5"/><circle cx="12" cy="6" r="1.2"/></svg>
-          <span class="tl-label" data-i18n="giornata.torta">Taglio della torta</span></li>
-        <li><span class="tl-time">00:00</span><span class="tl-dot"></span>
-          <svg class="tl-ico" viewBox="0 0 24 24"><path d="M9 18 V6 l9 -2 v12"/><circle cx="6.8" cy="18" r="2.4"/><circle cx="15.8" cy="16" r="2.4"/></svg>
-          <span class="tl-label" data-i18n="giornata.party">Party time</span></li>
-      </ul>
+      <div class="tl">
+      <svg class="tl-wave" viewBox="0 0 40 1200" preserveAspectRatio="none" aria-hidden="true"><path d="M 20 0 C 36 25, 36 75, 20 100 C 4 125, 4 175, 20 200 C 36 225, 36 275, 20 300 C 4 325, 4 375, 20 400 C 36 425, 36 475, 20 500 C 4 525, 4 575, 20 600 C 36 625, 36 675, 20 700 C 4 725, 4 775, 20 800 C 36 825, 36 875, 20 900 C 4 925, 4 975, 20 1000 C 36 1025, 36 1075, 20 1100 C 4 1125, 4 1175, 20 1200" /></svg>
+      <div class="tl-step">
+        <figure class="tl-fig"><img src="img/tl-accoglienza.webp" alt="" loading="lazy" /></figure>
+        <div class="tl-body">
+          <p class="tl-time">16:00</p>
+          <h3 data-i18n="tl.accoglienza">Accoglienza</h3>
+          <p class="tl-desc" data-i18n="tl.accoglienzaD">Benvenuti alla Commenda</p>
+        </div>
+      </div>
+      <div class="tl-step">
+        <figure class="tl-fig"><img src="img/tl-cerimonia.webp" alt="" loading="lazy" /></figure>
+        <div class="tl-body">
+          <p class="tl-time">17:00</p>
+          <h3 data-i18n="tl.cerimonia">Cerimonia</h3>
+          <p class="tl-desc" data-i18n="tl.cerimoniaD">Rito civile nel giardino della Commenda</p>
+        </div>
+      </div>
+      <div class="tl-step">
+        <figure class="tl-fig"><img src="img/tl-aperitivo.webp" alt="" loading="lazy" /></figure>
+        <div class="tl-body">
+          <p class="tl-time">18:00</p>
+          <h3 data-i18n="tl.aperitivo">Aperitivo</h3>
+          <p class="tl-desc" data-i18n="tl.aperitivoD">Cocktail &amp; buffet in terrazza</p>
+        </div>
+      </div>
+      <div class="tl-step">
+        <figure class="tl-fig"><img src="img/tl-cena.webp" alt="" loading="lazy" /></figure>
+        <div class="tl-body">
+          <p class="tl-time">20:00</p>
+          <h3 data-i18n="tl.cena">Cena</h3>
+          <p class="tl-desc" data-i18n="tl.cenaD">Cena servita sotto le stelle</p>
+        </div>
+      </div>
+      <div class="tl-step">
+        <figure class="tl-fig"><img src="img/tl-torta.webp" alt="" loading="lazy" /></figure>
+        <div class="tl-body">
+          <p class="tl-time">22:30</p>
+          <h3 data-i18n="tl.torta">Torta</h3>
+          <p class="tl-desc" data-i18n="tl.tortaD">Taglio della torta e brindisi</p>
+        </div>
+      </div>
+      <div class="tl-step">
+        <figure class="tl-fig"><img src="img/tl-party.webp" alt="" loading="lazy" /></figure>
+        <div class="tl-body">
+          <p class="tl-time">23:00</p>
+          <h3 data-i18n="tl.party">Party</h3>
+          <p class="tl-desc" data-i18n="tl.partyD">Musica e DJ Set</p>
+        </div>
+      </div>
+      </div>
     </div>
   </section>
 
@@ -174,7 +147,7 @@
       <h2 class="wtitle" data-i18n="loc.title">La nostra location</h2>
       <div class="orn orn-gold">── <span><svg class="orn-fico" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="15.4" rx="4.6" ry="6.1" fill="#9fb397"/><ellipse cx="6.6" cy="11.2" rx="3.1" ry="4.3" transform="rotate(-26 6.6 11.2)" fill="#93a88b"/><ellipse cx="17.5" cy="11.8" rx="2.9" ry="4.1" transform="rotate(24 17.5 11.8)" fill="#adbfa4"/><ellipse cx="9.5" cy="6.3" rx="1.5" ry="2.1" transform="rotate(-12 9.5 6.3)" fill="#c98f7a"/><ellipse cx="14.3" cy="6.1" rx="1.5" ry="2.1" transform="rotate(12 14.3 6.1)" fill="#c98f7a"/><ellipse cx="12" cy="8.1" rx="1.4" ry="2" fill="#d8a58f"/></svg></span> ──</div>
       <figure class="loc-illustration">
-        <img src="img/commenda-arco.jpg" alt="L'ingresso della Commenda di San Calogero" loading="lazy" />
+        <img src="img/commenda-ingresso.webp" alt="L'ingresso della Commenda di San Calogero" loading="lazy" />
       </figure>
       <p class="loc-address"><span class="loc-pin">📍</span> Commenda di San Calogero<br />Contrada San Calogero · Sicilia</p>
       <p class="center">
@@ -320,7 +293,7 @@
   </div>
 
   <footer class="footer">
-    <p class="footer-mf">M <span>|</span> F</p>
+    <img class="footer-mono" src="img/monogram-fm.webp" alt="Francesco e Miriam" />
     <p class="footer-date" data-i18n="footer.date">30 Agosto 2027 · Sicilia</p>
   </footer>
 
