@@ -617,7 +617,7 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #e9e0d4;
+  background: #ede2db;
   transition: opacity 0.6s ease, visibility 0.6s;
 }
 
