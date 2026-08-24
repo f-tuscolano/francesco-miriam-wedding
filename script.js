@@ -18,8 +18,7 @@ setInterval(updateCountdown, 30000);
 const I18N = {
   it: {
     "intro.invite": "Siamo lieti di invitarvi<br />al nostro matrimonio",
-    "intro.hint": "Tocca la busta per aprire l'invito",
-    "intro.skip": "Salta",
+    "intro.enter": "Entra",
     "count.days": "giorni",
     "count.hours": "ore",
     "count.mins": "minuti",
@@ -43,7 +42,7 @@ const I18N = {
     "tl.party": "Party",
     "tl.partyD": "Musica e DJ Set",
     "loc.title": "La nostra location",
-    "loc.maps": "Vedi su Google Maps ↗",
+    "loc.site": "Visita il sito ufficiale ↗",
     "arr.title": "Come raggiungerci",
     "arr.plane": "In aereo",
     "arr.planeText": "Aeroporto di Catania Fontanarossa, poi proseguire in auto per circa 30 minuti.",
@@ -83,19 +82,16 @@ const I18N = {
       "Se desiderate contribuire a rendere indimenticabile il nostro viaggio di nozze, " +
       "potete farlo qui.",
     "gift.iban": "IBAN",
+    "gift.bank": "Banca",
     "gift.holder": "Intestatario",
     "gift.reason": "Causale",
-    "gift.reasonText": "Viaggio di nozze",
     "actions.calendar": "Aggiungi al calendario",
     "actions.map": "Vedi la location",
-    "actions.contact": "Contattaci",
     "footer.date": "30 Agosto 2027 · Sicilia",
-    "location.open": "Vedi su Google Maps ↗",
   },
   en: {
     "intro.invite": "We are delighted to invite you<br />to our wedding",
-    "intro.hint": "Tap the envelope to open the invitation",
-    "intro.skip": "Skip",
+    "intro.enter": "Enter",
     "count.days": "days",
     "count.hours": "hours",
     "count.mins": "minutes",
@@ -119,7 +115,7 @@ const I18N = {
     "tl.party": "Party",
     "tl.partyD": "Music &amp; DJ set",
     "loc.title": "Our venue",
-    "loc.maps": "View on Google Maps ↗",
+    "loc.site": "Visit the official website ↗",
     "arr.title": "Getting here",
     "arr.plane": "By plane",
     "arr.planeText": "Catania Fontanarossa airport, then about a 30-minute drive.",
@@ -159,19 +155,16 @@ const I18N = {
       "If you wish to help make our honeymoon unforgettable, " +
       "you can contribute here.",
     "gift.iban": "IBAN",
+    "gift.bank": "Bank",
     "gift.holder": "Account holder",
     "gift.reason": "Reference",
-    "gift.reasonText": "Honeymoon",
     "actions.calendar": "Add to calendar",
     "actions.map": "View the venue",
-    "actions.contact": "Contact us",
     "footer.date": "30 August 2027 · Sicily",
-    "location.open": "View on Google Maps ↗",
   },
   ro: {
     "intro.invite": "Cu bucurie vă invităm<br />la nunta noastră",
-    "intro.hint": "Atinge plicul pentru a deschide invitația",
-    "intro.skip": "Sari",
+    "intro.enter": "Intră",
     "count.days": "zile",
     "count.hours": "ore",
     "count.mins": "minute",
@@ -195,7 +188,7 @@ const I18N = {
     "tl.party": "Petrecere",
     "tl.partyD": "Muzică și DJ set",
     "loc.title": "Locația noastră",
-    "loc.maps": "Vezi pe Google Maps ↗",
+    "loc.site": "Vizitați site-ul oficial ↗",
     "arr.title": "Cum ajungeți",
     "arr.plane": "Cu avionul",
     "arr.planeText": "Aeroportul Catania Fontanarossa, apoi aproximativ 30 de minute cu mașina.",
@@ -235,14 +228,12 @@ const I18N = {
       "Dacă doriți să contribuiți ca luna noastră de miere să fie de neuitat, " +
       "puteți face acest lucru aici.",
     "gift.iban": "IBAN",
+    "gift.bank": "Banca",
     "gift.holder": "Titular",
     "gift.reason": "Detalii plată",
-    "gift.reasonText": "Luna de miere",
     "actions.calendar": "Adaugă în calendar",
     "actions.map": "Vezi locația",
-    "actions.contact": "Contactați-ne",
     "footer.date": "30 August 2027 · Sicilia",
-    "location.open": "Vezi pe Google Maps ↗",
   },
 };
 
@@ -288,14 +279,11 @@ function setMapOrigin(key) {
   const origin = MAP_ORIGINS[key];
   const dest = encodeURIComponent(MAP_DEST);
   const frame = document.getElementById("map-frame");
-  const openLink = document.getElementById("map-open");
   if (origin) {
     const from = encodeURIComponent(origin);
     frame.src = `https://www.google.com/maps?saddr=${from}&daddr=${dest}&output=embed`;
-    openLink.href = `https://www.google.com/maps/dir/?api=1&origin=${from}&destination=${dest}`;
   } else {
     frame.src = `https://www.google.com/maps?q=${dest}&output=embed`;
-    openLink.href = `https://www.google.com/maps/search/?api=1&query=${dest}`;
   }
   document.querySelectorAll("#map-chips .chip").forEach((chip) => {
     chip.classList.toggle("active", chip.dataset.origin === key);
@@ -306,9 +294,8 @@ document.querySelectorAll("#map-chips .chip").forEach((chip) => {
   chip.addEventListener("click", () => setMapOrigin(chip.dataset.origin));
 });
 
-// ---------- Envelope intro ----------
+// ---------- Intro ----------
 const intro = document.getElementById("intro");
-const envelope = document.getElementById("envelope");
 
 let alreadyEntered = false;
 try {
@@ -321,18 +308,6 @@ if (alreadyEntered) {
   document.body.classList.add("locked");
 }
 
-// one tap: the flap opens, the letter slides out, then the page dissolves
-// into the site on its own — no second click needed
-function openEnvelope() {
-  if (envelope.classList.contains("open")) return;
-  envelope.classList.add("open");
-  intro.classList.add("opened");
-  setTimeout(() => {
-    intro.classList.add("leaving");
-    setTimeout(enterSite, 520);
-  }, 560);
-}
-
 function enterSite() {
   intro.classList.add("hidden");
   document.body.classList.remove("locked");
@@ -341,21 +316,14 @@ function enterSite() {
   } catch (_) {}
 }
 
-envelope.addEventListener("click", openEnvelope);
-envelope.addEventListener("keydown", (e) => {
-  if (e.key === "Enter" || e.key === " ") {
-    e.preventDefault();
-    openEnvelope();
-  }
-});
-// tapping anywhere on the invitation sheet works too (the hint, the paper…)
-document.querySelector(".inv").addEventListener("click", openEnvelope);
-
-document.getElementById("intro-skip").addEventListener("click", (e) => {
-  e.stopPropagation();
+// one tap — on the button or anywhere on the sheet — and the intro dissolves
+function leaveIntro() {
+  if (intro.classList.contains("leaving")) return;
   intro.classList.add("leaving");
-  setTimeout(enterSite, 500);
-});
+  setTimeout(enterSite, 620);
+}
+
+document.getElementById("inv").addEventListener("click", leaveIntro);
 
 // ---------- Guest registry & RSVP ----------
 // Guests live in guests.json (code, name, seats). Add/remove families there.

@@ -119,7 +119,7 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  padding: 6.5rem 1.5rem 4rem;
+  padding: 6.5rem 1.5rem 1rem;
 }
 
 .hero-content { max-width: 860px; }
@@ -196,14 +196,14 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-illustration {
-  margin: 1.8rem auto 0;
+  margin: 0.7rem auto 0;
   max-width: 900px;
 }
 
 /* ---------- Sections & cards ---------- */
 .section { padding: 2.2rem 1.2rem; }
 
-.section:first-of-type { padding-top: 4rem; }
+.section:first-of-type { padding-top: 0.6rem; }
 
 .wcard {
   max-width: 720px;
@@ -286,7 +286,9 @@ img { max-width: 100%; display: block; }
 .tl-body { grid-column: 3; grid-row: 1; text-align: left; }
 
 .tl-step:nth-of-type(even) .tl-fig  { grid-column: 3; }
-.tl-step:nth-of-type(even) .tl-body { grid-column: 1; }
+/* text in the left column is right-aligned, so it sits next to the spine
+   and its own icon instead of leaving a gap */
+.tl-step:nth-of-type(even) .tl-body { grid-column: 1; text-align: right; }
 
 .tl-fig img {
   max-width: 100%;
@@ -341,7 +343,7 @@ img { max-width: 100%; display: block; }
   }
   .tl-step::before { width: 8px; height: 8px; box-shadow: 0 0 0 4px var(--card); }
   .tl-fig img { max-height: 92px; }
-  .tl-time { font-size: 0.92rem; letter-spacing: 0.06em; }
+  .tl-time { font-size: 1.05rem; letter-spacing: 0.06em; }
   .tl-body h3 { font-size: 0.66rem; letter-spacing: 0.1em; }
   .tl-desc { font-size: 0.71rem; line-height: 1.35; margin-top: 0.08rem; }
 }
@@ -354,8 +356,8 @@ img { max-width: 100%; display: block; }
 /* ---------- Location & travel ---------- */
 /* transparent illustration: no frame, it sits straight on the card */
 .loc-illustration {
-  max-width: 430px;
-  margin: 0 auto 1.2rem;
+  max-width: 620px;
+  margin: 0 auto 0.9rem;
 }
 
 .loc-address { font-size: 0.98rem; color: var(--ink); margin-bottom: 1.2rem; }
@@ -503,30 +505,6 @@ img { max-width: 100%; display: block; }
 
 .rsvp-logout { display: inline-block; margin-top: 1.2rem; color: var(--ink-soft); font-size: 0.85rem; }
 
-.contact-rows {
-  margin-top: 1.8rem;
-  padding-top: 1.4rem;
-  border-top: 1px dashed var(--line);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.6rem 2.4rem;
-  font-size: 0.9rem;
-  color: var(--navy);
-}
-
-.contact-rows p { display: flex; align-items: center; gap: 0.45rem; }
-
-.ct-ico {
-  width: 20px;
-  height: 20px;
-  fill: none;
-  stroke: var(--navy);
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
 /* ---------- Gift / IBAN ---------- */
 .iban-box {
   max-width: 420px;
@@ -631,7 +609,7 @@ img { max-width: 100%; display: block; }
   .timeline li + li::before { left: 55px; }
 }
 
-/* ---------- Invitation intro (photo envelope, opens on tap) ---------- */
+/* ---------- Intro: full-sheet arch photo with an Enter button ---------- */
 .intro {
   position: fixed;
   inset: 0;
@@ -639,40 +617,24 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #e5dbcf;
-  transition: opacity 0.5s ease, visibility 0.5s;
+  background: #e9e0d4;
+  transition: opacity 0.6s ease, visibility 0.6s;
 }
 
 .intro.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
 body.locked { overflow: hidden; }
 
-.intro-skip {
-  position: absolute;
-  z-index: 6;
-  top: 1.5%;
-  right: 3%;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font: inherit;
-  font-size: 0.66rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #8d8577;
-}
-
-.intro-skip:hover { color: var(--navy); }
-
-/* the invitation sheet keeps the photo's proportions, so the envelope
-   can be positioned with the exact percentages measured on the image */
+/* the sheet keeps the photo's 2:3 ratio, so the button stays exactly where
+   it sits in the artwork; the width is capped by the height too, otherwise
+   a phone held sideways would break the ratio */
 .inv {
   position: relative;
-  /* 62dvh keeps the 2:3 sheet inside short viewports (phone in landscape):
-     the width must drive the height, otherwise max-height would break the
-     aspect ratio and the envelope overlay would drift off the photo */
   width: min(94vw, 470px, 62dvh);
   aspect-ratio: 900 / 1350;
+  cursor: pointer;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .inv-scene {
@@ -684,120 +646,46 @@ body.locked { overflow: hidden; }
   user-select: none;
 }
 
-.inv-hint {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 84%;
-  max-width: 78%;
-  margin: 0 auto;
-  line-height: 1.7;
-  text-align: center;
-  font-family: var(--serif);
-  font-size: clamp(0.78rem, 2.9vw, 0.95rem);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--navy);
-  transition: opacity 0.4s;
-}
+.intro.leaving .inv { transform: scale(1.04); opacity: 0; }
 
-.inv-chev {
+/* rebuilt in HTML (the artwork's own button was flattened into the image)
+   so it can be translated and get a real focus ring */
+.inv-enter {
   position: absolute;
   left: 50%;
-  top: 92.5%;
-  width: 26px;
+  top: 89.4%;
   transform: translateX(-50%);
-  fill: none;
-  stroke: var(--gold-deep);
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  opacity: 0.85;
-  animation: chev 2.2s ease-in-out infinite;
-  transition: opacity 0.4s;
-}
-
-@keyframes chev {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, 5px); }
-}
-
-.intro.opened .inv-hint,
-.intro.opened .inv-chev { opacity: 0; }
-
-/* after the letter is out, the whole sheet drifts up and dissolves */
-.inv { transition: transform 0.55s ease, opacity 0.55s ease; }
-.intro.leaving .inv { transform: translateY(-18px) scale(1.05); opacity: 0; }
-
-/* ---- the envelope, laid over its own place in the photo ---- */
-.envelope {
-  position: absolute;
-  left: 11.72%;
-  top: 42.25%;
-  width: 76.95%;
-  height: 36.59%;
+  /* hugs its own text (with the artwork's width as a floor) so the label can
+     never be clipped, whatever the sheet size or language */
+  min-width: 19.9%;
+  padding: 0.45em 1.4em 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  background: #061f39;
+  border: 1px solid rgba(201, 162, 60, 0.55);
+  border-radius: 4px;
+  color: #d8bb72;
+  font-family: var(--serif);
+  font-size: clamp(0.55rem, 2.3vw, 0.72rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   cursor: pointer;
-  perspective: 1100px;
-  -webkit-tap-highlight-color: transparent;
+  transition: background 0.25s, color 0.25s;
 }
 
-.env-inside {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(180deg, #24334c 0%, #33476a 60%, #2b3c59 100%);
-  border-radius: 2px;
-}
+.inv-enter:hover { background: #0b2c50; color: #eedca8; }
 
-.env-pocket,
-.env-flap {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  user-select: none;
-  pointer-events: none;   /* decorative: never intercept the tap */
-}
-
-/* front of the envelope: the V notch left by the open flap */
-.env-pocket {
-  z-index: 3;
-  clip-path: polygon(0 0, 50% 52%, 100% 0, 100% 100%, 0 100%);
-  filter: drop-shadow(0 18px 32px rgba(70, 55, 40, 0.3));
-}
-
-/* the flap itself: hinges on the top edge */
-.env-flap {
-  z-index: 4;
-  clip-path: polygon(0 0, 100% 0, 50% 52%);
-  transform-origin: top center;
-  transition: transform 0.62s cubic-bezier(0.6, 0.05, 0.3, 1),
-              opacity 0.3s 0.32s;
-}
-
-.envelope.open .env-flap { transform: rotateX(180deg); opacity: 0; }
-
-/* phone held sideways: the sheet is small, so keep the hint compact */
+/* phone held sideways: the sheet is small, keep the label readable */
 @media (max-height: 540px) {
-  .inv-hint {
-    top: 81%;
-    max-width: 96%;
-    font-size: 0.7rem;
-    letter-spacing: 0.09em;
-    line-height: 1.45;
-  }
-  .inv-chev { display: none; }
+  .inv-enter { font-size: 0.5rem; letter-spacing: 0.14em; padding: 0.4em 1.1em 0.45em; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .intro, .inv, .env-flap { transition: none; }
-  .inv-chev { animation: none; }
+  .intro, .inv { transition: none; }
 }
-
-
-
-
-
 
 
 
