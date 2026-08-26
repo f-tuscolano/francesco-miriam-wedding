@@ -12,7 +12,7 @@ build, nessun framework — si apre il file e funziona.
 | --- | --- |
 | `index.html` | tutta la pagina, con i testi italiani direttamente nel markup |
 | `styles.css` | lo stile (palette, timeline a serpentina, intro, responsive) |
-| `i18n.js` | i testi nelle tre lingue: 81 chiavi × italiano, inglese, romeno |
+| `i18n.js` | i testi nelle tre lingue: 82 chiavi × italiano, inglese, romeno |
 | `script.js` | countdown, cambio lingua, mappa, intro, RSVP, comparsa allo scroll |
 | `guests.json` | il registro degli invitati (codice, nome, numero di posti) |
 | `fm-wedding.ics` | il file «Aggiungi al calendario» |
@@ -36,8 +36,9 @@ oppure cancella la chiave `fm-entered` da `sessionStorage`.
 ## Modificare i testi
 
 Ogni testo tradotto ha un attributo `data-i18n="chiave"` in `index.html`
-(o `data-i18n-ph` per i placeholder dei campi) e la chiave corrispondente nei
-tre dizionari di `i18n.js`, nello stesso ordine in cui appare nella pagina.
+(`data-i18n-ph` per i placeholder dei campi, `data-i18n-aria` per le etichette
+di accessibilità) e la chiave corrispondente nei tre dizionari di `i18n.js`,
+nello stesso ordine in cui appare nella pagina.
 
 Per cambiare una frase va aggiornata **sia** in `index.html` (versione italiana,
 quella che si vede prima che il JavaScript intervenga) **sia** in `i18n.js`.
@@ -98,5 +99,5 @@ Online: <https://f-tuscolano.github.io/francesco-miriam-wedding/>
   timeout in `leaveIntro()` combacia con la transizione CSS di `.inv`.
 - Le immagini hanno `width`/`height` nel markup per non far ballare il layout
   durante il caricamento: se ne sostituisci una, aggiorna anche quei numeri.
-- Sotto i 700px la nav nasconde i link di sezione: su telefono si naviga
-  scorrendo.
+- Sotto i 700px i link di sezione stanno in un menù che scende dalla barra
+  (`.nav.open`); si chiude scegliendo una voce, toccando fuori o con Esc.

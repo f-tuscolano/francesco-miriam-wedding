@@ -33,6 +33,10 @@ function setLang(lang) {
     const text = dict[el.dataset.i18nPh];
     if (text !== undefined) el.placeholder = text;
   });
+  document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+    const text = dict[el.dataset.i18nAria];
+    if (text !== undefined) el.setAttribute("aria-label", text);
+  });
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.lang === lang);
   });
@@ -50,6 +54,31 @@ try {
   savedLang = localStorage.getItem("fm-lang") || "it";
 } catch (_) {}
 if (savedLang !== "it") setLang(savedLang);
+
+// ---------- Menù su schermi piccoli ----------
+// Sotto i 700px i link di sezione stanno in un pannello che scende dalla barra.
+const nav = $("nav");
+const navToggle = $("nav-toggle");
+
+function closeNav() {
+  if (!nav.classList.contains("open")) return;
+  nav.classList.remove("open");
+  navToggle.setAttribute("aria-expanded", "false");
+}
+
+navToggle.addEventListener("click", () => {
+  const open = nav.classList.toggle("open");
+  navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+});
+
+// si chiude scegliendo una voce, toccando fuori dalla barra o con Esc
+nav.querySelectorAll(".nav-links a").forEach((a) => a.addEventListener("click", closeNav));
+document.addEventListener("click", (e) => {
+  if (!nav.contains(e.target)) closeNav();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeNav();
+});
 
 // ---------- Mappa: scelta del punto di partenza ----------
 const MAP_DEST = "Commenda di San Calogero, Augusta, Sicilia";

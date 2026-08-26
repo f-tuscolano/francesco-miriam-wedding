@@ -58,7 +58,7 @@
     <a class="nav-logo" href="#top" aria-label="Miriam e Francesco">
       <img src="img/logo-oro.png" width="900" height="621" alt="Miriam &amp; Francesco" />
     </a>
-    <div class="nav-links">
+    <div class="nav-links" id="nav-links">
       <a href="#details" data-i18n="nav.details">Programma</a>
       <a href="#location" data-i18n="nav.location">La location</a>
       <a href="#stay" data-i18n="nav.stay">Alloggi</a>
@@ -72,6 +72,11 @@
       <span class="lang-sep">/</span>
       <button class="lang-btn" data-lang="ro">RO</button>
     </div>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="nav-links"
+            aria-expanded="false" aria-label="Menù" data-i18n-aria="nav.menu">
+      <svg class="ico-menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
   </nav>
 
   <!-- ===== Hero ===== -->
@@ -190,7 +195,7 @@
       </ul>
       <div class="transfer">
         <h3 data-i18n="arr.transfer">Noleggio autovetture</h3>
-        <p class="muted" data-i18n="arr.transferT">Per il noleggio autovetture vi consigliamo:</p>
+        <p class="muted" data-i18n="arr.transferT">Vi consigliamo:</p>
         <p class="transfer-name">Euro Tour Servizi <span class="muted">di Russo Santo &amp; C. S.A.S.</span></p>
         <p class="muted">Via Po · Villasmundo, Melilli (SR)</p>
         <p><a href="tel:+390931959912">0931 959912</a> · <a href="tel:+393200374678">320 037 4678</a>
@@ -249,7 +254,7 @@
         <li><strong>Ortigia</strong>
           <span data-i18n="stay.d1">l'isola di Siracusa: il Duomo, il mercato la mattina, un aperitivo al tramonto sul lungomare.</span></li>
         <li><strong>Noto e il barocco</strong>
-          <span data-i18n="stay.d2">a un'ora, con Modica e Ragusa poco oltre, per una giornata tra chiese e cioccolato.</span></li>
+          <span data-i18n="stay.d2">a un'ora, con Modica e Ragusa poco oltre: tre città patrimonio UNESCO, da girare senza fretta.</span></li>
         <li><strong data-i18n="stay.d3n">Mare</strong>
           <span data-i18n="stay.d3">il borgo di pescatori di Marzamemi, la spiaggia di San Lorenzo e la riserva di Vendicari, poco più a sud.</span></li>
         <li><strong>Etna</strong>
@@ -264,7 +269,7 @@
       <h2 class="wtitle" data-i18n="rsvp.title">Conferma la tua presenza</h2>
       <div class="orn orn-gold">── <span><svg class="orn-fico" aria-hidden="true"><use href="#fico"/></svg></span> ──</div>
       <p class="wtext" data-i18n="rsvp.lead1">La vostra presenza è il regalo più bello che possiamo ricevere.</p>
-      <p class="wtext" data-i18n="rsvp.lead2">Vi chiediamo gentilmente di confermare entro il <strong>30 giugno 2027</strong>.</p>
+      <p class="wtext" data-i18n="rsvp.lead2">Vi chiediamo gentilmente di confermare entro il <strong>30 maggio 2027</strong>.</p>
 
       <div class="rsvp-box" id="rsvp-login">
         <p class="muted" data-i18n="rsvp.loginLead">Inserite il codice che trovate sul vostro invito.</p>
@@ -336,7 +341,7 @@
   </div>
 
   <footer class="footer">
-    <img class="footer-mono" src="img/monogram-fm.webp" width="640" height="296" loading="lazy"
+    <img class="footer-mono" src="img/monogram-fm-v2.webp" width="640" height="296" loading="lazy"
          alt="Francesco e Miriam" />
     <p class="footer-date" data-i18n="footer.date">30 Agosto 2027 · Sicilia</p>
   </footer>

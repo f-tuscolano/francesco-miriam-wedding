@@ -2,7 +2,7 @@
 //
 // Ogni chiave corrisponde a un attributo data-i18n (o data-i18n-ph per i
 // placeholder) in index.html, nello stesso ordine in cui appare nella pagina.
-// Per aggiungere una lingua: nuovo blocco qui con le stesse 81 chiavi,
+// Per aggiungere una lingua: nuovo blocco qui con le stesse 82 chiavi,
 // più un pulsante .lang-btn nella nav.
 
 const I18N = {
@@ -15,6 +15,7 @@ const I18N = {
     "nav.location": "La location",
     "nav.stay": "Alloggi",
     "nav.gift": "Viaggio di nozze",
+    "nav.menu": "Menù",
 
     /* Hero */
     "hero.invite": "Con gioia vi invitiamo<br />al nostro matrimonio",
@@ -53,7 +54,7 @@ const I18N = {
     "arr.tip": "Cosa consigliamo",
     "arr.tipText": "Noleggiare un'auto per vivere al meglio la meravigliosa Sicilia.",
     "arr.transfer": "Noleggio autovetture",
-    "arr.transferT": "Per il noleggio autovetture vi consigliamo:",
+    "arr.transferT": "Vi consigliamo:",
     "arr.h24": "(attivo 24 ore)",
     "arr.choose": "Scegli il tuo percorso",
 
@@ -76,7 +77,7 @@ const I18N = {
     "stay.pdf": "Scarica la lista delle strutture (PDF)",
     "stay.doTitle": "Cosa fare nei dintorni",
     "stay.d1": "l'isola di Siracusa: il Duomo, il mercato la mattina, un aperitivo al tramonto sul lungomare.",
-    "stay.d2": "a un'ora, con Modica e Ragusa poco oltre, per una giornata tra chiese e cioccolato.",
+    "stay.d2": "a un'ora, con Modica e Ragusa poco oltre: tre città patrimonio UNESCO, da girare senza fretta.",
     "stay.d3n": "Mare",
     "stay.d3": "il borgo di pescatori di Marzamemi, la spiaggia di San Lorenzo e la riserva di Vendicari, poco più a sud.",
     "stay.d4": "a un'ora e mezza: escursioni sui crateri e cantine sulle pendici.",
@@ -84,7 +85,7 @@ const I18N = {
     /* RSVP */
     "rsvp.title": "Conferma la tua presenza",
     "rsvp.lead1": "La vostra presenza è il regalo più bello che possiamo ricevere.",
-    "rsvp.lead2": "Vi chiediamo gentilmente di confermare entro il <strong>30 giugno 2027</strong>.",
+    "rsvp.lead2": "Vi chiediamo gentilmente di confermare entro il <strong>30 maggio 2027</strong>.",
     "rsvp.loginLead": "Inserite il codice che trovate sul vostro invito.",
     "rsvp.codePlaceholder": "Codice invito",
     "rsvp.login": "Accedi",
@@ -124,6 +125,7 @@ const I18N = {
     "nav.location": "The venue",
     "nav.stay": "Stay",
     "nav.gift": "Honeymoon",
+    "nav.menu": "Menu",
 
     /* Hero */
     "hero.invite": "With joy we invite you<br />to our wedding",
@@ -162,7 +164,7 @@ const I18N = {
     "arr.tip": "What we recommend",
     "arr.tipText": "Rent a car to enjoy the wonders of Sicily at their best.",
     "arr.transfer": "Car hire",
-    "arr.transferT": "For car hire we recommend:",
+    "arr.transferT": "We recommend:",
     "arr.h24": "(24 hours)",
     "arr.choose": "Choose your route",
 
@@ -185,7 +187,7 @@ const I18N = {
     "stay.pdf": "Download the list of hotels (PDF)",
     "stay.doTitle": "What to do nearby",
     "stay.d1": "the island of Syracuse: the Duomo, the morning market, an aperitivo at sunset on the seafront.",
-    "stay.d2": "an hour away, with Modica and Ragusa just beyond — a day of churches and chocolate.",
+    "stay.d2": "an hour away, with Modica and Ragusa just beyond: three UNESCO World Heritage towns, best taken slowly.",
     "stay.d3n": "The sea",
     "stay.d3": "the fishing village of Marzamemi, San Lorenzo beach and the Vendicari reserve, a little further south.",
     "stay.d4": "an hour and a half away: hikes on the craters and wineries on its slopes.",
@@ -193,7 +195,7 @@ const I18N = {
     /* RSVP */
     "rsvp.title": "Confirm your attendance",
     "rsvp.lead1": "Your presence is the most beautiful gift we could receive.",
-    "rsvp.lead2": "We kindly ask you to confirm by <strong>30 June 2027</strong>.",
+    "rsvp.lead2": "We kindly ask you to confirm by <strong>30 May 2027</strong>.",
     "rsvp.loginLead": "Enter the code printed on your invitation.",
     "rsvp.codePlaceholder": "Invitation code",
     "rsvp.login": "Log in",
@@ -233,6 +235,7 @@ const I18N = {
     "nav.location": "Locația",
     "nav.stay": "Cazare",
     "nav.gift": "Luna de miere",
+    "nav.menu": "Meniu",
 
     /* Hero */
     "hero.invite": "Cu bucurie vă invităm<br />la nunta noastră",
@@ -271,7 +274,7 @@ const I18N = {
     "arr.tip": "Ce vă recomandăm",
     "arr.tipText": "Închiriați o mașină pentru a descoperi în tihnă minunata Sicilie.",
     "arr.transfer": "Închiriere auto",
-    "arr.transferT": "Pentru închirierea de mașini vă recomandăm:",
+    "arr.transferT": "Vă recomandăm:",
     "arr.h24": "(non-stop)",
     "arr.choose": "Alegeți traseul",
 
@@ -294,7 +297,7 @@ const I18N = {
     "stay.pdf": "Descărcați lista structurilor (PDF)",
     "stay.doTitle": "Ce puteți face în zonă",
     "stay.d1": "insula Siracuzei: Domul, piața de dimineață, un aperitiv la apus pe promenadă.",
-    "stay.d2": "la o oră, iar Modica și Ragusa puțin mai departe — o zi între biserici și ciocolată.",
+    "stay.d2": "la o oră, iar Modica și Ragusa puțin mai departe: trei orașe din patrimoniul UNESCO, de vizitat fără grabă.",
     "stay.d3n": "Marea",
     "stay.d3": "satul pescăresc Marzamemi, plaja San Lorenzo și rezervația Vendicari, puțin mai la sud.",
     "stay.d4": "la o oră și jumătate: drumeții pe cratere și vinării pe versanți.",
@@ -302,7 +305,7 @@ const I18N = {
     /* RSVP */
     "rsvp.title": "Confirmați prezența",
     "rsvp.lead1": "Prezența voastră este cel mai frumos cadou pe care îl putem primi.",
-    "rsvp.lead2": "Vă rugăm să confirmați până la <strong>30 iunie 2027</strong>.",
+    "rsvp.lead2": "Vă rugăm să confirmați până la <strong>30 mai 2027</strong>.",
     "rsvp.loginLead": "Introduceți codul de pe invitația voastră.",
     "rsvp.codePlaceholder": "Cod invitație",
     "rsvp.login": "Intră",
