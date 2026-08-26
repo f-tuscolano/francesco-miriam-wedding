@@ -1,17 +1,10 @@
+# macOS
 .DS_Store
-img/maioliche_pattern_files/
-img/maioliche_pattern.html
-img/Designer.jpg
-img/log_names.jpg
-img/francesco_miriam_logo.jpeg
-img/lettering.png
-img/seal.png
-img/envelope-clean.png
-img/commenda_stilizzata.png
-img/commenda2.png
-img/new background.png
-img/nuove immagini/Commenda con mare sfumata.png
-img/nuove immagini/Facciata frontale.png
-img/nuove immagini/Facciata panoramica.png
-img/nuove immagini/Intro_sito_definitiva.png
-img/files/
+
+# Artwork originale (PNG a piena risoluzione) e immagini usate dalle versioni
+# precedenti del sito: restano in locale, fuori dal repo e fuori dal sito
+# pubblicato. Le immagini che il sito usa davvero stanno in img/.
+_source/
+
+# pagine di prova temporanee (screenshot, misure, test)
+_*.html

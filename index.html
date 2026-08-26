@@ -5,35 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Francesco &amp; Miriam · 30 Agosto 2027</title>
   <meta name="description" content="Francesco e Miriam si sposano il 30 agosto 2027 alla Commenda di San Calogero, Sicilia." />
+  <meta name="theme-color" content="#faf8f1" />
+
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- anteprima del link quando si condivide su WhatsApp, iMessage, social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Francesco &amp; Miriam · 30 Agosto 2027" />
+  <meta property="og:description" content="Ci sposiamo alla Commenda di San Calogero, in Sicilia. Programma, come raggiungerci e RSVP." />
+  <meta property="og:url" content="https://f-tuscolano.github.io/francesco-miriam-wedding/" />
+  <meta property="og:image" content="https://f-tuscolano.github.io/francesco-miriam-wedding/img/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="it_IT" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- solo le due famiglie che il CSS usa davvero, nei pesi effettivamente usati -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Great+Vibes&family=Monsieur+La+Doulaise&display=swap" rel="stylesheet" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Jost:wght@300;400;500&amp;display=swap" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="preload" as="image" href="img/intro-arco2.webp" />
+
+  <noscript>
+    <!-- senza JS niente chiude l'intro e niente rivela le schede: mostrale subito -->
+    <style>
+      .intro { display: none; }
+      .reveal { opacity: 1; transform: none; }
+    </style>
+  </noscript>
 </head>
 <body>
 
-  <!-- Intertwined F&M monogram, reused across the page -->
+  <!-- Sprite: il fico d'india che decora ogni titolo di sezione -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="fm-monogram" viewBox="0 0 150 100">
-      <text x="32" y="70" font-family="'Cormorant Garamond', Georgia, serif" font-weight="600" font-size="82" fill="currentColor">F</text>
-      <text x="60" y="88" font-family="'Cormorant Garamond', Georgia, serif" font-weight="600" font-size="82" fill="#F08064" opacity="0.95">M</text>
-    </symbol>
+    <symbol id="fico" viewBox="0 0 24 24"><ellipse cx="12" cy="15.4" rx="4.6" ry="6.1" fill="#9fb397"/><ellipse cx="6.6" cy="11.2" rx="3.1" ry="4.3" transform="rotate(-26 6.6 11.2)" fill="#93a88b"/><ellipse cx="17.5" cy="11.8" rx="2.9" ry="4.1" transform="rotate(24 17.5 11.8)" fill="#adbfa4"/><ellipse cx="9.5" cy="6.3" rx="1.5" ry="2.1" transform="rotate(-12 9.5 6.3)" fill="#c98f7a"/><ellipse cx="14.3" cy="6.1" rx="1.5" ry="2.1" transform="rotate(12 14.3 6.1)" fill="#c98f7a"/><ellipse cx="12" cy="8.1" rx="1.4" ry="2" fill="#d8a58f"/></symbol>
   </svg>
 
-  <!-- ===== Intro: the arch, then straight into the site ===== -->
+  <!-- ===== Intro: l'arco, poi direttamente nel sito ===== -->
   <div class="intro" id="intro">
     <div class="inv" id="inv">
-      <img class="inv-scene" src="img/intro-arco2.webp" alt="Commenda di San Calogero — Francesco e Miriam" />
-      <button class="inv-enter" id="inv-enter" data-i18n="intro.enter">Entra</button>
+      <img class="inv-scene" src="img/intro-arco2.webp" fetchpriority="high"
+           alt="Commenda di San Calogero — Francesco e Miriam" />
+      <button class="inv-enter" id="inv-enter" type="button" data-i18n="intro.enter">Entra</button>
     </div>
   </div>
 
   <nav class="nav" id="nav">
     <a class="nav-logo" href="#top" aria-label="Miriam e Francesco">
-      <img src="img/logo-oro.png" alt="Miriam &amp; Francesco" />
+      <img src="img/logo-oro.png" width="900" height="621" alt="Miriam &amp; Francesco" />
     </a>
     <div class="nav-links">
       <a href="#details" data-i18n="nav.details">Programma</a>
@@ -56,8 +79,8 @@
 
     <div class="hero-content reveal">
       <p class="hero-eyebrow" data-i18n="hero.invite">Con gioia vi invitiamo<br />al nostro matrimonio</p>
-      <div class="orn">─── <span><svg class="orn-fico" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="15.4" rx="4.6" ry="6.1" fill="#9fb397"/><ellipse cx="6.6" cy="11.2" rx="3.1" ry="4.3" transform="rotate(-26 6.6 11.2)" fill="#93a88b"/><ellipse cx="17.5" cy="11.8" rx="2.9" ry="4.1" transform="rotate(24 17.5 11.8)" fill="#adbfa4"/><ellipse cx="9.5" cy="6.3" rx="1.5" ry="2.1" transform="rotate(-12 9.5 6.3)" fill="#c98f7a"/><ellipse cx="14.3" cy="6.1" rx="1.5" ry="2.1" transform="rotate(12 14.3 6.1)" fill="#c98f7a"/><ellipse cx="12" cy="8.1" rx="1.4" ry="2" fill="#d8a58f"/></svg></span> ───</div>
-      <img class="hero-lettering" src="img/logo-oro.png" alt="Miriam &amp; Francesco" />
+      <div class="orn">─── <span><svg class="orn-fico" aria-hidden="true"><use href="#fico"/></svg></span> ───</div>
+      <img class="hero-lettering" src="img/logo-oro.png" width="900" height="621" alt="Miriam &amp; Francesco" />
       <p class="hero-date" data-i18n="hero.date">30 Agosto 2027</p>
       <p class="hero-venue">Siracusa · Sicilia</p>
       <div class="countdown" id="countdown">
@@ -66,20 +89,21 @@
         <div class="count-item"><span id="cd-mins">–</span><small data-i18n="count.mins">minuti</small></div>
       </div>
       <figure class="hero-illustration">
-        <img src="img/commenda-mare.webp" alt="La Commenda di San Calogero" />
+        <img src="img/commenda-mare.webp" width="1400" height="933" decoding="async"
+             alt="La Commenda di San Calogero" />
       </figure>
     </div>
   </header>
 
-  <!-- ===== Il programma ===== -->
+  <!-- ===== La timeline ===== -->
   <section class="section" id="details">
     <div class="wcard reveal">
       <h2 class="wtitle" data-i18n="giornata.title">La timeline</h2>
-      <div class="orn orn-gold">── <span><svg class="orn-fico" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="15.4" rx="4.6" ry="6.1" fill="#9fb397"/><ellipse cx="6.6" cy="11.2" rx="3.1" ry="4.3" transform="rotate(-26 6.6 11.2)" fill="#93a88b"/><ellipse cx="17.5" cy="11.8" rx="2.9" ry="4.1" transform="rotate(24 17.5 11.8)" fill="#adbfa4"/><ellipse cx="9.5" cy="6.3" rx="1.5" ry="2.1" transform="rotate(-12 9.5 6.3)" fill="#c98f7a"/><ellipse cx="14.3" cy="6.1" rx="1.5" ry="2.1" transform="rotate(12 14.3 6.1)" fill="#c98f7a"/><ellipse cx="12" cy="8.1" rx="1.4" ry="2" fill="#d8a58f"/></svg></span> ──</div>
+      <div class="orn orn-gold">── <span><svg class="orn-fico" aria-hidden="true"><use href="#fico"/></svg></span> ──</div>
       <div class="tl">
       <svg class="tl-wave" viewBox="0 0 40 1200" preserveAspectRatio="none" aria-hidden="true"><path d="M 20 0 C 36 25, 36 75, 20 100 C 4 125, 4 175, 20 200 C 36 225, 36 275, 20 300 C 4 325, 4 375, 20 400 C 36 425, 36 475, 20 500 C 4 525, 4 575, 20 600 C 36 625, 36 675, 20 700 C 4 725, 4 775, 20 800 C 36 825, 36 875, 20 900 C 4 925, 4 975, 20 1000 C 36 1025, 36 1075, 20 1100 C 4 1125, 4 1175, 20 1200" /></svg>
       <div class="tl-step">
-        <figure class="tl-fig"><img src="img/tl-accoglienza.webp" alt="" loading="lazy" /></figure>
+        <figure class="tl-fig"><img src="img/tl-accoglienza.webp" width="520" height="411" alt="" loading="lazy" decoding="async" /></figure>
         <div class="tl-body">
           <p class="tl-time">17:00</p>
           <h3 data-i18n="tl.accoglienza">Accoglienza</h3>
@@ -87,7 +111,7 @@
         </div>
       </div>
       <div class="tl-step">
-        <figure class="tl-fig"><img src="img/tl-cerimonia.webp" alt="" loading="lazy" /></figure>
+        <figure class="tl-fig"><img src="img/tl-cerimonia.webp" width="520" height="285" alt="" loading="lazy" decoding="async" /></figure>
         <div class="tl-body">
           <p class="tl-time">17:30</p>
           <h3 data-i18n="tl.cerimonia">Cerimonia</h3>
@@ -95,7 +119,7 @@
         </div>
       </div>
       <div class="tl-step">
-        <figure class="tl-fig"><img src="img/tl-aperitivo.webp" alt="" loading="lazy" /></figure>
+        <figure class="tl-fig"><img src="img/tl-aperitivo.webp" width="440" height="376" alt="" loading="lazy" decoding="async" /></figure>
         <div class="tl-body">
           <p class="tl-time">18:30</p>
           <h3 data-i18n="tl.aperitivo">Aperitivo</h3>
@@ -103,7 +127,7 @@
         </div>
       </div>
       <div class="tl-step">
-        <figure class="tl-fig"><img src="img/tl-cena.webp" alt="" loading="lazy" /></figure>
+        <figure class="tl-fig"><img src="img/tl-cena.webp" width="520" height="263" alt="" loading="lazy" decoding="async" /></figure>
         <div class="tl-body">
           <p class="tl-time">20:00</p>
           <h3 data-i18n="tl.cena">Cena</h3>
@@ -111,7 +135,7 @@
         </div>
       </div>
       <div class="tl-step">
-        <figure class="tl-fig"><img src="img/tl-torta.webp" alt="" loading="lazy" /></figure>
+        <figure class="tl-fig"><img src="img/tl-torta.webp" width="380" height="522" alt="" loading="lazy" decoding="async" /></figure>
         <div class="tl-body">
           <p class="tl-time">23:30</p>
           <h3 data-i18n="tl.torta">Torta</h3>
@@ -119,7 +143,7 @@
         </div>
       </div>
       <div class="tl-step">
-        <figure class="tl-fig"><img src="img/tl-party.webp" alt="" loading="lazy" /></figure>
+        <figure class="tl-fig"><img src="img/tl-party.webp" width="420" height="383" alt="" loading="lazy" decoding="async" /></figure>
         <div class="tl-body">
           <p class="tl-time">00:00</p>
           <h3 data-i18n="tl.party">Party</h3>
@@ -130,13 +154,14 @@
     </div>
   </section>
 
-  <!-- ===== Location & come raggiungerci ===== -->
+  <!-- ===== Location e come raggiungerci ===== -->
   <section class="section" id="location">
     <div class="wcard reveal">
       <h2 class="wtitle" data-i18n="loc.title">La nostra location</h2>
-      <div class="orn orn-gold">── <span><svg class="orn-fico" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="15.4" rx="4.6" ry="6.1" fill="#9fb397"/><ellipse cx="6.6" cy="11.2" rx="3.1" ry="4.3" transform="rotate(-26 6.6 11.2)" fill="#93a88b"/><ellipse cx="17.5" cy="11.8" rx="2.9" ry="4.1" transform="rotate(24 17.5 11.8)" fill="#adbfa4"/><ellipse cx="9.5" cy="6.3" rx="1.5" ry="2.1" transform="rotate(-12 9.5 6.3)" fill="#c98f7a"/><ellipse cx="14.3" cy="6.1" rx="1.5" ry="2.1" transform="rotate(12 14.3 6.1)" fill="#c98f7a"/><ellipse cx="12" cy="8.1" rx="1.4" ry="2" fill="#d8a58f"/></svg></span> ──</div>
+      <div class="orn orn-gold">── <span><svg class="orn-fico" aria-hidden="true"><use href="#fico"/></svg></span> ──</div>
       <figure class="loc-illustration">
-        <img src="img/location-tenuta.webp" alt="La Commenda di San Calogero vista dall'alto" loading="lazy" />
+        <img src="img/location-tenuta.webp" width="1300" height="867" loading="lazy" decoding="async"
+             alt="La Commenda di San Calogero vista dall'alto" />
       </figure>
       <p class="loc-address"><span class="loc-pin">📍</span> Commenda di San Calogero<br />Contrada San Calogero · Sicilia</p>
       <p class="center">
@@ -148,7 +173,7 @@
 
     <div class="wcard reveal">
       <h2 class="wtitle" data-i18n="arr.title">Come raggiungerci</h2>
-      <div class="orn orn-gold">── <span><svg class="orn-fico" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="15.4" rx="4.6" ry="6.1" fill="#9fb397"/><ellipse cx="6.6" cy="11.2" rx="3.1" ry="4.3" transform="rotate(-26 6.6 11.2)" fill="#93a88b"/><ellipse cx="17.5" cy="11.8" rx="2.9" ry="4.1" transform="rotate(24 17.5 11.8)" fill="#adbfa4"/><ellipse cx="9.5" cy="6.3" rx="1.5" ry="2.1" transform="rotate(-12 9.5 6.3)" fill="#c98f7a"/><ellipse cx="14.3" cy="6.1" rx="1.5" ry="2.1" transform="rotate(12 14.3 6.1)" fill="#c98f7a"/><ellipse cx="12" cy="8.1" rx="1.4" ry="2" fill="#d8a58f"/></svg></span> ──</div>
+      <div class="orn orn-gold">── <span><svg class="orn-fico" aria-hidden="true"><use href="#fico"/></svg></span> ──</div>
       <ul class="travel-list">
         <li>
           <svg class="tr-ico" viewBox="0 0 24 24"><path d="M10.5 20.5 l1.2 -6.4 -6.2 1.6 -0.9 -1.7 5.6 -3.4 -0.7 -5.4 a1.5 1.5 0 0 1 3 0 l1.6 4.5 5.3 -1.4 a1.4 1.4 0 0 1 0.8 2.7 l-11 4"/></svg>
@@ -198,7 +223,7 @@
   <section class="section" id="stay">
     <div class="wcard reveal">
       <h2 class="wtitle" data-i18n="stay.title">Dove alloggiare</h2>
-      <div class="orn orn-gold">── <span><svg class="orn-fico" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="15.4" rx="4.6" ry="6.1" fill="#9fb397"/><ellipse cx="6.6" cy="11.2" rx="3.1" ry="4.3" transform="rotate(-26 6.6 11.2)" fill="#93a88b"/><ellipse cx="17.5" cy="11.8" rx="2.9" ry="4.1" transform="rotate(24 17.5 11.8)" fill="#adbfa4"/><ellipse cx="9.5" cy="6.3" rx="1.5" ry="2.1" transform="rotate(-12 9.5 6.3)" fill="#c98f7a"/><ellipse cx="14.3" cy="6.1" rx="1.5" ry="2.1" transform="rotate(12 14.3 6.1)" fill="#c98f7a"/><ellipse cx="12" cy="8.1" rx="1.4" ry="2" fill="#d8a58f"/></svg></span> ──</div>
+      <div class="orn orn-gold">── <span><svg class="orn-fico" aria-hidden="true"><use href="#fico"/></svg></span> ──</div>
 
       <p class="wtext" data-i18n="stay.lead">
         Il nostro consiglio è di arrivare il venerdì e concedervi qualche giorno:
@@ -237,7 +262,7 @@
   <section class="section" id="rsvp">
     <div class="wcard reveal">
       <h2 class="wtitle" data-i18n="rsvp.title">Conferma la tua presenza</h2>
-      <div class="orn orn-gold">── <span><svg class="orn-fico" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="15.4" rx="4.6" ry="6.1" fill="#9fb397"/><ellipse cx="6.6" cy="11.2" rx="3.1" ry="4.3" transform="rotate(-26 6.6 11.2)" fill="#93a88b"/><ellipse cx="17.5" cy="11.8" rx="2.9" ry="4.1" transform="rotate(24 17.5 11.8)" fill="#adbfa4"/><ellipse cx="9.5" cy="6.3" rx="1.5" ry="2.1" transform="rotate(-12 9.5 6.3)" fill="#c98f7a"/><ellipse cx="14.3" cy="6.1" rx="1.5" ry="2.1" transform="rotate(12 14.3 6.1)" fill="#c98f7a"/><ellipse cx="12" cy="8.1" rx="1.4" ry="2" fill="#d8a58f"/></svg></span> ──</div>
+      <div class="orn orn-gold">── <span><svg class="orn-fico" aria-hidden="true"><use href="#fico"/></svg></span> ──</div>
       <p class="wtext" data-i18n="rsvp.lead1">La vostra presenza è il regalo più bello che possiamo ricevere.</p>
       <p class="wtext" data-i18n="rsvp.lead2">Vi chiediamo gentilmente di confermare entro il <strong>30 giugno 2027</strong>.</p>
 
@@ -280,7 +305,7 @@
   <section class="section" id="gift">
     <div class="wcard reveal">
       <h2 class="wtitle" data-i18n="gift.title">Viaggio di nozze</h2>
-      <div class="orn orn-gold">── <span><svg class="orn-fico" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="15.4" rx="4.6" ry="6.1" fill="#9fb397"/><ellipse cx="6.6" cy="11.2" rx="3.1" ry="4.3" transform="rotate(-26 6.6 11.2)" fill="#93a88b"/><ellipse cx="17.5" cy="11.8" rx="2.9" ry="4.1" transform="rotate(24 17.5 11.8)" fill="#adbfa4"/><ellipse cx="9.5" cy="6.3" rx="1.5" ry="2.1" transform="rotate(-12 9.5 6.3)" fill="#c98f7a"/><ellipse cx="14.3" cy="6.1" rx="1.5" ry="2.1" transform="rotate(12 14.3 6.1)" fill="#c98f7a"/><ellipse cx="12" cy="8.1" rx="1.4" ry="2" fill="#d8a58f"/></svg></span> ──</div>
+      <div class="orn orn-gold">── <span><svg class="orn-fico" aria-hidden="true"><use href="#fico"/></svg></span> ──</div>
       <p class="wtext" data-i18n="gift.lead">
         Se desiderate contribuire a rendere indimenticabile il nostro viaggio di nozze,
         potete farlo qui.
@@ -311,10 +336,12 @@
   </div>
 
   <footer class="footer">
-    <img class="footer-mono" src="img/monogram-fm.webp" alt="Francesco e Miriam" />
+    <img class="footer-mono" src="img/monogram-fm.webp" width="640" height="296" loading="lazy"
+         alt="Francesco e Miriam" />
     <p class="footer-date" data-i18n="footer.date">30 Agosto 2027 · Sicilia</p>
   </footer>
 
+  <script src="i18n.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

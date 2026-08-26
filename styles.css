@@ -1,7 +1,7 @@
 /* ============ Miriam & Francesco — 30 Agosto 2027 ============ */
 
 :root {
-  /* inner-site palette: cream, dusty blue, navy, gold — per mockup */
+  /* palette del sito: crema, blu polvere, navy, oro — come da mockup */
   --ink: #3a4a63;
   --ink-soft: #6b7a94;
   --paper: #faf8f1;
@@ -13,13 +13,6 @@
   --gold: #c9a23c;
   --gold-deep: #a37c1f;
   --line: #e5e1d2;
-  /* kept for the intro (landing) styles */
-  --sage: #7e9780;
-  --sage-deep: #5f7a63;
-  --coral: #f08064;
-  --peach: #ffd2bf;
-  --teal: #70abb6;
-  --gold-old: #f2a253;
   --serif: "Cormorant Garamond", Georgia, serif;
   --sans: "Jost", "Helvetica Neue", sans-serif;
 }
@@ -36,12 +29,12 @@ body {
   line-height: 1.75;
 }
 
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 
 .center { text-align: center; }
 .muted { color: var(--ink-soft); font-size: 0.92rem; }
 
-/* ---------- Buttons ---------- */
+/* ---------- Pulsanti ---------- */
 .btn {
   display: inline-block;
   padding: 0.7rem 1.9rem;
@@ -200,8 +193,8 @@ img { max-width: 100%; display: block; }
   max-width: 1010px;
 }
 
-/* ---------- Sections & cards ---------- */
-.section { padding: 2.2rem 1.2rem; }
+/* ---------- Sezioni e schede ---------- */
+.section { padding: 2.2rem 1.2rem; scroll-margin-top: 4rem; }
 
 .section:first-of-type { padding-top: 0.6rem; }
 
@@ -233,7 +226,7 @@ img { max-width: 100%; display: block; }
   font-size: 0.97rem;
 }
 
-/* ---------- Timeline (serpentine, alternating sides) ---------- */
+/* ---------- Timeline (serpentina, lati alternati) ---------- */
 .tl {
   position: relative;
   max-width: 640px;
@@ -269,7 +262,7 @@ img { max-width: 100%; display: block; }
   padding: 0.5rem 0;
 }
 
-/* gold dot sitting on the spine */
+/* il pallino d'oro appoggiato sulla serpentina */
 .tl-step::before {
   content: "";
   grid-column: 2;
@@ -286,8 +279,8 @@ img { max-width: 100%; display: block; }
 .tl-body { grid-column: 3; grid-row: 1; text-align: left; }
 
 .tl-step:nth-of-type(even) .tl-fig  { grid-column: 3; }
-/* text in the left column is right-aligned, so it sits next to the spine
-   and its own icon instead of leaving a gap */
+/* il testo nella colonna di sinistra è allineato a destra, così sta accanto
+   alla serpentina e alla propria illustrazione invece di lasciare un buco */
 .tl-step:nth-of-type(even) .tl-body { grid-column: 1; text-align: right; }
 
 .tl-fig img {
@@ -323,8 +316,8 @@ img { max-width: 100%; display: block; }
   margin-top: 0.15rem;
 }
 
-/* phones: keep the serpentine and the alternating sides, just tighter
-   — the illustrations shrink instead of the layout collapsing */
+/* telefoni: serpentina e lati alternati restano, solo più compatti
+   — si rimpiccioliscono le illustrazioni, non crolla l'impaginazione */
 @media (max-width: 640px) {
   #details .wcard { padding-left: 0.6rem; padding-right: 0.6rem; }
   .tl-step {
@@ -332,8 +325,8 @@ img { max-width: 100%; display: block; }
     gap: 0.2rem;
     padding: 0.3rem 0;
   }
-  /* the swing is a share of this width, so a narrow gutter would flatten
-     the wave into a straight line: keep it wide and the dots chunky */
+  /* l'ampiezza dell'onda è una frazione di questa larghezza: un corridoio
+     stretto appiattirebbe la serpentina in una linea retta */
   .tl-wave { width: 34px; top: 8px; height: calc(100% - 16px); }
   .tl-wave path {
     stroke: var(--gold-deep);
@@ -353,11 +346,11 @@ img { max-width: 100%; display: block; }
   .tl-desc { font-size: 0.68rem; }
 }
 
-/* ---------- Location & travel ---------- */
-/* transparent illustration: no frame, it sits straight on the card */
+/* ---------- Location e come raggiungerci ---------- */
+/* illustrazione trasparente: nessuna cornice, appoggiata sulla scheda */
 .loc-illustration {
-  /* bleeds a little past the card padding: the artwork's edges fade out,
-     so it reads as bigger without touching the card's own margins */
+  /* sborda un po' dal padding della scheda: i bordi del disegno sfumano,
+     così sembra più grande senza toccare i margini della scheda */
   width: calc(100% + 1.8rem);
   max-width: none;
   margin: 0 -0.9rem 0.9rem;
@@ -456,7 +449,7 @@ img { max-width: 100%; display: block; }
 
 .map-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-/* ---------- Transfer provider ---------- */
+/* ---------- Noleggio autovetture ---------- */
 .transfer {
   max-width: 470px;
   margin: 0 auto 1.6rem;
@@ -489,7 +482,7 @@ img { max-width: 100%; display: block; }
 .transfer a { color: var(--gold-deep); text-decoration: none; }
 .transfer a:hover { text-decoration: underline; }
 
-/* ---------- Where to stay ---------- */
+/* ---------- Dove alloggiare ---------- */
 .stay-list {
   list-style: none;
   max-width: 470px;
@@ -590,7 +583,7 @@ img { max-width: 100%; display: block; }
 
 .rsvp-logout { display: inline-block; margin-top: 1.2rem; color: var(--ink-soft); font-size: 0.85rem; }
 
-/* ---------- Gift / IBAN ---------- */
+/* ---------- Viaggio di nozze / IBAN ---------- */
 .iban-box {
   max-width: 420px;
   margin: 1.2rem auto 0;
@@ -615,7 +608,7 @@ img { max-width: 100%; display: block; }
 
 .iban-code { letter-spacing: 0.08em; font-family: "Courier New", monospace; font-size: 0.9rem; }
 
-/* ---------- Action bar & footer ---------- */
+/* ---------- Action bar e footer ---------- */
 .action-bar {
   max-width: 860px;
   margin: 2.6rem auto 0;
@@ -653,11 +646,9 @@ img { max-width: 100%; display: block; }
   stroke-linejoin: round;
 }
 
-.ab-heart { color: var(--gold); }
-
 .footer { text-align: center; padding: 3rem 1.5rem 2.6rem; }
 
-/* F and M from the logo's calligraphy, tied by a stylised ring */
+/* la F e la M del logo, legate da un anello stilizzato */
 .footer-mono {
   width: 124px;
   margin: 0 auto 0.5rem;
@@ -671,7 +662,7 @@ img { max-width: 100%; display: block; }
   margin-top: 0.3rem;
 }
 
-/* ---------- Reveal on scroll ---------- */
+/* ---------- Comparsa allo scroll ---------- */
 .reveal {
   opacity: 0;
   transform: translateY(22px);
@@ -685,16 +676,14 @@ img { max-width: 100%; display: block; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
 
-/* ---------- Small screens ---------- */
+/* ---------- Schermi piccoli ---------- */
 @media (max-width: 700px) {
   .nav-links { display: none; }
   .countdown { gap: 1.5rem; }
   .wcard { padding: 2.1rem 1.2rem 2rem; }
-  .timeline li { grid-template-columns: 48px 16px 30px 1fr; }
-  .timeline li + li::before { left: 55px; }
 }
 
-/* ---------- Intro: full-sheet arch photo with an Enter button ---------- */
+/* ---------- Intro: il foglio con l'arco e il pulsante Entra ---------- */
 .intro {
   position: fixed;
   inset: 0;
@@ -710,9 +699,9 @@ img { max-width: 100%; display: block; }
 
 body.locked { overflow: hidden; }
 
-/* the sheet keeps the photo's 2:3 ratio, so the button stays exactly where
-   it sits in the artwork; the width is capped by the height too, otherwise
-   a phone held sideways would break the ratio */
+/* il foglio mantiene il rapporto 2:3 della foto, così il pulsante resta
+   esattamente dov'è nel disegno; la larghezza è limitata anche dall'altezza,
+   altrimenti un telefono in orizzontale romperebbe le proporzioni */
 .inv {
   position: relative;
   width: min(94vw, 470px, 62dvh);
@@ -733,15 +722,15 @@ body.locked { overflow: hidden; }
 
 .intro.leaving .inv { transform: scale(1.04); opacity: 0; }
 
-/* rebuilt in HTML (the artwork's own button was flattened into the image)
-   so it can be translated and get a real focus ring */
+/* ricostruito in HTML (quello del disegno è parte dell'immagine) così può
+   essere tradotto e avere un contorno di focus vero */
 .inv-enter {
   position: absolute;
   left: 50%;
   top: 89.4%;
   transform: translateX(-50%);
-  /* hugs its own text (with the artwork's width as a floor) so the label can
-     never be clipped, whatever the sheet size or language */
+  /* si adatta al proprio testo (con la larghezza del disegno come minimo)
+     così l'etichetta non viene mai tagliata, in qualunque lingua */
   min-width: 19.9%;
   padding: 0.45em 1.4em 0.5em;
   display: flex;
@@ -763,7 +752,7 @@ body.locked { overflow: hidden; }
 
 .inv-enter:hover { background: #0b2c50; color: #eedca8; }
 
-/* phone held sideways: the sheet is small, keep the label readable */
+/* telefono in orizzontale: il foglio è piccolo, l'etichetta resta leggibile */
 @media (max-height: 540px) {
   .inv-enter { font-size: 0.5rem; letter-spacing: 0.14em; padding: 0.4em 1.1em 0.45em; }
 }
@@ -771,11 +760,3 @@ body.locked { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .intro, .inv { transition: none; }
 }
-
-
-
-
-
-
-
-
