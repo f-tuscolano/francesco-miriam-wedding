@@ -197,7 +197,7 @@ img { max-width: 100%; display: block; }
 
 .hero-illustration {
   margin: 0.7rem auto 0;
-  max-width: 900px;
+  max-width: 1010px;
 }
 
 /* ---------- Sections & cards ---------- */
@@ -356,8 +356,11 @@ img { max-width: 100%; display: block; }
 /* ---------- Location & travel ---------- */
 /* transparent illustration: no frame, it sits straight on the card */
 .loc-illustration {
-  max-width: 620px;
-  margin: 0 auto 0.9rem;
+  /* bleeds a little past the card padding: the artwork's edges fade out,
+     so it reads as bigger without touching the card's own margins */
+  width: calc(100% + 1.8rem);
+  max-width: none;
+  margin: 0 -0.9rem 0.9rem;
 }
 
 .loc-address { font-size: 0.98rem; color: var(--ink); margin-bottom: 1.2rem; }
@@ -440,11 +443,93 @@ img { max-width: 100%; display: block; }
   min-height: 280px;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 2px solid var(--dusty-soft);
   filter: saturate(0.85);
 }
 
+.map-hint {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
 .map-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* ---------- Transfer provider ---------- */
+.transfer {
+  max-width: 470px;
+  margin: 0 auto 1.6rem;
+  padding: 1.1rem 1.3rem;
+  text-align: left;
+  background: #fff;
+  border: 1px dashed var(--dusty-soft);
+  border-radius: 12px;
+  font-size: 0.92rem;
+}
+
+.transfer h3 {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+
+.transfer p { line-height: 1.5; }
+
+.transfer-name {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--navy);
+  margin-top: 0.4rem;
+}
+
+.transfer a { color: var(--gold-deep); text-decoration: none; }
+.transfer a:hover { text-decoration: underline; }
+
+/* ---------- Where to stay ---------- */
+.stay-list {
+  list-style: none;
+  max-width: 470px;
+  margin: 0.4rem auto 1.4rem;
+  text-align: left;
+  font-size: 0.94rem;
+}
+
+.stay-list li {
+  position: relative;
+  padding: 0.35rem 0 0.35rem 1rem;
+  line-height: 1.5;
+}
+
+.stay-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.95rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.stay-list strong {
+  font-weight: 500;
+  color: var(--navy);
+}
+
+.stay-list strong::after { content: " — "; color: var(--ink-soft); font-weight: 300; }
+
+.stay-sub {
+  margin-top: 1.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.8rem;
+  color: var(--gold-deep);
+}
 
 /* ---------- RSVP ---------- */
 .rsvp-box { margin-top: 1.6rem; }
@@ -686,6 +771,9 @@ body.locked { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .intro, .inv { transition: none; }
 }
+
+
+
 
 
 

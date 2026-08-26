@@ -6,10 +6,10 @@ METHOD:PUBLISH
 BEGIN:VEVENT
 UID:matrimonio-miriam-francesco-20270830@f-tuscolano.github.io
 DTSTAMP:20260819T120000Z
-DTSTART;TZID=Europe/Rome:20270830T160000
-DTEND;TZID=Europe/Rome:20270831T000000
+DTSTART;TZID=Europe/Rome:20270830T170000
+DTEND;TZID=Europe/Rome:20270831T020000
 SUMMARY:Matrimonio di Miriam e Francesco
 LOCATION:Commenda di San Calogero\, Contrada San Calogero\, Augusta (SR)\, Sicilia
-DESCRIPTION:Con gioia vi invitiamo al nostro matrimonio! Arrivo ospiti ore 16:00\, cerimonia ore 16:30.\nhttps://f-tuscolano.github.io/francesco-miriam-wedding/
+DESCRIPTION:Con gioia vi invitiamo al nostro matrimonio! Arrivo ospiti ore 17:00\, cerimonia ore 17:30.\nhttps://f-tuscolano.github.io/francesco-miriam-wedding/
 END:VEVENT
 END:VCALENDAR

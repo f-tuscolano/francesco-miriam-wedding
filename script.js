@@ -1,7 +1,7 @@
 // ===== Francesco & Miriam — 30 agosto 2027 =====
 
 // ---------- Countdown ----------
-const WEDDING_DATE = new Date("2027-08-30T16:00:00+02:00");
+const WEDDING_DATE = new Date("2027-08-30T17:00:00+02:00");
 
 function updateCountdown() {
   const diff = WEDDING_DATE - new Date();
@@ -17,7 +17,25 @@ setInterval(updateCountdown, 30000);
 // ---------- i18n (italiano prima, poi inglese) ----------
 const I18N = {
   it: {
-    "intro.invite": "Siamo lieti di invitarvi<br />al nostro matrimonio",
+    "arr.transfer": "Noleggio autovetture",
+    "arr.transferT": "Per il noleggio autovetture vi consigliamo:",
+    "arr.h24": "(attivo 24 ore)",
+    "stay.lead":
+      "Il nostro consiglio è di arrivare il venerdì e concedervi qualche giorno: " +
+      "la Sicilia orientale merita almeno un lungo weekend.",
+    "stay.z1": "Brucoli e Augusta",
+    "stay.z1T": "i borghi di mare più vicini alla Commenda, a 10–15 minuti d'auto.",
+    "stay.z2": "Siracusa e Ortigia",
+    "stay.z2T": "a circa 30 minuti: hotel, B&B e un centro storico indimenticabile.",
+    "stay.z3": "Agriturismi nell'entroterra",
+    "stay.z3T": "tra Carlentini e Agnone Bagni, immersi negli agrumeti.",
+    "stay.pdf": "Scarica la lista delle strutture (PDF)",
+    "stay.doTitle": "Cosa fare nei dintorni",
+    "stay.d1": "l'isola di Siracusa: il Duomo, il mercato la mattina, un aperitivo al tramonto sul lungomare.",
+    "stay.d2": "a un'ora, con Modica e Ragusa poco oltre, per una giornata tra chiese e cioccolato.",
+    "stay.d3n": "Mare",
+    "stay.d3": "il borgo di pescatori di Marzamemi, la spiaggia di San Lorenzo e la riserva di Vendicari, poco più a sud.",
+    "stay.d4": "a un'ora e mezza: escursioni sui crateri e cantine sulle pendici.",
     "intro.enter": "Entra",
     "count.days": "giorni",
     "count.hours": "ore",
@@ -55,12 +73,8 @@ const I18N = {
     "map.fromStation": "Da Catania Centrale",
     "map.fromSiracusa": "Da Siracusa",
     "map.venueOnly": "Solo la tenuta",
+    "map.hint": "Nella mappa tocca «More options» per aprire il percorso in Google Maps.",
     "stay.title": "Dove alloggiare",
-    "stay.p1":
-      "Nei dintorni ci sono ottime soluzioni: i borghi di mare di Brucoli e Augusta " +
-      "sono i più vicini, mentre Siracusa e l'isola di Ortigia (circa 30 minuti) " +
-      "offrono hotel, B&B e un centro storico indimenticabile.",
-    "stay.todo": "[Aggiungeremo qui gli hotel consigliati e le eventuali convenzioni.]",
     "rsvp.title": "Conferma la tua presenza",
     "rsvp.lead1": "La vostra presenza è il regalo più bello che possiamo ricevere.",
     "rsvp.lead2": "Vi chiediamo gentilmente di confermare entro il <strong>30 giugno 2027</strong>.",
@@ -90,7 +104,25 @@ const I18N = {
     "footer.date": "30 Agosto 2027 · Sicilia",
   },
   en: {
-    "intro.invite": "We are delighted to invite you<br />to our wedding",
+    "arr.transfer": "Car hire",
+    "arr.transferT": "For car hire we recommend:",
+    "arr.h24": "(24 hours)",
+    "stay.lead":
+      "Our advice is to arrive on the Friday and give yourselves a few days: " +
+      "eastern Sicily deserves at least a long weekend.",
+    "stay.z1": "Brucoli and Augusta",
+    "stay.z1T": "the seaside villages closest to the Commenda, a 10–15 minute drive away.",
+    "stay.z2": "Syracuse and Ortigia",
+    "stay.z2T": "about 30 minutes away: hotels, B&Bs and an unforgettable old town.",
+    "stay.z3": "Countryside farmhouses",
+    "stay.z3T": "between Carlentini and Agnone Bagni, surrounded by citrus groves.",
+    "stay.pdf": "Download the list of hotels (PDF)",
+    "stay.doTitle": "What to do nearby",
+    "stay.d1": "the island of Syracuse: the Duomo, the morning market, an aperitivo at sunset on the seafront.",
+    "stay.d2": "an hour away, with Modica and Ragusa just beyond — a day of churches and chocolate.",
+    "stay.d3n": "The sea",
+    "stay.d3": "the fishing village of Marzamemi, San Lorenzo beach and the Vendicari reserve, a little further south.",
+    "stay.d4": "an hour and a half away: hikes on the craters and wineries on its slopes.",
     "intro.enter": "Enter",
     "count.days": "days",
     "count.hours": "hours",
@@ -128,12 +160,8 @@ const I18N = {
     "map.fromStation": "From Catania Centrale",
     "map.fromSiracusa": "From Syracuse",
     "map.venueOnly": "Venue only",
+    "map.hint": "On the map, tap “More options” to open the route in Google Maps.",
     "stay.title": "Where to stay",
-    "stay.p1":
-      "There are great options nearby: the seaside villages of Brucoli and Augusta " +
-      "are the closest, while Syracuse and the island of Ortigia (about 30 minutes) " +
-      "offer hotels, B&Bs and an unforgettable old town.",
-    "stay.todo": "[We'll list recommended hotels and any group rates here.]",
     "rsvp.title": "Confirm your attendance",
     "rsvp.lead1": "Your presence is the most beautiful gift we could receive.",
     "rsvp.lead2": "We kindly ask you to confirm by <strong>30 June 2027</strong>.",
@@ -163,7 +191,25 @@ const I18N = {
     "footer.date": "30 August 2027 · Sicily",
   },
   ro: {
-    "intro.invite": "Cu bucurie vă invităm<br />la nunta noastră",
+    "arr.transfer": "Închiriere auto",
+    "arr.transferT": "Pentru închirierea de mașini vă recomandăm:",
+    "arr.h24": "(non-stop)",
+    "stay.lead":
+      "Vă sfătuim să ajungeți vineri și să vă acordați câteva zile: " +
+      "Sicilia orientală merită cel puțin un weekend lung.",
+    "stay.z1": "Brucoli și Augusta",
+    "stay.z1T": "satele de pe malul mării cele mai apropiate de Commenda, la 10–15 minute cu mașina.",
+    "stay.z2": "Siracusa și Ortigia",
+    "stay.z2T": "la circa 30 de minute: hoteluri, pensiuni și un centru istoric de neuitat.",
+    "stay.z3": "Pensiuni agroturistice",
+    "stay.z3T": "între Carlentini și Agnone Bagni, în mijlocul plantațiilor de citrice.",
+    "stay.pdf": "Descărcați lista structurilor (PDF)",
+    "stay.doTitle": "Ce puteți face în zonă",
+    "stay.d1": "insula Siracuzei: Domul, piața de dimineață, un aperitiv la apus pe promenadă.",
+    "stay.d2": "la o oră, iar Modica și Ragusa puțin mai departe — o zi între biserici și ciocolată.",
+    "stay.d3n": "Marea",
+    "stay.d3": "satul pescăresc Marzamemi, plaja San Lorenzo și rezervația Vendicari, puțin mai la sud.",
+    "stay.d4": "la o oră și jumătate: drumeții pe cratere și vinării pe versanți.",
     "intro.enter": "Intră",
     "count.days": "zile",
     "count.hours": "ore",
@@ -201,12 +247,8 @@ const I18N = {
     "map.fromStation": "De la Catania Centrale",
     "map.fromSiracusa": "De la Siracusa",
     "map.venueOnly": "Doar locația",
+    "map.hint": "Pe hartă atingeți «More options» pentru a deschide traseul în Google Maps.",
     "stay.title": "Unde să stați",
-    "stay.p1":
-      "În apropiere există soluții foarte bune: satele de pe malul mării Brucoli și " +
-      "Augusta sunt cele mai apropiate, iar Siracusa și insula Ortigia (la circa 30 " +
-      "de minute) oferă hoteluri, pensiuni și un centru istoric de neuitat.",
-    "stay.todo": "[Vom adăuga aici hotelurile recomandate și eventualele tarife convenite.]",
     "rsvp.title": "Confirmați prezența",
     "rsvp.lead1": "Prezența voastră este cel mai frumos cadou pe care îl putem primi.",
     "rsvp.lead2": "Vă rugăm să confirmați până la <strong>30 iunie 2027</strong>.",
