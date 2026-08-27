@@ -89,6 +89,7 @@ const I18N = {
     "rsvp.loginLead": "Inserite il codice che trovate sul vostro invito.",
     "rsvp.codePlaceholder": "Codice invito",
     "rsvp.login": "Accedi",
+    "rsvp.checking": "Verifico…",   /* usata da script.js */
     "rsvp.error": "Codice non valido — riprovate.",
     "rsvp.netError": "Problema di connessione. Riprovate tra poco.",
     "rsvp.welcome": "Benvenuti",
@@ -201,6 +202,7 @@ const I18N = {
     "rsvp.loginLead": "Enter the code printed on your invitation.",
     "rsvp.codePlaceholder": "Invitation code",
     "rsvp.login": "Log in",
+    "rsvp.checking": "Checking…",   /* usata da script.js */
     "rsvp.error": "Invalid code — please try again.",
     "rsvp.netError": "Connection problem. Please try again shortly.",
     "rsvp.welcome": "Welcome",
@@ -313,6 +315,7 @@ const I18N = {
     "rsvp.loginLead": "Introduceți codul de pe invitația voastră.",
     "rsvp.codePlaceholder": "Cod invitație",
     "rsvp.login": "Intră",
+    "rsvp.checking": "Se verifică…",   /* usata da script.js */
     "rsvp.error": "Cod invalid — încercați din nou.",
     "rsvp.netError": "Problemă de conexiune. Încercați din nou în curând.",
     "rsvp.welcome": "Bine ați venit",

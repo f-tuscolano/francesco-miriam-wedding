@@ -128,6 +128,7 @@ if (alreadyEntered) {
 function enterSite() {
   intro.classList.add("hidden");
   document.body.classList.remove("locked");
+  risvegliaFoglio();
   try {
     sessionStorage.setItem("fm-entered", "1");
   } catch (_) {}
@@ -151,8 +152,45 @@ $("inv").addEventListener("click", leaveIntro);
 const RSVP_ENDPOINT =
   "https://script.google.com/macros/s/AKfycby5PqzCNfUDJLCwokuMqpxEvxGPPfdeowh0QGFCC8tEaKUz6P6ul4UBGxq7J7DKR5Y7/exec";
 
+// Apps Script a freddo può metterci dieci secondi, da caldo due o tre. Si
+// sveglia con una richiesta a vuoto appena l'ospite entra nel sito, e di nuovo
+// quando tocca il campo del codice: quando serve davvero è già in piedi.
+let ultimoRisveglio = 0;
+
+function risvegliaFoglio() {
+  if (!RSVP_ENDPOINT) return;
+  const ora = Date.now();
+  if (ora - ultimoRisveglio < 60000) return;   // non più di uno al minuto
+  ultimoRisveglio = ora;
+  fetch(`${RSVP_ENDPOINT}?ping=1`).catch(() => {});
+}
+
 let guestList = null;
 let currentGuest = null;
+
+// Apps Script risponde in due o tre secondi quando è caldo, ma a freddo può
+// metterne dieci o non rispondere affatto. Quindi: attesa massima, un
+// ritentativo, e solo dopo si dichiara il guasto all'ospite.
+const FOGLIO_ATTESA_MS = 12000;
+
+async function fetchFoglio(url, opts = {}, ritentativi = 1) {
+  let ultimo;
+  for (let i = 0; i <= ritentativi; i++) {
+    const ctrl = new AbortController();
+    const scade = setTimeout(() => ctrl.abort(), FOGLIO_ATTESA_MS);
+    try {
+      const res = await fetch(url, Object.assign({}, opts, { signal: ctrl.signal }));
+      if (!res.ok) throw new Error("http " + res.status);
+      return await res.json();
+    } catch (err) {
+      ultimo = err;
+    } finally {
+      clearTimeout(scade);
+    }
+    if (i < ritentativi) await new Promise((r) => setTimeout(r, 900));
+  }
+  throw ultimo;
+}
 
 async function loadGuests() {
   if (!guestList) {
@@ -167,9 +205,7 @@ async function loadGuests() {
 // codice sbagliato invece di dire "codice non valido" a chi non c'entra.
 async function findGuest(code) {
   if (RSVP_ENDPOINT) {
-    const res = await fetch(`${RSVP_ENDPOINT}?code=${encodeURIComponent(code)}`);
-    if (!res.ok) throw new Error("rete");
-    const data = await res.json();
+    const data = await fetchFoglio(`${RSVP_ENDPOINT}?code=${encodeURIComponent(code)}`);
     return data.ok ? { code: data.code, name: data.name, seats: data.seats } : null;
   }
   const guests = await loadGuests();
@@ -209,6 +245,8 @@ function showGuestPanel(guest) {
   } catch (_) {}
 }
 
+$("code-input").addEventListener("focus", risvegliaFoglio);
+
 $("login-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const code = $("code-input").value.trim().toUpperCase();
@@ -216,6 +254,7 @@ $("login-form").addEventListener("submit", async (e) => {
   $("login-error").hidden = true;
   $("login-net-error").hidden = true;
   btn.disabled = true;
+  btn.textContent = t("rsvp.checking");
   try {
     const guest = await findGuest(code);
     if (!guest) {
@@ -230,6 +269,7 @@ $("login-form").addEventListener("submit", async (e) => {
     $("login-net-error").hidden = false;
   } finally {
     btn.disabled = false;
+    btn.textContent = t("rsvp.login");
   }
 });
 
@@ -253,9 +293,10 @@ $("rsvp-form").addEventListener("submit", async (e) => {
     btn.textContent = t("rsvp.sending");
     try {
       // nessun header: la richiesta resta "semplice" e non scatta il
-      // preflight CORS, che Apps Script non gestisce
-      const res = await fetch(RSVP_ENDPOINT, { method: "POST", body: JSON.stringify(data) });
-      const out = await res.json();
+      // preflight CORS, che Apps Script non gestisce.
+      // Il ritentativo è sicuro: il foglio riconosce lo stesso invio dal
+      // campo "at" e non duplica né riconta nulla.
+      const out = await fetchFoglio(RSVP_ENDPOINT, { method: "POST", body: JSON.stringify(data) });
       if (!out.ok) throw new Error(out.error || "errore");
     } catch (_) {
       // meglio un errore onesto che un "grazie" con la risposta persa
@@ -309,3 +350,8 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+// Chi ha già superato l'intro in questa sessione (un ricaricamento) non passa
+// da enterSite: il foglio va svegliato qui. Sta in fondo al file perché
+// risvegliaFoglio() usa RSVP_ENDPOINT, dichiarato più sopra con const.
+if (alreadyEntered) risvegliaFoglio();

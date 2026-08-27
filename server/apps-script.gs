@@ -20,6 +20,10 @@
  *                        "Risposte", più lo storico completo in "Storico"
  */
 
+// Quanto tenere in cache la lista invitati. Serve perché leggere il foglio è
+// la parte lenta: un codice appena aggiunto funziona entro questo tempo.
+const CACHE_SECONDI = 120;
+
 const FOGLIO_INVITATI = "Invitati";
 const FOGLIO_RISPOSTE = "Risposte";
 const FOGLIO_STORICO = "Storico";
@@ -32,13 +36,18 @@ const FOGLIO_STORICO = "Storico";
 // 50 risposte al giorno, più che abbastanza.)
 const NOTIFICA_EMAIL = "";
 
+const INTESTAZIONI_RISPOSTE =
+  ["Data", "Codice", "Nome", "Presenti", "Quanti", "Note", "Lingua", "Modifiche", "IdInvio"];
+const INTESTAZIONI_STORICO =
+  ["Data", "Codice", "Nome", "Presenti", "Quanti", "Note", "Lingua"];
+
 // ---------------------------------------------------------------- setup
 
 function setup() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   crea(ss, FOGLIO_INVITATI, ["Codice", "Nome", "Posti"]);
-  crea(ss, FOGLIO_RISPOSTE, ["Data", "Codice", "Nome", "Presenti", "Quanti", "Note", "Lingua", "Modifiche"]);
-  crea(ss, FOGLIO_STORICO, ["Data", "Codice", "Nome", "Presenti", "Quanti", "Note", "Lingua"]);
+  crea(ss, FOGLIO_RISPOSTE, INTESTAZIONI_RISPOSTE);
+  crea(ss, FOGLIO_STORICO, INTESTAZIONI_STORICO);
 
   const inv = ss.getSheetByName(FOGLIO_INVITATI);
   if (inv.getLastRow() < 2) {
@@ -67,7 +76,14 @@ function crea(ss, nome, intestazioni) {
 // ---------------------------------------------------------------- API
 
 function doGet(e) {
-  const code = normalizza((e && e.parameter && e.parameter.code) || "");
+  const p = (e && e.parameter) || {};
+  // Il sito chiama ?ping=1 quando l'ospite arriva alla sezione RSVP: sveglia
+  // il container e riempie la cache, così il login dopo è più rapido.
+  if (p.ping) {
+    listaInvitati();
+    return json({ ok: true, warm: true });
+  }
+  const code = normalizza(p.code || "");
   if (!code) return json({ ok: false, error: "no-code" });
   const g = trovaInvitato(code);
   return json(g ? { ok: true, code: g.code, name: g.name, seats: g.seats }
@@ -92,10 +108,11 @@ function doPost(e) {
       count: presente ? Math.min(Math.max(Number(body.count) || 1, 1), g.seats) : 0,
       notes: testoSicuro(body.notes),
       lang: normalizza(body.lang).toLowerCase().slice(0, 2) || "it",
+      id: String(body.at || ""),
     };
-    salva(riga);
-    avvisa(riga);
-    return json({ ok: true });
+    const esito = salva(riga);
+    if (esito !== "duplicato") avvisa(riga);
+    return json({ ok: true, esito: esito });
   } catch (err) {
     return json({ ok: false, error: String(err) });
   } finally {
@@ -110,30 +127,43 @@ function json(obj) {
 
 // ---------------------------------------------------------------- dati
 
-function trovaInvitato(code) {
+function listaInvitati() {
+  const cache = CacheService.getScriptCache();
+  const salvata = cache.get("invitati");
+  if (salvata) {
+    try { return JSON.parse(salvata); } catch (_) {}
+  }
   const sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(FOGLIO_INVITATI);
-  if (!sh || sh.getLastRow() < 2) return null;
-  const righe = sh.getRange(2, 1, sh.getLastRow() - 1, 3).getValues();
-  for (const [c, nome, posti] of righe) {
-    if (normalizza(c) === code) {
+  if (!sh || sh.getLastRow() < 2) return [];
+  const lista = sh.getRange(2, 1, sh.getLastRow() - 1, 3).getValues()
+    .map(function (r) {
       return {
-        code: normalizza(c),
-        name: String(nome || "").trim() || "Ospiti",
-        seats: Math.max(1, Math.min(Number(posti) || 1, 20)),
+        code: normalizza(r[0]),
+        name: String(r[1] || "").trim() || "Ospiti",
+        seats: Math.max(1, Math.min(Number(r[2]) || 1, 20)),
       };
-    }
+    })
+    .filter(function (g) { return g.code; });
+  try { cache.put("invitati", JSON.stringify(lista), CACHE_SECONDI); } catch (_) {}
+  return lista;
+}
+
+function trovaInvitato(code) {
+  const lista = listaInvitati();
+  for (const g of lista) {
+    if (g.code === code) return g;
   }
   return null;
 }
 
 function salva(r) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const risposte = crea(ss, FOGLIO_RISPOSTE,
-    ["Data", "Codice", "Nome", "Presenti", "Quanti", "Note", "Lingua", "Modifiche"]);
-  const storico = crea(ss, FOGLIO_STORICO,
-    ["Data", "Codice", "Nome", "Presenti", "Quanti", "Note", "Lingua"]);
-
-  storico.appendRow([r.at, r.code, r.name, r.attending, r.count, r.notes, r.lang]);
+  const risposte = crea(ss, FOGLIO_RISPOSTE, INTESTAZIONI_RISPOSTE);
+  const storico = crea(ss, FOGLIO_STORICO, INTESTAZIONI_STORICO);
+  // fogli creati prima che esistesse la nona colonna
+  if (!risposte.getRange(1, 9).getValue()) {
+    risposte.getRange(1, 9).setValue("IdInvio").setFontWeight("bold");
+  }
 
   // una riga per invito: se hanno già risposto, si aggiorna quella
   let riga = 0;
@@ -143,13 +173,24 @@ function salva(r) {
       if (normalizza(codici[i][0]) === r.code) { riga = i + 2; break; }
     }
   }
+
+  // Se il sito ha rimandato lo stesso invio (risposta persa per lentezza),
+  // l'identificativo coincide: non si duplica nulla e non si conta come
+  // ripensamento.
+  if (riga && r.id && String(risposte.getRange(riga, 9).getValue()) === r.id) {
+    return "duplicato";
+  }
+
+  storico.appendRow([r.at, r.code, r.name, r.attending, r.count, r.notes, r.lang]);
+
   if (riga) {
     const modifiche = Number(risposte.getRange(riga, 8).getValue()) || 0;
-    risposte.getRange(riga, 1, 1, 8).setValues(
-      [[r.at, r.code, r.name, r.attending, r.count, r.notes, r.lang, modifiche + 1]]);
-  } else {
-    risposte.appendRow([r.at, r.code, r.name, r.attending, r.count, r.notes, r.lang, 0]);
+    risposte.getRange(riga, 1, 1, 9).setValues(
+      [[r.at, r.code, r.name, r.attending, r.count, r.notes, r.lang, modifiche + 1, r.id]]);
+    return "aggiornato";
   }
+  risposte.appendRow([r.at, r.code, r.name, r.attending, r.count, r.notes, r.lang, 0, r.id]);
+  return "nuovo";
 }
 
 function avvisa(r) {
