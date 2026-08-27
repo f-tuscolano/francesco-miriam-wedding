@@ -150,7 +150,7 @@ $("inv").addEventListener("click", leaveIntro);
 // Finché RSVP_ENDPOINT è vuoto il sito ripiega su guests.json e la risposta
 // resta solo sul dispositivo dell'ospite.
 const RSVP_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycby5PqzCNfUDJLCwokuMqpxEvxGPPfdeowh0QGFCC8tEaKUz6P6ul4UBGxq7J7DKR5Y7/exec";
+  "https://script.google.com/macros/s/AKfycbykJKBdqU6dwIRW75rbUQG7j1zgUszeCL_4aaXl5f0foYokHjeL-J5ep__9hjYhB-Wl/exec";
 
 // Apps Script a freddo può metterci dieci secondi, da caldo due o tre. Si
 // sveglia con una richiesta a vuoto appena l'ospite entra nel sito, e di nuovo
