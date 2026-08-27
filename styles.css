@@ -590,6 +590,9 @@ img { max-width: 100%; height: auto; display: block; }
 
 .rsvp-field { display: grid; gap: 0.35rem; font-size: 0.94rem; color: var(--navy); }
 
+/* display:grid batterebbe il [hidden] del browser: serve dirlo esplicitamente */
+.rsvp-field[hidden] { display: none; }
+
 .rsvp-field select,
 .rsvp-field textarea {
   font: inherit;

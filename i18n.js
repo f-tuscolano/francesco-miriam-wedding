@@ -79,7 +79,7 @@ const I18N = {
     "stay.d1": "l'isola di Siracusa: il Duomo, il mercato la mattina, un aperitivo al tramonto sul lungomare.",
     "stay.d2": "a un'ora, con Modica e Ragusa poco oltre: tre città patrimonio UNESCO, da girare senza fretta.",
     "stay.d3n": "Mare",
-    "stay.d3": "il borgo di pescatori di Marzamemi, la spiaggia di San Lorenzo e la riserva di Vendicari, poco più a sud.",
+    "stay.d3": "scendendo verso sud: la riserva di Vendicari, la spiaggia di San Lorenzo e, ancora più giù, il borgo di pescatori di Marzamemi.",
     "stay.d4": "a un'ora e mezza: escursioni sui crateri e cantine sulle pendici.",
 
     /* RSVP */
@@ -90,6 +90,7 @@ const I18N = {
     "rsvp.codePlaceholder": "Codice invito",
     "rsvp.login": "Accedi",
     "rsvp.error": "Codice non valido — riprovate.",
+    "rsvp.netError": "Problema di connessione. Riprovate tra poco.",
     "rsvp.welcome": "Benvenuti",
     "rsvp.attending": "Ci sarete?",
     "rsvp.yes": "Ci saremo!",
@@ -97,6 +98,7 @@ const I18N = {
     "rsvp.guests": "In quanti sarete?",
     "rsvp.notes": "Allergie, intolleranze o note",
     "rsvp.send": "Conferma la tua presenza ♡",
+    "rsvp.sending": "Invio…",   /* usata da script.js */
     "rsvp.thanks": "Grazie! La vostra risposta è stata registrata.",
     "rsvp.logout": "Esci",
 
@@ -189,7 +191,7 @@ const I18N = {
     "stay.d1": "the island of Syracuse: the Duomo, the morning market, an aperitivo at sunset on the seafront.",
     "stay.d2": "an hour away, with Modica and Ragusa just beyond: three UNESCO World Heritage towns, best taken slowly.",
     "stay.d3n": "The sea",
-    "stay.d3": "the fishing village of Marzamemi, San Lorenzo beach and the Vendicari reserve, a little further south.",
+    "stay.d3": "heading south: the Vendicari reserve, San Lorenzo beach and, further down, the fishing village of Marzamemi.",
     "stay.d4": "an hour and a half away: hikes on the craters and wineries on its slopes.",
 
     /* RSVP */
@@ -200,6 +202,7 @@ const I18N = {
     "rsvp.codePlaceholder": "Invitation code",
     "rsvp.login": "Log in",
     "rsvp.error": "Invalid code — please try again.",
+    "rsvp.netError": "Connection problem. Please try again shortly.",
     "rsvp.welcome": "Welcome",
     "rsvp.attending": "Will you be there?",
     "rsvp.yes": "We'll be there!",
@@ -207,6 +210,7 @@ const I18N = {
     "rsvp.guests": "How many of you?",
     "rsvp.notes": "Allergies, dietary needs or notes",
     "rsvp.send": "Confirm your attendance ♡",
+    "rsvp.sending": "Sending…",   /* usata da script.js */
     "rsvp.thanks": "Thank you! Your response has been recorded.",
     "rsvp.logout": "Log out",
 
@@ -299,7 +303,7 @@ const I18N = {
     "stay.d1": "insula Siracuzei: Domul, piața de dimineață, un aperitiv la apus pe promenadă.",
     "stay.d2": "la o oră, iar Modica și Ragusa puțin mai departe: trei orașe din patrimoniul UNESCO, de vizitat fără grabă.",
     "stay.d3n": "Marea",
-    "stay.d3": "satul pescăresc Marzamemi, plaja San Lorenzo și rezervația Vendicari, puțin mai la sud.",
+    "stay.d3": "coborând spre sud: rezervația Vendicari, plaja San Lorenzo și, mai jos, satul pescăresc Marzamemi.",
     "stay.d4": "la o oră și jumătate: drumeții pe cratere și vinării pe versanți.",
 
     /* RSVP */
@@ -310,6 +314,7 @@ const I18N = {
     "rsvp.codePlaceholder": "Cod invitație",
     "rsvp.login": "Intră",
     "rsvp.error": "Cod invalid — încercați din nou.",
+    "rsvp.netError": "Problemă de conexiune. Încercați din nou în curând.",
     "rsvp.welcome": "Bine ați venit",
     "rsvp.attending": "Veți fi prezenți?",
     "rsvp.yes": "Vom fi acolo!",
@@ -317,6 +322,7 @@ const I18N = {
     "rsvp.guests": "Câți veți fi?",
     "rsvp.notes": "Alergii, restricții alimentare sau observații",
     "rsvp.send": "Confirmați prezența ♡",
+    "rsvp.sending": "Se trimite…",   /* usata da script.js */
     "rsvp.thanks": "Vă mulțumim! Răspunsul vostru a fost înregistrat.",
     "rsvp.logout": "Ieșire",
 

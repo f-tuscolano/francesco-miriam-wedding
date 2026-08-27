@@ -14,7 +14,8 @@ build, nessun framework — si apre il file e funziona.
 | `styles.css` | lo stile (palette, timeline a serpentina, intro, responsive) |
 | `i18n.js` | i testi nelle tre lingue: 82 chiavi × italiano, inglese, romeno |
 | `script.js` | countdown, cambio lingua, mappa, intro, RSVP, comparsa allo scroll |
-| `guests.json` | il registro degli invitati (codice, nome, numero di posti) |
+| `guests.json` | registro invitati di riserva, usato solo se il foglio Google non è collegato |
+| `server/apps-script.gs` | il codice da incollare in Apps Script: riceve le risposte e le scrive nel foglio |
 | `fm-wedding.ics` | il file «Aggiungi al calendario» |
 | `img/` | le 11 immagini della pagina + `og-image.jpg` (anteprima dei link) |
 | `files/` | la lista delle strutture alberghiere in PDF |
@@ -49,22 +50,62 @@ un pulsante `.lang-btn` nella nav.
 
 ## Invitati e RSVP
 
-Gli ospiti accedono alla sezione RSVP con il codice stampato sull'invito. Il
-registro è `guests.json`, una voce per invito:
+Gli ospiti accedono con il codice stampato sull'invito. Le risposte finiscono in
+un foglio Google: gratuito, senza limiti di invii, e il risultato è una tabella
+da ordinare, contare o mandare al catering.
 
-```json
-{ "code": "ROSSI27", "name": "Famiglia Rossi", "seats": 4 }
-```
+Il collegamento è **già fatto**: l'URL della distribuzione è in `RSVP_ENDPOINT`,
+in cima alla sezione RSVP di `script.js`. I passaggi qui sotto servono solo se
+un giorno il foglio va rifatto da zero.
 
-⚠️ **Da fare prima di mandare gli inviti:**
+### Come si collega (una volta sola)
 
-1. sostituire i codici di prova (`DEMO2027`, `ROSSI27`, `BIANCHI27`) con quelli veri;
-2. impostare `RSVP_ENDPOINT` in `script.js` con l'URL di un servizio di form
-   (es. Formspree). Finché è vuoto, **le risposte restano solo sul telefono
-   dell'ospite** e non arrivano a nessuno.
+1. Crea un foglio nuovo su <https://sheets.new> e chiamalo p.es. «Matrimonio RSVP».
+2. **Estensioni › Apps Script**, cancella il contenuto di esempio e incolla tutto
+   `server/apps-script.gs`.
+3. Se vuoi un avviso via email a ogni risposta, metti l'indirizzo in
+   `NOTIFICA_EMAIL` (in cima al file, dentro l'editor Apps Script). Più
+   indirizzi si separano con una virgola:
+   `const NOTIFICA_EMAIL = "francesco@esempio.it, miriam@esempio.it";`
+4. Esegui una volta la funzione **`setup`** dal menù a tendina delle funzioni:
+   Google chiederà l'autorizzazione (è tuo codice sul tuo foglio, accetta), e
+   verranno creati i tre fogli `Invitati`, `Risposte`, `Storico`.
+5. **Distribuisci › Nuova distribuzione › Applicazione web**, con
+   *Esegui come:* **me** e *Chi ha accesso:* **Tutti**. Copia l'URL che finisce
+   con `/exec`.
+6. Incolla quell'URL in `RSVP_ENDPOINT`, in cima alla sezione RSVP di `script.js`.
+7. Compila il foglio `Invitati` — una riga per invito: `codice · nome · posti`.
 
-Il codice non è una password: chiunque lo abbia entra. Va bene per un matrimonio,
-non è una misura di sicurezza.
+Dopo **ogni** modifica a `apps-script.gs` serve una *nuova* distribuzione
+(o *Gestisci distribuzioni › modifica › Versione: nuova*), altrimenti online
+resta la versione precedente: è l'errore più comune.
+
+### Come funziona
+
+- **Login**: il sito chiede al foglio se il codice esiste e riceve solo nome e
+  numero di posti di quell'invito. L'elenco completo resta nel foglio, non nel
+  repo pubblico.
+- **Invio**: la risposta va nel foglio `Risposte`, una riga per invito
+  (se cambiano idea la riga si aggiorna e un contatore segna le modifiche),
+  mentre `Storico` conserva ogni singolo invio.
+- **In due sul foglio**: oltre agli avvisi via email, conviene condividere il
+  foglio (pulsante *Condividi*, in alto a destra) così si vede la tabella
+  aggiornata invece di ricostruirla dalle email.
+- Se il foglio non risponde, l'ospite vede «problema di connessione» e non un
+  falso «grazie»: la risposta non viene mai data per registrata se non lo è.
+- Con `RSVP_ENDPOINT` vuoto il sito ripiega su `guests.json` e salva solo sul
+  dispositivo dell'ospite: utile per provare, inutile per raccogliere davvero.
+
+Le richieste non hanno header personalizzati di proposito: così restano
+richieste «semplici» e non scatta il preflight CORS, che Apps Script non gestisce.
+
+### Note
+
+Il codice invito non è una password: chi lo ha, entra. Va bene per un
+matrimonio, non è una misura di sicurezza. L'indirizzo del foglio è comunque
+visibile nel codice del sito, ma accetta solo codici presenti fra gli invitati,
+e le note vengono neutralizzate se iniziano con `=` (altrimenti il foglio le
+interpreterebbe come formule).
 
 ## Sostituire un'immagine
 

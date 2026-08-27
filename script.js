@@ -22,8 +22,12 @@ const countdownTimer = setInterval(updateCountdown, 30000);
 // ---------- Lingua: italiano di default, con EN e RO ----------
 // L'HTML è già in italiano, quindi all'avvio si traduce solo se la lingua
 // salvata è un'altra.
+let currentLang = "it";
+const t = (key) => (I18N[currentLang] || I18N.it)[key] || "";
+
 function setLang(lang) {
   const dict = I18N[lang] || I18N.it;
+  currentLang = I18N[lang] ? lang : "it";
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const text = dict[el.dataset.i18n];
@@ -138,11 +142,14 @@ function leaveIntro() {
 $("inv").addEventListener("click", leaveIntro);
 
 // ---------- Registro ospiti e RSVP ----------
-// Gli ospiti stanno in guests.json (code, name, seats): una voce per invito.
-// Per ricevere davvero le risposte, impostare RSVP_ENDPOINT con l'URL di un
-// servizio di form (es. Formspree); finché è vuoto, le risposte restano solo
-// sul dispositivo dell'ospite.
-const RSVP_ENDPOINT = "";
+// Le risposte finiscono in un foglio Google tramite Apps Script: il codice del
+// foglio sta in server/apps-script.gs, qui va l'URL della distribuzione
+// (quello che finisce con /exec).
+//
+// Finché RSVP_ENDPOINT è vuoto il sito ripiega su guests.json e la risposta
+// resta solo sul dispositivo dell'ospite.
+const RSVP_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycby5PqzCNfUDJLCwokuMqpxEvxGPPfdeowh0QGFCC8tEaKUz6P6ul4UBGxq7J7DKR5Y7/exec";
 
 let guestList = null;
 let currentGuest = null;
@@ -153,6 +160,20 @@ async function loadGuests() {
     guestList = await res.json();
   }
   return guestList;
+}
+
+// Restituisce l'ospite, oppure null se il codice non esiste. Un problema di
+// rete viene propagato come errore, così la schermata lo distingue da un
+// codice sbagliato invece di dire "codice non valido" a chi non c'entra.
+async function findGuest(code) {
+  if (RSVP_ENDPOINT) {
+    const res = await fetch(`${RSVP_ENDPOINT}?code=${encodeURIComponent(code)}`);
+    if (!res.ok) throw new Error("rete");
+    const data = await res.json();
+    return data.ok ? { code: data.code, name: data.name, seats: data.seats } : null;
+  }
+  const guests = await loadGuests();
+  return guests.find((g) => g.code.toUpperCase() === code) || null;
 }
 
 function showGuestPanel(guest) {
@@ -171,6 +192,11 @@ function showGuestPanel(guest) {
   }
   select.value = guest.seats;
 
+  // con un posto solo la domanda "in quanti sarete?" non ha senso: il campo
+  // resta nel DOM (così il valore 1 viene comunque inviato) ma sparisce
+  const campoQuanti = select.closest(".rsvp-field");
+  if (campoQuanti) campoQuanti.hidden = guest.seats < 2;
+
   // se avevano già risposto da questo dispositivo, si riparte da lì
   try {
     const saved = JSON.parse(localStorage.getItem("fm-rsvp-" + guest.code));
@@ -186,25 +212,28 @@ function showGuestPanel(guest) {
 $("login-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const code = $("code-input").value.trim().toUpperCase();
-  const errorEl = $("login-error");
+  const btn = $("login-form").querySelector("button");
+  $("login-error").hidden = true;
+  $("login-net-error").hidden = true;
+  btn.disabled = true;
   try {
-    const guests = await loadGuests();
-    const guest = guests.find((g) => g.code.toUpperCase() === code);
+    const guest = await findGuest(code);
     if (!guest) {
-      errorEl.hidden = false;
+      $("login-error").hidden = false;
       return;
     }
-    errorEl.hidden = true;
     try {
       sessionStorage.setItem("fm-guest", guest.code);
     } catch (_) {}
     showGuestPanel(guest);
   } catch (_) {
-    errorEl.hidden = false;
+    $("login-net-error").hidden = false;
+  } finally {
+    btn.disabled = false;
   }
 });
 
-$("rsvp-form").addEventListener("submit", (e) => {
+$("rsvp-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!currentGuest) return;
   const data = {
@@ -216,16 +245,31 @@ $("rsvp-form").addEventListener("submit", (e) => {
     lang: document.documentElement.lang,
     at: new Date().toISOString(),
   };
+  const btn = $("rsvp-form").querySelector('button[type="submit"]');
+  $("rsvp-send-error").hidden = true;
+
+  if (RSVP_ENDPOINT) {
+    btn.disabled = true;
+    btn.textContent = t("rsvp.sending");
+    try {
+      // nessun header: la richiesta resta "semplice" e non scatta il
+      // preflight CORS, che Apps Script non gestisce
+      const res = await fetch(RSVP_ENDPOINT, { method: "POST", body: JSON.stringify(data) });
+      const out = await res.json();
+      if (!out.ok) throw new Error(out.error || "errore");
+    } catch (_) {
+      // meglio un errore onesto che un "grazie" con la risposta persa
+      $("rsvp-send-error").hidden = false;
+      return;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = t("rsvp.send");
+    }
+  }
+
   try {
     localStorage.setItem("fm-rsvp-" + currentGuest.code, JSON.stringify(data));
   } catch (_) {}
-  if (RSVP_ENDPOINT) {
-    fetch(RSVP_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(data),
-    }).catch(() => {});
-  }
   $("rsvp-thanks").hidden = false;
 });
 
@@ -236,6 +280,7 @@ $("rsvp-logout").addEventListener("click", () => {
   } catch (_) {}
   $("rsvp-panel").hidden = true;
   $("rsvp-thanks").hidden = true;
+  $("rsvp-send-error").hidden = true;
   $("rsvp-login").hidden = false;
   $("code-input").value = "";
 });
@@ -244,10 +289,9 @@ $("rsvp-logout").addEventListener("click", () => {
 try {
   const savedCode = sessionStorage.getItem("fm-guest");
   if (savedCode) {
-    loadGuests().then((guests) => {
-      const guest = guests.find((g) => g.code === savedCode);
-      if (guest) showGuestPanel(guest);
-    });
+    findGuest(savedCode)
+      .then((guest) => { if (guest) showGuestPanel(guest); })
+      .catch(() => {});
   }
 } catch (_) {}
 
