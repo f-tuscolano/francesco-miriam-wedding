@@ -228,13 +228,6 @@ function showGuestPanel(guest) {
   }
   select.value = guest.seats;
 
-  // "Benvenuto" a chi è invitato da solo, "Benvenuti" a una famiglia.
-  // Si cambia l'attributo, non solo il testo, così il saluto resta giusto
-  // anche se poi l'ospite cambia lingua.
-  const saluto = $("welcome-word");
-  saluto.dataset.i18n = guest.seats > 1 ? "rsvp.welcome" : "rsvp.welcomeOne";
-  saluto.textContent = t(saluto.dataset.i18n);
-
   // con un posto solo la domanda "in quanti sarete?" non ha senso: il campo
   // resta nel DOM (così il valore 1 viene comunque inviato) ma sparisce
   const campoQuanti = select.closest(".rsvp-field");

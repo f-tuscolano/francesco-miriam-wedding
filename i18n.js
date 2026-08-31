@@ -59,7 +59,6 @@ const I18N = {
 
     /* Noleggio: listino a scomparsa */
     "hire.deal": "Hanno riservato prezzi convenzionati per i nostri ospiti.",
-    "hire.book": "Se preferite, la prenotazione possiamo farla noi: scrivetecelo nelle note quando confermate la presenza.",
     "hire.pricesTitle": "Tariffe e camere",
     "hire.cars": "Noleggio auto \u00b7 al giorno",
     "hire.auto": "automatica",
@@ -108,8 +107,7 @@ const I18N = {
     "rsvp.checking": "Verifico…",   /* usata da script.js */
     "rsvp.error": "Codice non valido — riprovate.",
     "rsvp.netError": "Problema di connessione. Riprovate tra poco.",
-    "rsvp.welcome": "Benvenuti",
-    "rsvp.welcomeOne": "Benvenuto",   /* invito singolo, usata da script.js */
+    "rsvp.welcome": "Benvenuto/a",
     "rsvp.attending": "Ci sarete?",
     "rsvp.yes": "Ci saremo!",
     "rsvp.no": "Purtroppo no",
@@ -190,7 +188,6 @@ const I18N = {
 
     /* Noleggio: listino a scomparsa */
     "hire.deal": "They have agreed special rates for our guests.",
-    "hire.book": "If you prefer, we can book for you: just say so in the notes when you confirm your attendance.",
     "hire.pricesTitle": "Rates and rooms",
     "hire.cars": "Car hire \u00b7 per day",
     "hire.auto": "automatic",
@@ -240,7 +237,6 @@ const I18N = {
     "rsvp.error": "Invalid code — please try again.",
     "rsvp.netError": "Connection problem. Please try again shortly.",
     "rsvp.welcome": "Welcome",
-    "rsvp.welcomeOne": "Welcome",   /* invito singolo, usata da script.js */
     "rsvp.attending": "Will you be there?",
     "rsvp.yes": "We'll be there!",
     "rsvp.no": "Sadly not",
@@ -321,7 +317,6 @@ const I18N = {
 
     /* Noleggio: listino a scomparsa */
     "hire.deal": "Au stabilit tarife speciale pentru invita\u021bii no\u0219tri.",
-    "hire.book": "Dac\u0103 prefera\u021bi, ne putem ocupa noi de rezervare: scrie\u021bi-ne \u00een note c\u00e2nd confirma\u021bi prezen\u021ba.",
     "hire.pricesTitle": "Tarife \u0219i camere",
     "hire.cars": "\u00cenchiriere auto \u00b7 pe zi",
     "hire.auto": "automat\u0103",
@@ -370,8 +365,7 @@ const I18N = {
     "rsvp.checking": "Se verifică…",   /* usata da script.js */
     "rsvp.error": "Cod invalid — încercați din nou.",
     "rsvp.netError": "Problemă de conexiune. Încercați din nou în curând.",
-    "rsvp.welcome": "Bine ați venit",
-    "rsvp.welcomeOne": "Bine ai venit",   /* invito singolo, usata da script.js */
+    "rsvp.welcome": "Bine ai venit",
     "rsvp.attending": "Veți fi prezenți?",
     "rsvp.yes": "Vom fi acolo!",
     "rsvp.no": "Din păcate, nu",
