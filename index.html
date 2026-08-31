@@ -56,10 +56,10 @@
 
   <nav class="nav" id="nav">
     <a class="nav-logo" href="#top" aria-label="Miriam e Francesco">
-      <img src="img/logo-oro.png" width="900" height="621" alt="Miriam &amp; Francesco" />
+      <img src="img/lettering-oro.webp" width="900" height="484" alt="Miriam &amp; Francesco" />
     </a>
     <div class="nav-links" id="nav-links">
-      <a href="#details" data-i18n="nav.details">Programma</a>
+      <a href="#details" data-i18n="nav.details">Timeline</a>
       <a href="#location" data-i18n="nav.location">La location</a>
       <a href="#stay" data-i18n="nav.stay">Alloggi</a>
       <a href="#gift" data-i18n="nav.gift">Viaggio di nozze</a>
@@ -85,7 +85,7 @@
     <div class="hero-content reveal">
       <p class="hero-eyebrow" data-i18n="hero.invite">Con gioia vi invitiamo<br />al nostro matrimonio</p>
       <div class="orn">─── <span><svg class="orn-fico" aria-hidden="true"><use href="#fico"/></svg></span> ───</div>
-      <img class="hero-lettering" src="img/logo-oro.png" width="900" height="621" alt="Miriam &amp; Francesco" />
+      <img class="hero-lettering" src="img/lettering-oro.webp" width="900" height="484" alt="Miriam &amp; Francesco" />
       <p class="hero-date" data-i18n="hero.date">30 Agosto 2027</p>
       <p class="hero-venue">Siracusa · Sicilia</p>
       <div class="countdown" id="countdown">
@@ -202,6 +202,34 @@
           <span class="muted" data-i18n="arr.h24">(attivo 24 ore)</span></p>
         <p><a href="mailto:info@eurotourviaggi.com">info@eurotourviaggi.com</a> ·
           <a href="https://www.eurotourviaggi.com" target="_blank" rel="noopener">eurotourviaggi.com</a></p>
+        <p class="hire-deal" data-i18n="hire.deal">Hanno riservato prezzi convenzionati per i nostri ospiti.</p>
+        <p class="muted" data-i18n="hire.book">Se preferite, la prenotazione possiamo farla noi: scrivetecelo nelle note quando confermate la presenza.</p>
+
+        <details class="listino">
+          <summary data-i18n="hire.pricesTitle">Tariffe e camere</summary>
+          <div>
+            <h4 data-i18n="hire.cars">Noleggio auto · al giorno</h4>
+            <ul class="prezzi">
+              <li><span>Fiat Panda</span><b>€ 40</b></li>
+              <li><span>Fiat Grande Panda</span><b>€ 55</b></li>
+              <li><span>Fiat Grande Panda <i data-i18n="hire.auto">automatica</i></span><b>€ 60</b></li>
+              <li><span>Fiat 500 <i data-i18n="hire.auto">automatica</i></span><b>€ 65</b></li>
+              <li><span>Fiat 600 <i data-i18n="hire.auto">automatica</i></span><b>€ 65</b></li>
+            </ul>
+            <p class="muted" data-i18n="hire.insurance">A cui si aggiungono € 30 al giorno per l'assicurazione full kasko senza franchigia.</p>
+
+            <h4 data-i18n="hire.rooms">Camere al B&amp;B Venti di Brucoli · a notte</h4>
+            <ul class="prezzi">
+              <li><span data-i18n="room.double">Camera doppia</span><b>€ 80</b></li>
+              <li><span data-i18n="room.triple">Camera tripla</span><b>€ 110</b></li>
+              <li><span data-i18n="room.quad">Camera quadrupla</span><b>€ 130</b></li>
+              <li><span data-i18n="room.apt2">Appartamento per 2</span><b>€ 100</b></li>
+              <li><span data-i18n="room.apt3">Appartamento per 3</span><b>€ 140</b></li>
+              <li><span data-i18n="room.apt4">Appartamento per 4</span><b>€ 150</b></li>
+            </ul>
+            <p class="muted" data-i18n="hire.boat">Organizzano anche tour in barca lungo la costa, da Brucoli ad Augusta, per l'intera giornata o mezza giornata.</p>
+          </div>
+        </details>
       </div>
 
       <p class="choose-label" data-i18n="arr.choose">Scegli il tuo percorso</p>
@@ -283,7 +311,7 @@
       </div>
 
       <div class="rsvp-box" id="rsvp-panel" hidden>
-        <p class="rsvp-welcome"><span data-i18n="rsvp.welcome">Benvenuti</span>, <strong id="guest-name"></strong>!</p>
+        <p class="rsvp-welcome"><span id="welcome-word" data-i18n="rsvp.welcome">Benvenuti</span>, <strong id="guest-name"></strong>!</p>
         <form id="rsvp-form" class="rsvp-form-grid">
           <fieldset>
             <legend data-i18n="rsvp.attending">Ci sarete?</legend>
@@ -325,7 +353,7 @@
         <dt data-i18n="gift.holder">Intestatario</dt>
         <dd>Francesco Tuscolano</dd>
         <dt data-i18n="gift.reason">Causale</dt>
-        <dd>Hochzeitsgeschenk Francesco e Miriam</dd>
+        <dd data-i18n="gift.reasonText">Regalo di nozze Francesco e Miriam</dd>
       </dl>
     </div>
   </section>

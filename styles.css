@@ -65,12 +65,16 @@ img { max-width: 100%; height: auto; display: block; }
   justify-content: space-between;
   gap: 1rem;
   padding: 0.55rem 1.6rem;
+  /* altezza fissa: senza, la barra la detterebbe l'elemento più alto di
+     turno (il logo da desktop, il pulsante del menù da telefono) e
+     cambierebbe di qualche pixel fra i due */
+  min-height: 53px;
   background: rgba(250, 248, 241, 0.9);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
 
-.nav-logo img { height: 34px; width: auto; }
+.nav-logo img { height: 26px; width: auto; }
 
 .nav-links { display: flex; gap: 1.7rem; }
 
@@ -173,7 +177,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .hero-lettering {
   width: min(76vw, 350px);
-  margin: 0.5rem auto 0.8rem;
+  margin: 0.3rem auto 0.6rem;
 }
 
 .hero-date {
@@ -188,14 +192,14 @@ img { max-width: 100%; height: auto; display: block; }
   font-family: var(--serif);
   font-size: 1.15rem;
   color: var(--ink-soft);
-  margin-top: 0.3rem;
+  margin-top: 0.2rem;
 }
 
 .countdown {
   display: flex;
   justify-content: center;
   gap: 2.4rem;
-  margin-top: 1.6rem;
+  margin-top: 0.1rem;
 }
 
 .count-item { display: flex; flex-direction: column; align-items: center; }
@@ -215,7 +219,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .hero-illustration {
-  margin: 0.7rem auto 0;
+  margin: 0.25rem auto 0;
   max-width: 1010px;
 }
 
@@ -507,6 +511,87 @@ img { max-width: 100%; height: auto; display: block; }
 
 .transfer a { color: var(--gold-deep); text-decoration: none; }
 .transfer a:hover { text-decoration: underline; }
+
+.hire-deal { color: var(--navy); margin-top: 0.6rem; }
+
+/* Listino a scomparsa: <details> nativo, così si apre anche senza JavaScript */
+.listino {
+  margin-top: 0.8rem;
+  border-top: 1px solid var(--line);
+  padding-top: 0.7rem;
+}
+
+.listino summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  list-style: none;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--gold-deep);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.listino summary::-webkit-details-marker { display: none; }
+
+/* freccia disegnata col bordo: ruota di 180° all'apertura */
+.listino summary::before {
+  content: "";
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  margin-bottom: 3px;
+  border-right: 1.4px solid currentColor;
+  border-bottom: 1.4px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.25s ease;
+}
+
+.listino[open] summary::before { transform: rotate(-135deg); margin-bottom: -2px; }
+
+.listino summary:hover { color: var(--navy); }
+
+.listino h4 {
+  margin-top: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: var(--navy);
+}
+
+.listino h4:first-child { margin-top: 0.8rem; }
+
+.prezzi {
+  list-style: none;
+  margin: 0.4rem 0 0.5rem;
+}
+
+.prezzi li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.26rem 0;
+  border-bottom: 1px dotted var(--line);
+  font-size: 0.9rem;
+}
+
+.prezzi li:last-child { border-bottom: none; }
+
+.prezzi i { font-style: italic; color: var(--ink-soft); }
+
+.prezzi b {
+  font-weight: 500;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .listino summary::before { transition: none; }
+}
 
 /* ---------- Dove alloggiare ---------- */
 .stay-list {
