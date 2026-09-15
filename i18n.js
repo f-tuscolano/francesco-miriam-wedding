@@ -57,20 +57,10 @@ const I18N = {
     "arr.transferT": "Vi consigliamo:",
     "arr.h24": "(attivo 24 ore)",
 
-    /* Noleggio: listino a scomparsa */
-    "hire.deal": "Hanno riservato prezzi convenzionati per i nostri ospiti.",
-    "hire.pricesTitle": "Tariffe e camere",
-    "hire.cars": "Noleggio auto \u00b7 al giorno",
-    "hire.auto": "automatica",
-    "hire.insurance": "A cui si aggiungono \u20ac 30 al giorno per l'assicurazione full kasko senza franchigia.",
-    "hire.rooms": "Camere al B&amp;B Venti di Brucoli \u00b7 a notte",
-    "room.double": "Camera doppia",
-    "room.triple": "Camera tripla",
-    "room.quad": "Camera quadrupla",
-    "room.apt2": "Appartamento per 2",
-    "room.apt3": "Appartamento per 3",
-    "room.apt4": "Appartamento per 4",
-    "hire.boat": "Organizzano anche tour in barca lungo la costa, da Brucoli ad Augusta, per l'intera giornata o mezza giornata.",
+    /* Noleggio: tariffe scaricabili in PDF */
+    "hire.deal": "L'azienda ci ha garantito questi prezzi per il noleggio di un'auto vicino alla location.",
+    "hire.rooms": "Hanno a disposizione anche qualche camera; per tutte le altre strutture trovate i nostri consigli qui sotto, in <a href=\"#stay\">Dove alloggiare</a>.",
+    "hire.pdf": "Scarica il listino del noleggio (PDF)",
     "arr.choose": "Scegli il tuo percorso",
 
     /* Mappa */
@@ -186,20 +176,10 @@ const I18N = {
     "arr.transferT": "We recommend:",
     "arr.h24": "(24 hours)",
 
-    /* Noleggio: listino a scomparsa */
-    "hire.deal": "They have agreed special rates for our guests.",
-    "hire.pricesTitle": "Rates and rooms",
-    "hire.cars": "Car hire \u00b7 per day",
-    "hire.auto": "automatic",
-    "hire.insurance": "Plus \u20ac30 per day for full insurance with zero excess.",
-    "hire.rooms": "Rooms at B&amp;B Venti di Brucoli \u00b7 per night",
-    "room.double": "Double room",
-    "room.triple": "Triple room",
-    "room.quad": "Quadruple room",
-    "room.apt2": "Apartment for 2",
-    "room.apt3": "Apartment for 3",
-    "room.apt4": "Apartment for 4",
-    "hire.boat": "They also arrange boat tours along the coast, from Brucoli to Augusta, for a full or half day.",
+    /* Noleggio: tariffe scaricabili in PDF */
+    "hire.deal": "The company has guaranteed us these rates for hiring a car near the venue.",
+    "hire.rooms": "They also have a few rooms available; for everywhere else, see our suggestions below, under <a href=\"#stay\">Where to stay</a>.",
+    "hire.pdf": "Download the car hire rates (PDF)",
     "arr.choose": "Choose your route",
 
     /* Mappa */
@@ -315,20 +295,10 @@ const I18N = {
     "arr.transferT": "Vă recomandăm:",
     "arr.h24": "(non-stop)",
 
-    /* Noleggio: listino a scomparsa */
-    "hire.deal": "Au stabilit tarife speciale pentru invita\u021bii no\u0219tri.",
-    "hire.pricesTitle": "Tarife \u0219i camere",
-    "hire.cars": "\u00cenchiriere auto \u00b7 pe zi",
-    "hire.auto": "automat\u0103",
-    "hire.insurance": "La care se adaug\u0103 30 \u20ac pe zi pentru asigurarea complet\u0103 f\u0103r\u0103 fran\u0219iz\u0103.",
-    "hire.rooms": "Camere la B&amp;B Venti di Brucoli \u00b7 pe noapte",
-    "room.double": "Camer\u0103 dubl\u0103",
-    "room.triple": "Camer\u0103 tripl\u0103",
-    "room.quad": "Camer\u0103 cvadrupl\u0103",
-    "room.apt2": "Apartament pentru 2",
-    "room.apt3": "Apartament pentru 3",
-    "room.apt4": "Apartament pentru 4",
-    "hire.boat": "Organizeaz\u0103 \u0219i tururi cu barca de-a lungul coastei, de la Brucoli la Augusta, pentru o zi \u00eentreag\u0103 sau o jum\u0103tate de zi.",
+    /* Noleggio: tariffe scaricabili in PDF */
+    "hire.deal": "Compania ne-a garantat aceste tarife pentru \u00eenchirierea unei ma\u0219ini \u00een apropierea loca\u021biei.",
+    "hire.rooms": "Au la dispozi\u021bie \u0219i c\u00e2teva camere; pentru celelalte structuri, g\u0103si\u021bi recomand\u0103rile noastre mai jos, la <a href=\"#stay\">Unde s\u0103 sta\u021bi</a>.",
+    "hire.pdf": "Desc\u0103rca\u021bi tarifele de \u00eenchiriere (PDF)",
     "arr.choose": "Alegeți traseul",
 
     /* Mappa */

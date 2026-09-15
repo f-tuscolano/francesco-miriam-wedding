@@ -4,7 +4,16 @@
 # Artwork originale (PNG a piena risoluzione) e immagini usate dalle versioni
 # precedenti del sito: restano in locale, fuori dal repo e fuori dal sito
 # pubblicato. Le immagini che il sito usa davvero stanno in img/.
-_source/
+_source/*
+
+# Eccezione: il sorgente del PDF del noleggio e' testo, non artwork, ed e'
+# l'unico modo per rigenerare files/noleggio-e-camere.pdf quando i prezzi
+# cambiano (il comando per la stampa e' in cima al file stesso). Va escluso
+# il contenuto di _source/, non la cartella: Git non rientra in una cartella
+# gia' esclusa, quindi una riga "_source/" renderebbe vana questa eccezione.
+!_source/pdf-listino/
+_source/pdf-listino/*
+!_source/pdf-listino/*.html
 
 # pagine di prova temporanee (screenshot, misure, test)
 _*.html
