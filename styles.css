@@ -509,8 +509,8 @@ img { max-width: 100%; height: auto; display: block; }
   margin-top: 0.4rem;
 }
 
-.transfer a { color: var(--gold-deep); text-decoration: none; }
-.transfer a:hover { text-decoration: underline; }
+.transfer a:not(.btn) { color: var(--gold-deep); text-decoration: none; }
+.transfer a:not(.btn):hover { text-decoration: underline; }
 
 .hire-deal { color: var(--navy); margin-top: 0.6rem; }
 
@@ -760,80 +760,6 @@ img { max-width: 100%; height: auto; display: block; }
   .wcard { padding: 2.1rem 1.2rem 2rem; }
 }
 
-/* ---------- Intro: il foglio con l'arco e il pulsante Entra ---------- */
-.intro {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ede2db;
-  transition: opacity 0.6s ease, visibility 0.6s;
-}
-
-.intro.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-
-body.locked { overflow: hidden; }
-
-/* il foglio mantiene il rapporto 2:3 della foto, così il pulsante resta
-   esattamente dov'è nel disegno; la larghezza è limitata anche dall'altezza,
-   altrimenti un telefono in orizzontale romperebbe le proporzioni */
-.inv {
-  position: relative;
-  width: min(94vw, 470px, 62dvh);
-  aspect-ratio: 900 / 1350;
-  cursor: pointer;
-  transition: transform 0.6s ease, opacity 0.6s ease;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.inv-scene {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  user-select: none;
-}
-
-.intro.leaving .inv { transform: scale(1.04); opacity: 0; }
-
-/* ricostruito in HTML (quello del disegno è parte dell'immagine) così può
-   essere tradotto e avere un contorno di focus vero */
-.inv-enter {
-  position: absolute;
-  left: 50%;
-  top: 89.4%;
-  transform: translateX(-50%);
-  /* si adatta al proprio testo (con la larghezza del disegno come minimo)
-     così l'etichetta non viene mai tagliata, in qualunque lingua */
-  min-width: 19.9%;
-  padding: 0.45em 1.4em 0.5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  background: #061f39;
-  border: 1px solid rgba(201, 162, 60, 0.55);
-  border-radius: 4px;
-  color: #d8bb72;
-  font-family: var(--serif);
-  font-size: clamp(0.55rem, 2.3vw, 0.72rem);
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.25s, color 0.25s;
-}
-
-.inv-enter:hover { background: #0b2c50; color: #eedca8; }
-
-/* telefono in orizzontale: il foglio è piccolo, l'etichetta resta leggibile */
-@media (max-height: 540px) {
-  .inv-enter { font-size: 0.5rem; letter-spacing: 0.14em; padding: 0.4em 1.1em 0.45em; }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .intro, .inv, .nav-links { transition: none; }
+  .nav-links { transition: none; }
 }

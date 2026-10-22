@@ -7,9 +7,6 @@
 
 const I18N = {
   it: {
-    /* Intro */
-    "intro.enter": "Entra",
-
     /* Nav */
     "nav.details": "Timeline",
     "nav.location": "La location",
@@ -126,9 +123,6 @@ const I18N = {
   },
 
   en: {
-    /* Intro */
-    "intro.enter": "Enter",
-
     /* Nav */
     "nav.details": "Timeline",
     "nav.location": "The venue",
@@ -245,9 +239,6 @@ const I18N = {
   },
 
   ro: {
-    /* Intro */
-    "intro.enter": "Intră",
-
     /* Nav */
     "nav.details": "Cronologia",
     "nav.location": "Locația",

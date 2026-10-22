@@ -109,39 +109,6 @@ document.querySelectorAll("#map-chips .chip").forEach((chip) => {
   chip.addEventListener("click", () => setMapOrigin(chip.dataset.origin));
 });
 
-// ---------- Intro ----------
-// Un tocco — sul pulsante o in qualunque punto del foglio — e l'intro sfuma
-// sul sito. La scelta vale per la sessione: al reload non ricompare.
-const intro = $("intro");
-
-let alreadyEntered = false;
-try {
-  alreadyEntered = sessionStorage.getItem("fm-entered") === "1";
-} catch (_) {}
-
-if (alreadyEntered) {
-  intro.classList.add("hidden");
-} else {
-  document.body.classList.add("locked");
-}
-
-function enterSite() {
-  intro.classList.add("hidden");
-  document.body.classList.remove("locked");
-  risvegliaFoglio();
-  try {
-    sessionStorage.setItem("fm-entered", "1");
-  } catch (_) {}
-}
-
-function leaveIntro() {
-  if (intro.classList.contains("leaving")) return;
-  intro.classList.add("leaving");
-  setTimeout(enterSite, 620); // combacia con la transizione di .inv nel CSS
-}
-
-$("inv").addEventListener("click", leaveIntro);
-
 // ---------- Registro ospiti e RSVP ----------
 // Le risposte finiscono in un foglio Google tramite Apps Script: il codice del
 // foglio sta in server/apps-script.gs, qui va l'URL della distribuzione
@@ -351,7 +318,6 @@ const observer = new IntersectionObserver(
 
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-// Chi ha già superato l'intro in questa sessione (un ricaricamento) non passa
-// da enterSite: il foglio va svegliato qui. Sta in fondo al file perché
+// Il foglio si sveglia appena si apre il sito. Sta in fondo al file perché
 // risvegliaFoglio() usa RSVP_ENDPOINT, dichiarato più sopra con const.
-if (alreadyEntered) risvegliaFoglio();
+risvegliaFoglio();

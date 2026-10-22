@@ -11,9 +11,9 @@ build, nessun framework — si apre il file e funziona.
 | File | Cosa contiene |
 | --- | --- |
 | `index.html` | tutta la pagina, con i testi italiani direttamente nel markup |
-| `styles.css` | lo stile (palette, timeline a serpentina, intro, responsive) |
+| `styles.css` | lo stile (palette, timeline a serpentina, responsive) |
 | `i18n.js` | i testi nelle tre lingue: 82 chiavi × italiano, inglese, romeno |
-| `script.js` | countdown, cambio lingua, mappa, intro, RSVP, comparsa allo scroll |
+| `script.js` | countdown, cambio lingua, mappa, RSVP, comparsa allo scroll |
 | `guests.json` | registro invitati di riserva, usato solo se il foglio Google non è collegato |
 | `server/apps-script.gs` | il codice da incollare in Apps Script: riceve le risposte e le scrive nel foglio |
 | `fm-wedding.ics` | il file «Aggiungi al calendario» |
@@ -30,9 +30,6 @@ python3 -m http.server 8000
 poi apri <http://localhost:8000>. Serve un server (anche minimo) perché la
 pagina legge `guests.json` via `fetch`: aprendo `index.html` con doppio clic
 il login degli ospiti non funziona.
-
-L'intro compare una volta per sessione. Per rivederla: nuova finestra anonima,
-oppure cancella la chiave `fm-entered` da `sessionStorage`.
 
 ## Modificare i testi
 
@@ -136,8 +133,6 @@ Online: <https://f-tuscolano.github.io/francesco-miriam-wedding/>
 - La timeline è una griglia a tre colonne (`1fr | corridoio | 1fr`) con i lati
   che si alternano; la serpentina è un SVG dietro, e la sua ampiezza dipende
   dalla larghezza del corridoio centrale — restringerlo appiattisce l'onda.
-- L'intro si chiude con un tocco qualunque sul foglio e sfuma sul sito; il
-  timeout in `leaveIntro()` combacia con la transizione CSS di `.inv`.
 - Le immagini hanno `width`/`height` nel markup per non far ballare il layout
   durante il caricamento: se ne sostituisci una, aggiorna anche quei numeri.
 - Sotto i 700px i link di sezione stanno in un menù che scende dalla barra
