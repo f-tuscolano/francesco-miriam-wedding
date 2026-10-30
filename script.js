@@ -200,6 +200,15 @@ function showGuestPanel(guest) {
   const campoQuanti = select.closest(".rsvp-field");
   if (campoQuanti) campoQuanti.hidden = guest.seats < 2;
 
+  // e domanda e risposta vanno al singolare: "Ci sarai?" / "Ci sarò!". La
+  // chiave cambia sull'elemento, così resta giusta anche cambiando lingua.
+  const uno = guest.seats < 2;
+  [["rsvp-attending", "rsvp.attending"], ["rsvp-yes", "rsvp.yes"]].forEach(([id, chiave]) => {
+    const el = $(id);
+    el.dataset.i18n = uno ? chiave + "One" : chiave;
+    el.textContent = t(el.dataset.i18n);
+  });
+
   // se avevano già risposto da questo dispositivo, si riparte da lì
   try {
     const saved = JSON.parse(localStorage.getItem("fm-rsvp-" + guest.code));
